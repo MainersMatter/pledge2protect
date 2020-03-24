@@ -6,6 +6,11 @@ ___
 - translate pledge into actions to protect the vulnerable; and 
 - meet basic human needs (connect Mainers and connect resources to Mainers)
 
+## Op URLs
+- Design Trello Board: https://trello.com/b/jAOArBaO/maine-matters-design
+- Site copy: https://docs.google.com/document/d/1CmGSXUNNb3GhjcN4AMbXL66V7tOJ41LNF2CLZiNNtOs/edit
+- Tech Stack and Dev procedures: https://docs.google.com/document/d/17YeCe26vHLFyhwP9Erf4dcp8Be8KDouAE81CdnM8GOY/edit
+
 ## What (MVP Features):
 Online app where Mainers take a pledge
 
