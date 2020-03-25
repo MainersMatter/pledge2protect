@@ -47,8 +47,11 @@ The adopt a Mainer pledge could connect
  - Contact tracing & self reporting
 
 ## Deployment
-
-- Once in hosting container
-  - yarn or npm install deps
+- LOCAL DEV
+  - yarn or npm install 
+  - yarn start-api
   - yarn start
+- PROD
+  - yarn or npm install deps
   - yarn start-api-prod
+  - yarn start
