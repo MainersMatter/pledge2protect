@@ -52,6 +52,6 @@ The adopt a Mainer pledge could connect
   - yarn start-api
   - yarn start
 - PROD
-  - yarn or npm install deps
+  - yarn or npm install
   - yarn start-api-prod
   - yarn start
