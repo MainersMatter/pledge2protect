@@ -46,12 +46,30 @@ The adopt a Mainer pledge could connect
 
  - Contact tracing & self reporting
 
-## Deployment
-- LOCAL DEV
-  - yarn or npm install 
-  - yarn start-api
-  - yarn start
-- PROD
-  - yarn or npm install
-  - yarn start-api-prod
-  - yarn start
+## Local Development
+Set up a virtual environment by running:
+``` bash
+python3 -m venv venv/ 
+```
+Install Python requirements:
+```bash
+pip install -r requirements.txt
+```
+Install JavaScript packages:
+```bash
+yarn install
+# or
+npm install
+```
+Run the front-end app:
+```bash
+yarn start
+# or 
+npm start
+```
+Run the back-end app:
+```bash
+yarn start-api
+# or
+npm start-api
+```
