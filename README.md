@@ -57,19 +57,13 @@ pip install -r requirements.txt
 ```
 Install JavaScript packages:
 ```bash
-yarn install
-# or
 npm install
 ```
 Run the front-end app:
 ```bash
-yarn start
-# or 
 npm start
 ```
 Run the back-end app:
 ```bash
-yarn start-api
-# or
 npm start-api
 ```
