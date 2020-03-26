@@ -3,7 +3,7 @@ import time
 from flask import Flask
 
 app = Flask(__name__)
-is_prod = os.environ.get('FLASK_CONFIG', None)
+is_prod = os.environ.get('FLASK_CONFIG', None) == 'HEROKU'
 if is_prod:
     app.config.from_object('api.config.ProductionConfig')
 else:
