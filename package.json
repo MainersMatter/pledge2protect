@@ -13,10 +13,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-api": "source venv/bin/activate && python api.py",
+    "start-api": "source venv/bin/activate && python app.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-api": "cd api && flask test",
+    "test-api": "flask test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
