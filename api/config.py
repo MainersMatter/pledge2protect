@@ -1,23 +1,30 @@
 class Config(object):
     DEBUG = False
     DATABASE_URI = 'sqlite:///:memory:'
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            },
+            'simple': {
+                'format': '%(levelname)s %(message)s'
+            },
+        },
+        'handlers': {
+            'console': {
+                'level': 'INFO',
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose'
+            },
+        }
+    }
 
 
 class DevelopmentConfig(Config):
     ENV = 'development'
     DEBUG = True
-
-
-# class HerokuConfig(ProductionConfig):
-#     @classmethod
-#     def init_app(cls, app):
-#         ProductionConfig.init_app(app)
-#
-#     import logging
-#     from logging import StreamHandler
-#     file_handler = StreamHandler()
-#     file_handler.setLevel(logging.WARNING)
-#     app.logger.addHandler(file_handler)
 
 
 class ProductionConfig(Config):
