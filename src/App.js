@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-import HomeUI from './UIs/home-ui';
+import ReactDOM from 'react-dom'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import HomeUIWrapper from './components/home-ui-wrapper';
+
+import './base.css';
 
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch('/time').then(res=>res.json()).then(data=>{
       setCurrentTime(data.time); 
     })
   },[]);
+
+  library.add(fab);
+
   return (
-    <div className="App">
-      <HomeUI />
-      <p>The current time is {currentTime}.</p>
+    <div className="app-wrapper">
+      <HomeUIWrapper />      
     </div>
   );
 }
