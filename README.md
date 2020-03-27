@@ -1,9 +1,9 @@
 # pledge2protect
 ___
 
-## Goals: 
-- Socially norm and reward social distancing; 
-- translate pledge into actions to protect the vulnerable; and 
+## Goals:
+- Socially norm and reward social distancing;
+- translate pledge into actions to protect the vulnerable; and
 - meet basic human needs (connect Mainers and connect resources to Mainers)
 
 ## Op URLs
@@ -34,7 +34,7 @@ The adopt a Mainer pledge could connect
 
 - Pledge leverages other Maine specific resources. Those who pledge access web page with pooled resources and updates
 
-- Teams focus on marketing and communication, place for people to post when there is a need that feeds to social networks like Twitter, Facebook, NextDoor, etc. 
+- Teams focus on marketing and communication, place for people to post when there is a need that feeds to social networks like Twitter, Facebook, NextDoor, etc.
 
  - Add a points / reward system to build gamification into civic responsibility
 
@@ -97,3 +97,9 @@ cd react-ui/
 
 npm install package-name --save
 ```
+
+### Linting
+
+This repository contains .editorconfig and .eslintrc.js configuration files for defining our code style. We recommend configuring your code editor to display linting messages inline according to these rules.
+
+To help us keep the codebase consistent, please run `npm run lint` prior to pushing new code to display any linting warnings or errors. Running `npm run lint-fix` can automatically fix some of these, but others you may need to correct manually.
