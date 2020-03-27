@@ -5,11 +5,11 @@ import HomeUI from './UIs/home-ui';
 
 
 function App() {
-  return (
-    <div className="App">
-      <HomeUI />
-    </div>
-  );
+    return (
+        <div className="App">
+            <HomeUI />
+        </div>
+    );
 }
 
 export default App;
