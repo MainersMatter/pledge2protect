@@ -1,7 +1,4 @@
-.App {
-  text-align: center;
-}
-
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +32,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+*/
+
+@font-face {
+  font-family: 'Nunito';
+  src:  url('./assets/fonts/Nunito-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Nunito-Regular.woff') format('woff');
+}
+
+
+body {
+  font-family: 'Nunito';
+  color: #005C3B;
+  background-color: #fff;
 }
