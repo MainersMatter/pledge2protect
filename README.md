@@ -98,6 +98,28 @@ cd react-ui/
 npm install package-name --save
 ```
 
+### Running with Heroku Local
+#### Install the Heroku CLI
+https://devcenter.heroku.com/articles/heroku-cli#download-and-install
+
+#### Set up the local environment
+First create a .env file at the head of the project:
+```bash
+cat .env
+```
+
+Get the Environment Variables from Heroku
+```bash
+heroku config --app mainersmatter-stage
+```
+
+#### Run Heroku local
+```bash
+npm start:heroku
+# or
+heroku local
+```
+
 ### Linting
 
 This repository contains .editorconfig and .eslintrc.js configuration files for defining our code style. We recommend configuring your code editor to display linting messages inline according to these rules.
