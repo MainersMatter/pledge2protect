@@ -19,12 +19,13 @@
     "react-scripts": "3.4.1",
     "serve": "^11.3.0"
   },
+  "devDependencies": {
+    "react-fontawesome": "^1.7.1"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "start-api": "source venv/bin/activate && python app.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-api": "flask test",
     "eject": "react-scripts eject"
   },
   "browserslist": {
@@ -39,8 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
-  "devDependencies": {
-    "react-fontawesome": "^1.7.1"
-  }
+  "proxy": "http://localhost:5000"
 }
