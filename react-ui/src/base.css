@@ -36,14 +36,18 @@
 */
 
 @font-face {
-  font-family: 'Nunito';
-  src:  url('./assets/fonts/Nunito-Regular.woff2') format('woff2'),
+    font-family: 'Nunito';
+    src:  url('./assets/fonts/Nunito-Regular.woff2') format('woff2'),
         url('./assets/fonts/Nunito-Regular.woff') format('woff');
 }
 
 
 body {
-  font-family: 'Nunito';
-  color: #005C3B;
-  background-color: #fff;
+    font-family: 'Nunito';
+    color: #005C3B;
+    background-color: #fff;
+}
+
+a:link, a:visited {
+    color: #60269E;
 }
