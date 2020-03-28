@@ -7,8 +7,12 @@ exports.saveUser = (user, result) => {
         'email_address': user.emailAddress,
         'first_name': user.firstName,
         'last_name': user.lastName,
+        'address_line_1': user.addressLine1,
+        'address_line_2': user.addressLine2,
+        'city': user.city,
+        'state': user.state,
         'zip_code': user.zipCode,
-        'has_pledged': user.hasPledged === 'true'
+        'has_pledged': user.hasPledged
     };
 
     const sql = 'INSERT INTO user set ?';

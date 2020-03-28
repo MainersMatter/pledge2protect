@@ -15,7 +15,7 @@ function HomeUIWrapper() {
         </section>
         <section className="blurb-section">
             <p className="blurb">
-                <b className="core-branding">PledgetoProtect<span className="highlight-branding">ME</span></b>, a network of Maine developers, business analysts, UI/UX designers, entrepreneurs, government officials, and public health professionals is rapidly developing high impact innovations to flatten the curve of <b>COVID-19</b> and save Maine lives.
+                <b className="core-branding">PledgetoProtect<span className="highlight-branding">ME</span></b>, a network of Maine public health professionals, developers, business analysts, UI/UX designers, entrepreneurs, and government officials is rapidly developing high impact innovations to flatten the curve of <b>COVID-19</b> and save Maine lives.
             </p>
             <p className="blurb">
                 Together we are creating a digital hub, where Mainers take a pledge to normalize and reward physical distancing, and in turn, protect the vulnerable. Exemplifying the state’s motto Dirigo, I lead, <b className="core-branding">PledgetoProtect<span className="highlight-branding">ME</span></b> empowers individuals to protect and care for each other, safeguarding basic human needs in times of challenge.
