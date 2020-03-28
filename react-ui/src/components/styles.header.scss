@@ -1,6 +1,5 @@
 $nav-link-padding: 1em;
 $nav-link-color: #00754A;
-$hamburger-color: #60269E;
 
 .global-header {
     background: #fff;
@@ -9,7 +8,7 @@ $hamburger-color: #60269E;
 
     h1 {
         background: url(../assets/logo.png);
-        width: 165px;
+        width: 261px;
         height: 55px;
         margin: 0;
     }
@@ -38,6 +37,8 @@ $hamburger-color: #60269E;
             text-decoration: none;
             padding: 1em 0;
             display: block;
+            text-transform: uppercase;
+            font-size: 14px;
             &:hover {
                 color: darken($nav-link-color, 15%);
             }
@@ -48,18 +49,21 @@ $hamburger-color: #60269E;
         background: transparent;
         border: 0;
         cursor: pointer;
-        color: $hamburger-color;
+        color: $nav-link-color;
         font-size: 1.5em;
         padding: .5em;
         padding-right: 0;
         &:hover {
-            color: darken($hamburger-color, 15%);
+            color: darken($nav-link-color, 15%);
         }
     }
 
-    @media(min-width: 700px) {
+    @media(min-width: 920px) {
         padding-left: 75px;
         padding-right: 75px;
+    }
+
+    @media (min-width: 760px) {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -82,4 +86,5 @@ $hamburger-color: #60269E;
             }
         }
     }
+
 }

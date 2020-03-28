@@ -35,7 +35,7 @@ const Header = () => {
                 <ul>
                     <li>
                         <a href="/why">
-                            Why Pledge
+                            Why Take The Pledge
                         </a>
                     </li>
                     <li>
