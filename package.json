@@ -6,6 +6,7 @@
   },
   "scripts": {
     "start": "node server",
+    "start:heroku": "heroku local",
     "build": "cd react-ui/ && npm install && npm run build",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
@@ -15,7 +16,8 @@
     "react-ui/node_modules"
   ],
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mysql": "^2.18.1"
   },
   "repository": {
     "type": "git",
