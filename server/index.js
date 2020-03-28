@@ -4,7 +4,7 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const bodyParser = require('body-parser');
 
-const { getCountUserPledges, saveUser } = require('./user');
+const { getCountUserPledges, savePledge, addEmailSubscriber } = require('./user');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
@@ -27,7 +27,7 @@ function runServer() {
         });
     });
 
-    app.post('/pledge', (req, res) => {
+    app.post('/pledge', async (req, res) => {
         const user = req.body;
         user.hasPledged = true;
 
@@ -35,10 +35,25 @@ function runServer() {
         if(!user || !user.emailAddress || !user.firstName || !user.lastName){
             res.status(400).send({ error:true, message: 'Please provide user emailAddress, firstName and lastName' });
         }
-        else {
-            saveUser(user, function(err, user) {
-                if (err)
+
+        try {
+            // subscribe the pledged user to our email list
+            const subscribedResult = await addEmailSubscriber(user);
+
+            // add the subscribed email id from the MailChimp list to the user
+            user.subscribedEmailId = subscribedResult.id;
+        } catch (error) {
+            res.status(500)
+                .send({ error: true, message: error.message });
+            return;
+        }
+
+            // save the user in the database
+            savePledge(user, async function(err, user) {
+                if (err) {
                     res.send(err);
+                }
+
                 res.send('success');
             });
         }
