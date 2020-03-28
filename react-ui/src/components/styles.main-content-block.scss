@@ -4,6 +4,7 @@
     background: #eee;
     position: relative;
     min-height: 40vw;
+    overflow: hidden;
 
     @media(min-width: $global-max-width) {
         min-height: 510px;
