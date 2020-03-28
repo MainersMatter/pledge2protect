@@ -1,0 +1,15 @@
+$button-background-color: #60269E;
+$button-text-color: #fff;
+
+.btn {
+    background-color: $button-background-color;
+    color: $button-text-color;
+    border: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: .5em 1em;
+    cursor: pointer;
+    &:hover {
+        background-color: darken($button-background-color, 15%);
+    }
+}

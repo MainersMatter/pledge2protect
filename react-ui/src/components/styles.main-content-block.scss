@@ -1,0 +1,35 @@
+.main-content-block {
+    background: #eee;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .call-to-action {
+        position: relative;
+        z-index: 1;
+        text-align: right;
+        padding-bottom: 10em;
+
+        padding-left: 50px;
+        padding-right: 50px;
+        @media(min-width: 700px) {
+            padding-left: 75px;
+            padding-right: 75px;
+        }
+    }
+
+    .call-to-action-blurb {
+        font-size: 36px;
+        line-height: 1.165;
+        text-align: right;
+        font-weight: bold;
+        margin: 0;
+        padding-bottom: 1em;
+    }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import logo from '../assets/PPME_Opt2_Horiz_green-01.svg';
+import MainContentBlock from './main-content-block';
 
 import './styles.home-ui-wrapper.scss';
 
@@ -21,6 +22,7 @@ function HomeUIWrapper() {
             </p>
         </section>
         <section className="cta-section">
+            <MainContentBlock />
             { /*
             <div className="socialize-section">
               <span class="socialize-blurb">{'Share'}</span>
