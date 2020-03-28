@@ -1,0 +1,14 @@
+@import './variables';
+
+.btn {
+    background-color: $button-background-color;
+    color: $button-text-color;
+    border: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: .5em 1em .7em;
+    cursor: pointer;
+    &:hover {
+        background-color: darken($button-background-color, 15%);
+    }
+}

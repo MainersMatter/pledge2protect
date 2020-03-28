@@ -1,9 +1,8 @@
-$nav-link-padding: 1em;
-$nav-link-color: #00754A;
+@import '../variables';
 
 .global-header {
     background: #fff;
-    padding: 25px 50px;
+    padding: 25px $global-padding-horizontal-small;
     border-bottom: solid 2px #46D3A1;
 
     h1 {
@@ -58,12 +57,12 @@ $nav-link-color: #00754A;
         }
     }
 
-    @media(min-width: 920px) {
-        padding-left: 75px;
-        padding-right: 75px;
+    @media(min-width: $global-padding-breakpoint) {
+        padding-left: $global-padding-horizontal-large;
+        padding-right: $global-padding-horizontal-large;
     }
 
-    @media (min-width: 760px) {
+    @media (min-width: $header-hamburger-breakpoint) {
         display: flex;
         justify-content: space-between;
         align-items: center;
