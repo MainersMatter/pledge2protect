@@ -1,26 +1,49 @@
+@import '../variables';
+
 .main-content-block {
     background: #eee;
     position: relative;
+    min-height: 40vw;
+
+    @media(min-width: $global-max-width) {
+        min-height: 510px;
+    }
 
     img {
-        width: 100%;
         height: auto;
         position: absolute;
         bottom: 0;
         left: 0;
+
+        width: 120%;
+        @media(min-width: $main-content-graph-breakpoint) {
+            width: 100%;
+        }
     }
 
     .call-to-action {
         position: relative;
         z-index: 1;
         text-align: right;
-        padding-bottom: 10em;
-
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-top: 2em;
+        padding-right: $global-padding-horizontal-small;
+        padding-left: $global-padding-horizontal-small;
+        padding-bottom: calc(35em - calc(calc(#{$global-max-width} - 100vw) / 2));
         @media(min-width: 700px) {
-            padding-left: 75px;
-            padding-right: 75px;
+            padding-left: 8em;
+        }
+        @media(min-width: $global-padding-breakpoint) {
+            padding-left: $global-padding-horizontal-large;
+            padding-right: $global-padding-horizontal-large;
+        }
+        @media(min-width: $main-content-graph-breakpoint) {
+            position: absolute;
+            padding-top: calc(7em - calc(calc(#{$global-max-width} - 100vw) / 4));
+            padding-left: 50vw;
+        }
+        @media(min-width: $global-max-width) {
+            padding-left: 630px;
+            padding-top: 7em;
         }
     }
 

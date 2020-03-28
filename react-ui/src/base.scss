@@ -1,6 +1,4 @@
-$mobile-breakpoint: 700px;
-$global-padding-horizontal-mobile: 50px;
-$global-padding-horizontal-desktop: 75px;
+@import './variables';
 
 @font-face {
     font-family: 'Nunito';
@@ -23,4 +21,9 @@ textarea {
     font-size: 100%;
     line-height: 1.15;
     margin: 0;
+}
+
+.app-wrapper {
+    margin: 0 auto;
+    max-width: $global-max-width;
 }
