@@ -1,9 +1,9 @@
 {
-  "short_name": "Mainers Matter",
-  "name": "Mainers Matter #Pledge2Protect",
+  "short_name": "PledgetoProtectME",
+  "name": "PledgetoProtectME | Let's Flatten the Curve",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "pledge-to-protect-icon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
