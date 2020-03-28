@@ -15,12 +15,12 @@
 
 .blurb-section {
 	.blurb{
-
+        line-height: 1.6
 	}
 }
 
 .cta-section{
-	
+
 }
 
 
@@ -29,7 +29,7 @@
 	display: flex;
 	flex-direction: column;
 	.form-group{
- 		margin: 20px 0; 
+ 		margin: 20px 0;
  		.form-input {
 			background: #eee;
 			border: none;
