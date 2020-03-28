@@ -31,12 +31,6 @@ function HomeUIWrapper() {
         </p>
       </section>
       <section className="cta-section">
-        <form className="form">
-          <div className="form-group">
-            <input type="email" className="form-input" placeholder="Your email here" />
-          </div>
-          <button className="submit-btn">Learn More</button>
-        </form>
         { /*
         <div className="socialize-section">
           <span class="socialize-blurb">{'Share'}</span>
