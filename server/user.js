@@ -9,7 +9,7 @@ const mailchimp = process.env.MAILCHIMP_API_KEY ? new Mailchimp(process.env.MAIL
 exports.addEmailSubscriber = async (user) => {
     if (!mailchimp || !process.env.MAILCHIMP_LIST_ID) {
         const errorMessage = 'Unable to add email subscriber - missing Email Service configuration';
-        throw Error(errorMessage);
+        throw new Error(errorMessage);
     }
 
     try {
@@ -30,7 +30,7 @@ exports.addEmailSubscriber = async (user) => {
 
         if (result.errors) {
             console.error(`result.errors: ${result.errors}`);
-            throw Error(result.errors);
+            throw new Error(result.errors);
         }
 
         return result;
@@ -40,7 +40,7 @@ exports.addEmailSubscriber = async (user) => {
             errorMessage += `    ${fieldError.field}: ${fieldError.message}\n`;
         });
         console.error(`Error adding new email subscriber: ${errorMessage}`);
-        throw Error('Error adding new email subscriber');
+        throw new Error('Error adding new email subscriber');
     }
 };
 
