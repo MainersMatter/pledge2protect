@@ -6,6 +6,12 @@
          url('./assets/fonts/Nunito-Regular.woff') format('woff');
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Nunito';
     color: #005C3B;
@@ -27,3 +33,4 @@ textarea {
     margin: 0 auto;
     max-width: $global-max-width;
 }
+

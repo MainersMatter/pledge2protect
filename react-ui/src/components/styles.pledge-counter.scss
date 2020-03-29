@@ -1,0 +1,50 @@
+@import '../variables';
+
+.pledge-counter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: $color-green;
+    padding: 1em $global-padding-horizontal-small;
+    @media(min-width: $global-padding-breakpoint) {
+        padding: 1em $global-padding-horizontal-large;
+    }
+
+    .pledges-label,
+    .pledges-count {
+        text-transform: uppercase;
+        color: $color-green-text;
+        padding-bottom: .5em;
+        letter-spacing: .1em;
+        font-weight: bold;
+    }
+
+    .pledges-count {
+        font-size: 24px;
+    }
+
+    .pledges-progress {
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+        border: 0;
+        width: 100%;
+        height: 10px;
+        border-radius: 5px;
+        background: #fff;
+        &::-webkit-progress-bar {
+            background: #fff;
+            border-radius: 5px;
+        }
+        &::-webkit-progress-value {
+            background: #60269E;
+            border-radius: 5px;
+        }
+        &::-moz-progress-bar {
+            background: #60269E;
+            border-radius: 5px;
+        }
+    }
+}
+
