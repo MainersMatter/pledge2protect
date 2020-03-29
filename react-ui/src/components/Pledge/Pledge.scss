@@ -1,11 +1,12 @@
 @import '../../variables';
 
+$form-grid-column-gap: 30px;
 .pledge-form {
     background: white;
     display: grid;
-    grid-column-gap: 30px;
+    grid-column-gap: $form-grid-column-gap;
     grid-row-gap: .5em;
-    grid-template-columns: repeat(2, [col] 50%) ;
+    grid-template-columns: repeat(2, [col] calc(50% - (#{$form-grid-column-gap} / 2)));
     grid-template-rows: repeat(5, [row] auto);
 }
 
