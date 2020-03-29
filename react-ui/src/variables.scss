@@ -1,3 +1,8 @@
+// Colors
+$color-green: #B3D6C9;
+$color-purple: #60269E;
+$color-green-text: #00754A;
+
 // Page-level
 $global-max-width: 1280px;
 $global-padding-breakpoint: 920px;
@@ -7,10 +12,10 @@ $global-padding-horizontal-large: 75px;
 // Header and nav
 $header-hamburger-breakpoint: 760px;
 $nav-link-padding: 1em;
-$nav-link-color: #00754A;
+$nav-link-color: $color-green-text;
 
 // Buttons
-$button-background-color: #60269E;
+$button-background-color: $color-purple;
 $button-text-color: #fff;
 
 // Main content
