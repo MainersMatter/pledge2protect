@@ -48,6 +48,9 @@ const PledgeForm = () => {
                   <label>State:</label>
                   <select name='state-input' ref={register({ required: true })}>
                       { stateMapping.map((state, index) => {
+                          if (state.value === 'ME'){
+                              return <option key={state.value} value={state.value} selected>{state.label}</option>
+                          }
                           return <option key={state.value} value={state.value}>{state.label}</option>
                         })
                       }
