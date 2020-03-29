@@ -36,9 +36,12 @@ exports.addEmailSubscriber = async (user) => {
         return result;
     } catch (err) {
         let errorMessage = '\n';
-        err.errors.forEach(fieldError => {
-            errorMessage += `    ${fieldError.field}: ${fieldError.message}\n`;
-        });
+        if (err && err.errors) {
+            err.errors.forEach(fieldError => {
+                errorMessage += `    ${fieldError.field}: ${fieldError.message}\n`;
+            });
+        }
+
         console.error(`Error adding new email subscriber: ${errorMessage}`);
         throw new Error('Error adding new email subscriber');
     }
@@ -61,8 +64,15 @@ exports.savePledge = (user, callback) => {
     const sql = 'INSERT INTO user set ?';
     connection.query(sql, userRecord, function (error, results) {
         if (error) {
-            console.error(`There was an error saving user: ${error}`);
-            callback('There was an error saving user', null);
+            // if the user has already been saved previously
+            if (error.code === 'ER_DUP_ENTRY') {
+                // pretend that everything was successful rather than returning an error
+                callback(null, 1);
+            }
+            else {
+                console.error(`There was an error saving user: ${error}`);
+                callback('There was an error saving user', null);
+            }
         }
         else{
             callback(null, results.affectedRows);
