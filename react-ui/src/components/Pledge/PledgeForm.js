@@ -46,11 +46,8 @@ const PledgeForm = () => {
               </div>
               <div className='col-2_row-4'>
                   <label htmlFor="field-state">State:</label>
-                  <select id="field-state" name='state-input' ref={register({ required: true })}>
+                  <select id="field-state" name='state-input' ref={register({ required: true })} defaultValue={'ME'}>
                       { stateMapping.map((state, index) => {
-                          if (state.value === 'ME'){
-                              return <option key={state.value} value={state.value} selected>{state.label}</option>
-                          }
                           return <option key={state.value} value={state.value}>{state.label}</option>
                         })
                       }

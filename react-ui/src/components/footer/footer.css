@@ -1,0 +1,26 @@
+.footer {
+    display: inline-block;
+    width: 100%;
+    background: #eeeeee;
+}
+
+.about-us {
+    width: 50%;
+    padding: 16px 75px;
+}
+
+.about-us-header {
+    color: #60269E;
+    text-transform: uppercase;
+}
+
+.about-us-body {
+    color: black;
+    border-bottom: 1px solid #60269E;
+    padding-bottom: 20px;
+}
+
+.about-us-links {
+    text-decoration: none;
+    color: black;
+}
