@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const Mailchimp = require('mailchimp-api-v3');
+const crypto = require('crypto')
 
 const connection = require('./db.js');
 
@@ -35,10 +36,22 @@ exports.addEmailSubscriber = async (user) => {
 
         return result;
     } catch (err) {
-        let errorMessage = '\n';
-        if (err && err.errors) {
+        // If the user has already subscribed
+        if (err.title === 'Member Exists') {
+            // pretend that everything was successful rather than returning an error
+            // reproduce the ID normally returned in a successful subscription response
+            // https://mailchimp.com/developer/guides/manage-subscribers-with-the-mailchimp-api/#Identify_a_contact
+            const emailId = crypto.createHash('md5').update(user.emailAddress.toLowerCase()).digest('hex');
+            return {
+                id: emailId
+            };
+        }
+
+        let errorMessage = err.detail;
+
+        if (err.errors && err.errors.length > 0) {
             err.errors.forEach(fieldError => {
-                errorMessage += `    ${fieldError.field}: ${fieldError.message}\n`;
+                errorMessage += `\n    ${fieldError.field}: ${fieldError.message}`;
             });
         }
 
