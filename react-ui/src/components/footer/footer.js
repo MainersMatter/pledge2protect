@@ -1,12 +1,14 @@
 import React from 'react'
 import AboutUs from './AboutUs';
+import Support from './Support';
+
 import './footer.css';
 
 const Footer = () => {
     return (
         <div className='footer'>
             <AboutUs/>
-            {/*<div className='support-place-holder'></div>*/}
+            <Support/>
         </div>
     )
 };
