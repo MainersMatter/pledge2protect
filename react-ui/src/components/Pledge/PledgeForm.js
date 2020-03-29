@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form'
-import './Pledge.css';
+import './Pledge.scss';
 import stateMapping from './states';
 
 
@@ -18,35 +18,35 @@ const PledgeForm = () => {
         <div className="pledge-form-container">
           <form className="pledge-form" onSubmit={handleSubmit(onSubmit)}>
               <div className='col-1_row-1'>
-                  <label>Email*:</label>
-                  <input name='email' ref={register({ required: true })}/>
+                  <label htmlFor="field-email">Email*:</label>
+                  <input id="field-email" name='email' ref={register({ required: true })}/>
                   { errors.email && <p className='error'>This field is required</p> }
               </div>
               <div className='col-1_row-2'>
-                  <label>First Name*:</label>
-                  <input name='firstName' ref={register({ required: true })}/>
+                  <label htmlFor="field-firstname">First Name*:</label>
+                  <input id="field-firstname" name='firstName' ref={register({ required: true })}/>
                   { errors.firstName && <p className='error'>This field is required</p> }
               </div>
               <div className='col-2_row-2'>
-                  <label>Last Name*:</label>
-                  <input name='lastName' ref={register({ required: true })}/>
+                  <label htmlFor="field-lastname">Last Name*:</label>
+                  <input id="field-lastname" name='lastName' ref={register({ required: true })}/>
                   { errors.lastName && <p className='error'>This field is required</p> }
               </div>
               <div className='col-1_row-3'>
-                  <label>Address Line 1:</label>
-                  <input name='addressLineOne' ref={register({ required: true })}/>
+                  <label htmlFor="field-address1">Address Line 1:</label>
+                  <input id="field-address1" name='addressLineOne' ref={register({ required: true })}/>
               </div>
               <div className='col-2_row-3'>
-                  <label>Address Line 2:</label>
-                  <input name='addressLineTwo'/>
+                  <label htmlFor="field-address2">Address Line 2:</label>
+                  <input id="field-address2" name='addressLineTwo'/>
               </div>
               <div className='col-1_row-4'>
-                  <label>City:</label>
-                  <input name='city' ref={register({ required: true })}/>
+                  <label htmlFor="field-city">City:</label>
+                  <input id="field-city" name='city' ref={register({ required: true })}/>
               </div>
               <div className='col-2_row-4'>
-                  <label>State:</label>
-                  <select name='state-input' ref={register({ required: true })}>
+                  <label htmlFor="field-state">State:</label>
+                  <select id="field-state" name='state-input' ref={register({ required: true })}>
                       { stateMapping.map((state, index) => {
                           if (state.value === 'ME'){
                               return <option key={state.value} value={state.value} selected>{state.label}</option>
@@ -57,8 +57,8 @@ const PledgeForm = () => {
                   </select>
               </div>
               <div className='col-1_row-5'>
-                  <label>Zip Code:</label>
-                  <input name='zipCode' ref={register({ required: true, maxLength: 5 })}/>
+                  <label htmlFor="field-zip">Zip Code:</label>
+                  <input id="field-zip" name='zipCode' ref={register({ required: true, maxLength: 5 })}/>
               </div>
               <div className='col-1_row-6'>
                   <label>* Indicates this field is required.</label>
