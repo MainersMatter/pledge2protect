@@ -115,7 +115,7 @@ heroku config --app mainersmatter-stage
 
 #### Run Heroku local
 ```bash
-npm start:heroku
+npm run start:heroku
 # or
 heroku local
 ```
@@ -125,3 +125,29 @@ heroku local
 This repository contains .editorconfig and .eslintrc.js configuration files for defining our code style. We recommend configuring your code editor to display linting messages inline according to these rules.
 
 To help us keep the codebase consistent, please run `npm run lint` prior to pushing new code to display any linting warnings or errors. Running `npm run lint-fix` can automatically fix some of these, but others you may need to correct manually.
+
+## Workflow
+### Development:
+1. A developer assigns themselves to a card from the Trello board
+2. The dev should create a feature branch for that work from the develop branch
+3. During development, the dev should run a development server locally for testing their work (instructions above)
+
+### Code Review:
+1. Once the work is completed development the dev should create a Pull Request to the develop branch
+2. The author can go ahead and merge the PR without waiting for approvals.  If someone sees something after the merge that they think should be changed they can discuss it on the PR or just go ahead and make the change.  Just because code has been merged doesn’t mean it’s set in stone, we can constantly be iterating as needed.
+3. After merging move your Trello card to the "In Testing" column
+
+### Testing:
+1. The [staging environment in Heroku](https://mainersmatter-stage.herokuapp.com/) has the develop branch deployed to it
+and all updates to the branch will be deployed automatically to there
+2. Once your changes have been deployed to Stage you should verify that they work as intended and display
+matches what was specified now that the code is in the environment.
+3. If you see things that still need tweaking you should continue to work on it
+4. If everything looks good you can move your Trello card to the "Done" column
+
+### Production Deployment:
+1. Periodically it will be decided by designated project leads when the staging site is in a state where they are
+happy with its contents and would like it pushed to our production site.
+2. A designated dev or DevOps person will merge the develop branch to master
+3. A DevOps person (someone with Heroku access) will perform a manual deploy of the master branch to
+the Production Heroku environment.
