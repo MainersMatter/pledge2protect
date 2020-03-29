@@ -42,7 +42,7 @@ function runServer() {
             return;
         }
 
-        if (process.env.ENABLE_EMAIL_SUBSCRIPTION) {
+        if (process.env.ENABLE_EMAIL_SUBSCRIPTION === 'true') {
             try {
                 // subscribe the pledged user to our email list
                 const subscribedResult = await addEmailSubscriber(user);
