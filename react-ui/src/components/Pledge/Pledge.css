@@ -7,6 +7,10 @@
     grid-template-rows: repeat(5, [row] auto  );
 }
 
+.pledge-form-container {
+    float: right;
+}
+
 input {
     box-sizing: border-box;
     width: 100%;
