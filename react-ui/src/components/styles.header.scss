@@ -37,7 +37,7 @@
             padding: 1em 0;
             display: block;
             text-transform: uppercase;
-            font-size: 14px;
+            font-size: .875rem;
             &:hover {
                 color: darken($nav-link-color, 15%);
             }
@@ -49,7 +49,7 @@
         border: 0;
         cursor: pointer;
         color: $nav-link-color;
-        font-size: 1.5em;
+        font-size: 2rem;
         padding: .5em;
         padding-right: 0;
         &:hover {
