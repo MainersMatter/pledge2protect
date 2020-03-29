@@ -42,16 +42,18 @@ function runServer() {
             return;
         }
 
-        try {
-            // subscribe the pledged user to our email list
-            const subscribedResult = await addEmailSubscriber(user);
+        if (process.env.ENABLE_EMAIL_SUBSCRIPTION) {
+            try {
+                // subscribe the pledged user to our email list
+                const subscribedResult = await addEmailSubscriber(user);
 
-            // add the subscribed email id from the MailChimp list to the user
-            user.subscribedEmailId = subscribedResult.id;
-        } catch (error) {
-            res.status(500)
-                .send({ error: true, message: error.message });
-            return;
+                // add the subscribed email id from the MailChimp list to the user
+                user.subscribedEmailId = subscribedResult.id;
+            } catch (error) {
+                res.status(500)
+                    .send({ error: true, message: error.message });
+                return;
+            }
         }
 
         // save the user in the database
