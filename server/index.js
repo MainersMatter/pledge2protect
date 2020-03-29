@@ -20,9 +20,13 @@ function runServer() {
     app.get('/pledge/count', (req, res) => {
         res.set('Content-Type', 'application/json');
 
-        getCountUserPledges(function(err, pledgeCount) {
-            if (err)
-                res.send(err);
+        getCountUserPledges(function(error, pledgeCount) {
+            if (error) {
+                res.status(500)
+                    .send({ error: true, message: error });
+                return;
+            }
+
             res.send(pledgeCount);
         });
     });
@@ -33,7 +37,9 @@ function runServer() {
 
         // validate the user data
         if(!user || !user.emailAddress || !user.firstName || !user.lastName){
-            res.status(400).send({ error:true, message: 'Please provide user emailAddress, firstName and lastName' });
+            res.status(400)
+                .send({ error: true, message: 'Please provide user emailAddress, firstName and lastName' });
+            return;
         }
 
         try {
@@ -48,15 +54,16 @@ function runServer() {
             return;
         }
 
-            // save the user in the database
-            savePledge(user, async function(err, user) {
-                if (err) {
-                    res.send(err);
-                }
+        // save the user in the database
+        savePledge(user,  function(error) {
+            if (error) {
+                res.status(500)
+                    .send({ error: true, message: error });
+                return;
+            }
 
-                res.send('success');
-            });
-        }
+            res.send('success');
+        });
     });
 
     // All remaining requests return the React app, so it can handle routing.

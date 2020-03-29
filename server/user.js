@@ -61,7 +61,8 @@ exports.savePledge = (user, callback) => {
     const sql = 'INSERT INTO user set ?';
     connection.query(sql, userRecord, function (error, results) {
         if (error) {
-            callback(error, null);
+            console.error(`There was an error saving user: ${error}`);
+            callback('There was an error saving user', null);
         }
         else{
             callback(null, results.affectedRows);
@@ -69,10 +70,15 @@ exports.savePledge = (user, callback) => {
     });
 };
 
-exports.getCountUserPledges = (successCallback) => {
+exports.getCountUserPledges = (callback) => {
     const sql = 'SELECT count(email_address) pledges FROM user WHERE has_pledged = true';
-    connection.query(sql, function (error, results, fields) {
-        if (error) throw error;
-        successCallback(results[0]);
+    connection.query(sql, function (error, results) {
+        if (error) {
+            console.error(`There was an error getting count of pledges: ${error}`);
+            callback('There was an error getting count of pledges', null);
+        }
+        else{
+            callback(null, results[0]);
+        }
     });
 };
