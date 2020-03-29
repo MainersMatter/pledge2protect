@@ -1,0 +1,30 @@
+@import '../../variables';
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+
+    a {
+        width: 45px;
+        height: 45px;
+        display: block;
+        background-repeat: no-repeat;
+        background-position: center;
+        &:hover {
+            filter: brightness(85%);
+        }
+    }
+
+    .facebook {
+        background-image: url('../../assets/social-facebook.svg');
+    }
+    .linkedin {
+        background-image: url('../../assets/social-linkedin.svg');
+    }
+    .twitter {
+        background-image: url('../../assets/social-twitter.svg');
+    }
+    .instagram {
+        background-image: url('../../assets/social-instagram.svg');
+    }
+}

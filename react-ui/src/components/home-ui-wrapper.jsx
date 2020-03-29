@@ -7,6 +7,7 @@ import PledgeCodeOfConduct from './pledge-code-of-conduct';
 import './styles.home-ui-wrapper.scss';
 import PledgeForm from './Pledge/PledgeForm';
 import WhyPledge from './why-pledge';
+import ResourcesSection from './ResourcesSection/resources-section';
 
 
 function HomeUIWrapper() {
@@ -15,10 +16,11 @@ function HomeUIWrapper() {
             <MainContentBlock />
             <PledgeCounter pledgesCount={850000} pledgesGoal={1338404} />
             <div className="why-and-form">
-                <WhyPledge/>
-                <PledgeForm/>
+                <WhyPledge />
+                <PledgeForm />
             </div>
             <PledgeCodeOfConduct />
+            <ResourcesSection />
         </div>
     );
 }
