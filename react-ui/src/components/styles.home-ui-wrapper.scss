@@ -1,0 +1,16 @@
+@import '../variables';
+
+.why-and-form {
+    display: flex;
+    flex-wrap: wrap;
+    & > * {
+        padding: 1em $global-padding-horizontal-small;
+        @media(min-width: $global-padding-breakpoint) {
+            padding: 1em $global-padding-horizontal-large;
+        }
+        width: 100%;
+        @media(min-width: $pledge-form-breakpoint) {
+            width: 50%;
+        }
+    }
+}
