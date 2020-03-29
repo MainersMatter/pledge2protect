@@ -41,19 +41,19 @@ const PledgeForm = () => {
               </div>
               <div className='col-1_row-3'>
                   <label htmlFor="field-address1">Address Line 1:</label>
-                  <input id="field-address1" name='addressLine1'/>
+                  <input id="field-address1" name='addressLine1' ref={register()}/>
               </div>
               <div className='col-2_row-3'>
                   <label htmlFor="field-address2">Address Line 2:</label>
-                  <input id="field-address2" name='addressLine2'/>
+                  <input id="field-address2" name='addressLine2' ref={register()}/>
               </div>
               <div className='col-1_row-4'>
                   <label htmlFor="field-city">City:</label>
-                  <input id="field-city" name='city'/>
+                  <input id="field-city" name='city' ref={register()}/>
               </div>
               <div className='col-2_row-4'>
                   <label htmlFor="field-state">State:</label>
-                  <select id="field-state" name='state' defaultValue="ME">
+                  <select id="field-state" name='state' defaultValue="ME" ref={register()}>
                       { stateMapping.map((state, index) => {
                           return <option key={state.value} value={state.value}>{state.label}</option>
                         })
