@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: flex-end;
     background-color: $color-green;
     padding: 1em $global-padding-horizontal-small;
     @media(min-width: $global-padding-breakpoint) {
@@ -16,11 +17,11 @@
         color: $color-green-text;
         padding-bottom: .5em;
         letter-spacing: .1em;
+        font-weight: bold;
     }
 
     .pledges-count {
         font-size: 24px;
-        font-weight: bold;
     }
 
     .pledges-progress {
