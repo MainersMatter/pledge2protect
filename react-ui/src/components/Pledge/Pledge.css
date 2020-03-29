@@ -1,0 +1,83 @@
+.pledge-form {
+    background: white;
+    max-width: 400px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(2, [col] 100px ) ;
+    grid-template-rows: repeat(5, [row] auto  );
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px #eeeeee;
+    background: #eeeeee;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.col-1_row-1 {
+    grid-column: col / span  2;
+    grid-row: row ;
+}
+
+.col-2_row-1 {
+    grid-column: col 3 / span  3 ;
+    grid-row: row ;
+}
+
+.col-1_row-2 {
+    grid-column: col / span  2;
+    grid-row: row 2;
+}
+
+.col-2_row-2 {
+    grid-column: col 3 / span  3 ;
+    grid-row: row 2;
+}
+
+.col-1_row-3 {
+    grid-column: col / span  2;
+    grid-row: row 3;
+}
+
+.col-2_row-3 {
+    grid-column: col 3 / span  3;
+    grid-row: row 3;
+}
+
+.col-1_row-4 {
+    grid-column: col / span  2;
+    grid-row: row 4;
+}
+
+.col-1_row-5 {
+    grid-column: col / span  2 ;
+    grid-row: row 5;
+    margin-top: 10px;
+}
+
+select {
+    display: block;
+}
+
+label {
+    line-height: 2;
+    text-align: left;
+    margin-bottom: 13px;
+    margin-top: 20px;
+    color: #60269E;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.error {
+  color: #bf1650;
+}
+
+.error::before {
+  display: inline;
+  content: "⚠ ";
+}
