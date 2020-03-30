@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import './styles.pledge-code-of-conduct.scss';
 import chevronDown from '../assets/chevron-down.svg';
 import chevronUp from '../assets/chevron-up.svg';
+import SymptomsDialog from './SymptomsDialog/symptoms-dialog';
 
 
 const PledgeCodeOfConduct = () => {
     const [isCodeExpanded, setCodeExpanded] = useState(false);
+    const [isSymptomsDialogOpen, setSymptomsDialogOpen] = useState(false);
 
     return (
         <div className="pledge-code-of-conduct">
@@ -66,12 +68,17 @@ const PledgeCodeOfConduct = () => {
                             times per day.
                         </li>
                         <li>
-                            Call my doctor or 211 if I have fever or other <a href="/">symptoms</a>.
-                            Emergency? dial 911.
+                            Call my doctor or 211 if I have fever or other&nbsp;
+                            <button type="button" onClick={() => setSymptomsDialogOpen(true)}>
+                                symptoms
+                            </button>. Emergency? dial 911.
                         </li>
                     </ol>
                 </div>
             </div>
+            { isSymptomsDialogOpen && (
+                <SymptomsDialog closeHandler={() => setSymptomsDialogOpen(false)} />
+            ) }
         </div>
     );
 };
