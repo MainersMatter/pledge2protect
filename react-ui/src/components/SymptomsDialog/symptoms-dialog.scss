@@ -1,0 +1,15 @@
+@import '../../variables';
+
+.symptoms-dialog {
+    font-size: 1.125rem;
+
+    &.dialog .inner {
+        max-width: 800px;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        font-size: 2.25rem;
+        color: $color-purple;
+    }
+}
