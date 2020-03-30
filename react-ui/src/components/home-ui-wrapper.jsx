@@ -1,13 +1,13 @@
 import React from 'react';
 
 import MainContentBlock from './main-content-block';
-import PledgeCounter from './pledge-counter';
+import PledgeCounter from './PledgeCounter/dynamic-pledge-counter';
 import PledgeCodeOfConduct from './pledge-code-of-conduct';
-
-import './styles.home-ui-wrapper.scss';
 import PledgeForm from './Pledge/PledgeForm';
 import WhyPledge from './why-pledge';
 import ResourcesSection from './ResourcesSection/resources-section';
+
+import './styles.home-ui-wrapper.scss';
 
 
 function HomeUIWrapper() {
