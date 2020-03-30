@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import './styles.main-content-block.scss';
 import flattenCurveGraph from '../assets/flatten-curve-graph.png';
@@ -10,7 +11,9 @@ const MainContentBlock = () => (
                 Take the Pledge to Physically Distance to Reduce COVID-19 Spread in Maine!
             </p>
             <button type="button" className="btn">
-                Take the Pledge
+                <Link to="/why-take-pledge">
+                    Take the Pledge
+                </Link>
             </button>
         </div>
         <img
