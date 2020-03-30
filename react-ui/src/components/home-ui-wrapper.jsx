@@ -8,6 +8,7 @@ import './styles.home-ui-wrapper.scss';
 import PledgeForm from './Pledge/PledgeForm';
 import WhyPledge from './why-pledge';
 import ResourcesSection from './ResourcesSection/resources-section';
+import TwitterWidget from './twitter-widget';
 
 
 function HomeUIWrapper() {
@@ -20,6 +21,7 @@ function HomeUIWrapper() {
                 <PledgeForm />
             </div>
             <PledgeCodeOfConduct />
+            <TwitterWidget />
             <ResourcesSection />
         </div>
     );
