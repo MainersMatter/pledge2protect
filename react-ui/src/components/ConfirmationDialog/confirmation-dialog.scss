@@ -1,0 +1,50 @@
+@import '../../variables';
+
+.confirmation-dialog {
+    text-align: center;
+
+    .upper {
+        background: $color-green;
+        color: $color-green-text;
+        width: 718px;
+        max-width: 100%;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 0;
+            padding-bottom: 26.18%;
+            background: url('../../assets/dirigo-flag.svg') no-repeat;
+            background-color: #fff;
+            background-size: contain;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            margin: 0 auto .5em;
+            padding: 1em 1em 0;
+            font-size: 2.25rem;
+            max-width: 450px;
+        }
+
+        p {
+            margin: 0 auto;
+            font-size: 1.5rem;
+            padding: 0 1em 2em;
+            max-width: 450px;
+        }
+    }
+    .lower {
+        color: #fff;
+        background: $color-green-text;
+        padding-bottom: .5em;
+
+        p {
+            text-transform: uppercase;
+            font-size: 1.125rem;
+            margin: 0;
+            padding: .5em 0;
+        }
+    }
+}
