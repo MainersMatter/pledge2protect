@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+
 
 import './styles.header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,13 +13,13 @@ const Header = () => {
     return (
         <header className="global-header">
             <div className="logo-hamburger">
-                <a href="/">
+                <Link to="/">
                     <h1>
                         <span className="sr-only">
                             PledgetoProtectME
                         </span>
                     </h1>
-                </a>
+                </Link>
                 <button
                     type="button"
                     className="hamburger"
@@ -34,19 +36,19 @@ const Header = () => {
             <nav aria-expanded={isNavigationExpanded} className={isNavigationExpanded ? 'is-expanded' : 'is-collapsed'}>
                 <ul>
                     <li>
-                        <a href="/why">
+                        <Link to="/why-take-pledge">
                             Why Take The Pledge
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/news">
+                        <Link to="/news">
                             News
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/resources">
+                        <Link to="/resources">
                             Resources
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>
