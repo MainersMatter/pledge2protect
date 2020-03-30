@@ -7,7 +7,8 @@ ___
 - meet basic human needs (connect Mainers and connect resources to Mainers)
 
 ## Op URLs
-- Design Trello Board: https://trello.com/b/jAOArBaO/maine-matters-design
+- Design: https://www.figma.com/file/kqXqqrZMhtZ927GNsOhtfW/PPME_Site?node-id=0%3A1
+- Dev Trello Board: https://trello.com/b/jDbCw8rw/pledge-to-protect-me-dev
 - Site copy: https://docs.google.com/document/d/1CmGSXUNNb3GhjcN4AMbXL66V7tOJ41LNF2CLZiNNtOs/edit
 - Tech Stack and Dev procedures: https://docs.google.com/document/d/17YeCe26vHLFyhwP9Erf4dcp8Be8KDouAE81CdnM8GOY/edit
 
