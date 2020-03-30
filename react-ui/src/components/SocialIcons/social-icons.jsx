@@ -28,8 +28,8 @@ const socialNetworkUrls = {
     },
 };
 
-const SocialIcons = ({ mode }) => (
-    <div className="social-icons">
+const SocialIcons = ({ mode, variant }) => (
+    <div className={`social-icons variant-${variant}`}>
         <a href={socialNetworkUrls.facebook[mode]} className="facebook" title="Facebook">
             <span className="sr-only">
                 Facebook
@@ -57,6 +57,11 @@ const SocialIcons = ({ mode }) => (
 
 SocialIcons.propTypes = {
     mode: PropTypes.oneOf(['follow', 'share']).isRequired,
+    variant: PropTypes.string,
+};
+
+SocialIcons.defaultProps = {
+    variant: 'purple',
 };
 
 export default SocialIcons;
