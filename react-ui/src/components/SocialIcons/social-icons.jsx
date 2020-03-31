@@ -11,19 +11,19 @@ const encodedShareBlurb = encodeURIComponent(socialShareBlurb);
 
 const socialNetworkUrls = {
     facebook: {
-        follow: 'https://www.facebook.com/',
+        follow: 'https://www.facebook.com/PledgetoProtectME',
         share: `https://www.facebook.com/sharer/sharer.php?u=${encodedSiteUrl}`,
     },
     linkedin: {
-        follow: 'https://www.linkedin.com/',
+        follow: 'https://www.linkedin.com/company/pledge-to-protect-me',
         share: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedSiteUrl}&summary=${encodedShareBlurb}`,
     },
     twitter: {
-        follow: 'https://twitter.com/',
+        follow: 'https://twitter.com/PledgeProtectME',
         share: `https://twitter.com/intent/tweet?text=${encodedShareBlurb}&url=${encodedSiteUrl}`,
     },
     instagram: {
-        follow: 'https://www.instagram.com/',
+        follow: 'https://www.instagram.com/pledgetoprotectme/',
         // Instagram does not support share links
     },
 };
