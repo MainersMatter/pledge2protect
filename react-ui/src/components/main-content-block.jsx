@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { HashLink as Link } from 'react-router-hash-link';
 
 import './styles.main-content-block.scss';
 import flattenCurveGraph from '../assets/flatten-curve-graph.png';
@@ -11,7 +12,7 @@ const MainContentBlock = () => (
                 Take the Pledge to Physically Distance to Reduce COVID-19 Spread in Maine!
             </p>
             <Link 
-              to="/why-take-pledge"
+              to="/#why-take-pledge"
               className="btn"
             >
               Take the Pledge
