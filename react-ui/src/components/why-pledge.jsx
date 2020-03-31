@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.why-pledge.css';
 
 const WhyPledge = () => (
-    <div className='why-pledge-content'>
+    <div id="why-take-pledge" className='why-pledge-content'>
         <h2 className='why-pledge-header'>Why Pledge?</h2>
         <p className='why-pledge-body'><strong>COVID-19</strong> is spreading fast in Maine. Anyone can get it, anyone
             can spread it and it can be deadly. <strong>Physically distancing</strong> yourself
