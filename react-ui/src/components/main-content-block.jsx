@@ -4,6 +4,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 
 import './styles.main-content-block.scss';
 import flattenCurveGraph from '../assets/flatten-curve-graph.png';
+import pledgeToProtectBannerImg from '../assets/pledgetoprotect-banner-image-nature-mobile.jfif';
 
 const MainContentBlock = () => (
     <div className="main-content-block">
@@ -18,9 +19,18 @@ const MainContentBlock = () => (
               Take the Pledge
             </Link>
         </div>
+        { /*
         <img
             src={flattenCurveGraph}
             alt="A graph depicting the reduced load on our healthcare system resulting from protective measures like physical distancing"
+            width="1280"
+            height="520"
+        />
+        */ }
+
+        <img
+            src={pledgeToProtectBannerImg}
+            alt=""
             width="1280"
             height="520"
         />
