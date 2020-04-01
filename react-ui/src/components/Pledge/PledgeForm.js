@@ -8,7 +8,9 @@ import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 
 
 const PledgeForm = () => {
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, errors, formState } = useForm({
+        mode: "onChange"
+    });
 
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
 
@@ -25,7 +27,7 @@ const PledgeForm = () => {
 
     return (
         <div className="pledge-form-container">
-            <form className="pledge-form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="pledge-form" onSubmit={handleSubmit(onSubmit)} aria-describedby="required-fields-msg">
                 <div className='col-1_row-1'>
                     <label htmlFor="field-email">Email*:</label>
                     <input id="field-email" name='emailAddress' ref={register({ required: true })}/>
@@ -69,8 +71,17 @@ const PledgeForm = () => {
                     { errors.zipCode && <p className='error'>Zip Code must be either 5 or 10 digits</p> }
                 </div>
                 <div className='col-1_row-6'>
-                    <label>* Indicates this field is required.</label>
-                    <input className='btn' type='submit' value='Take The Pledge'/>
+                    <span id="required-fields-msg">* Indicates this field is required.</span>
+                </div>
+                <div className='col-1_row-7'>
+                    <div className="inline-field">
+                        <label htmlFor="privacy-policy-check">
+                            <input type="checkbox" id="privacy-policy-check" name="acceptPrivacyPolicy" ref={register({ required: true })} />
+                            <a href="">I have read and agree with the Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button className='btn' type='submit' disabled={!formState.isValid}>Take The Pledge</button>
                 </div>
             </form>
             { isConfirmationDialogOpen && (

@@ -9,7 +9,12 @@
     letter-spacing: 0.05em;
     padding: .5em 1em .7em;
     cursor: pointer;
+
     &:hover {
         background-color: darken($button-background-color, 15%);
+    }
+
+    &:disabled {
+        background-color: desaturate($button-background-color, 90%)
     }
 }
