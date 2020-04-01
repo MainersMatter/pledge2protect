@@ -17,17 +17,6 @@ $form-grid-column-gap: 30px;
     }
 }
 
-input {
-    box-sizing: border-box;
-    width: 100%;
-    /*border-radius: 4px; if we want rounded inputs*/
-    border: 1px #eeeeee;
-    background: #eeeeee;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
 .col-1_row-1 {
     grid-column: col 1 / span 2;
     grid-row: row 1;
@@ -73,8 +62,26 @@ input {
     margin-top: 10px;
 }
 
+.col-1_row-7{
+    grid-column: col 1 / span 2;
+    grid-row: row 7;
+    margin-top: 10px;
+}
+
+input, select {
+    box-sizing: border-box;
+    width: 100%;
+    /*border-radius: 4px; if we want rounded inputs*/
+    border: 1px solid #eeeeee;
+    background: #eeeeee;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+input[type="checkbox"],
 select {
-    display: block;
+    border: 1px solid $color-purple;
+    background: #eeeeee;
 }
 
 label {
@@ -82,9 +89,27 @@ label {
     text-align: left;
     margin-bottom: 13px;
     margin-top: 20px;
-    color: #60269E;
+    color: $color-purple;
     font-size: 14px;
     font-weight: bold;
+}
+
+.inline-field label {
+    display: block;
+    vertical-align: middle;
+    padding-left: 15px;
+    text-indent: -15px;
+}
+.inline-field input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    vertical-align: middle;
+    *overflow: hidden;
+}
+
+form button {
+    width: 100%;
 }
 
 .error {
