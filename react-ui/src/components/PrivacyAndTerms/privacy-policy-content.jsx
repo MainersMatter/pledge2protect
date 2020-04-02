@@ -3,7 +3,8 @@ import React from 'react';
 
 const PrivacyPolicyContent = () => (
     <>
-        <h1>PrivacyPolicy</h1>
+        <h1>Privacy Policy</h1>
+        <span>Last modified: April 1, 2020</span>
         <h3>1. Introduction</h3>
         <p>
             PledgeToProtectME and its organizers (<b>"We"</b>) respect your privacy and are committed to protecting it through our compliance with this policy. This policy describes:
