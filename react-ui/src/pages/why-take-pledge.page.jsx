@@ -7,7 +7,7 @@ const WhyTakePledgePage = () => (
 	<section className="page-content">
 		<div className="blurb-wrapper">
 			<h1>Why Take Pledge</h1>
-			<p>I pledge to protect myself and everyone around me by maintaining physical distance during this critical time. No exceptions. I pledge to never allow mine and others’ risk of infection, illness, hospitalization, critical care and death. I pledge this because I believe the more who adopt these actions will play an active role in minimizing the spread of COVID-19 to end the illness, anxiety and disruption it causes. I pledge to foster a sense of calm and control during these challenging times because we have the ability to actively slow the spread of this disease. I pledge to be an advocate for the cause, to lead by example and spread the message.</p>
+			<p>I pledge to protect myself and everyone around me by staying home during this critical time. No exceptions. I pledge to never allow mine and others’ risk of infection, illness, hospitalization, critical care and death. I pledge this because I believe the more who adopt these actions will play an active role in minimizing the spread of COVID-19 to end the illness, anxiety and disruption it causes. I pledge to foster a sense of calm and control during these challenging times because we have the ability to actively slow the spread of this disease. I pledge to be an advocate for the cause, to lead by example and spread the message.</p>
 			<ol>
 				<li>I will avoid in person physical contact with people who do not live in my household.</li>
 				<li>I will encourage people in my household to stay at home whenever possible, working from home and keeping children home from school.</li>

@@ -10,7 +10,7 @@ const MainContentBlock = () => (
     <div className="main-content-block">
         <div className="call-to-action">
             <p className="call-to-action-blurb">
-                Take the Pledge to Physically Distance to Reduce COVID-19 Spread in Maine!
+                Take the Pledge to Stay Home to Help Reduce COVID-19 Spread in Maine!
             </p>
             <Link 
               to="/#why-take-pledge"
@@ -22,7 +22,7 @@ const MainContentBlock = () => (
         { /*
         <img
             src={flattenCurveGraph}
-            alt="A graph depicting the reduced load on our healthcare system resulting from protective measures like physical distancing"
+            alt="A graph depicting the reduced load on our healthcare system resulting from protective measures like staying home"
             width="1280"
             height="520"
         />
