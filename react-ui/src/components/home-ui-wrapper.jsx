@@ -15,7 +15,7 @@ function HomeUIWrapper() {
         <div className="home-ui-wrapper">
             <MainContentBlock />
             <PledgeCounter pledgesCount={850000} pledgesGoal={1338404} />
-            <div className="why-and-form">
+            <div className="why- and-form">
                 <WhyPledge />
                 <PledgeForm />
             </div>

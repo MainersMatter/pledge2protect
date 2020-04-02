@@ -35,11 +35,7 @@ const PledgeCodeOfConduct = () => {
             </button>
             <div className={`code-container ${(isCodeExpanded ? 'is-expanded' : 'is-collapsed')}`}>
                 <div className="code-content" id="code-content">
-                    <h2>Code of Conduct</h2>
-                    <p className="pledge-preamble">
-                        I pledge to:
-                    </p>
-                    <ol>
+                    <ul>
                         <li>
                             Stay home. Work from home, and encourage others in my household to do
                             the same.
@@ -73,7 +69,7 @@ const PledgeCodeOfConduct = () => {
                                 symptoms
                             </button>. Emergency? dial 911.
                         </li>
-                    </ol>
+                    </ul>
                 </div>
             </div>
             { isSymptomsDialogOpen && (
