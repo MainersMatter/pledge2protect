@@ -2,6 +2,8 @@
 $color-green: #B3D6C9;
 $color-purple: #60269E;
 $color-green-text: #00754A;
+$img-overlay-text: #fff;
+
 
 // Page-level
 $global-max-width: 1280px;
@@ -23,3 +25,13 @@ $main-content-graph-breakpoint: 850px;
 
 // Pledge form
 $pledge-form-breakpoint: 1000px;
+
+
+// ipad pro
+@med-screen: 1024px;
+// ipad
+@sm-screen: 768px;
+// iphone 6/7/8 plus
+@xs-screen: 414px;
+// iphone 5/SE
+@smallest-screen: 320px;

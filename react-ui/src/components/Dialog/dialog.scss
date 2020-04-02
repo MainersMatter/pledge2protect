@@ -1,3 +1,6 @@
+@import '../../variables';
+
+
 .dialog-backdrop,
 .dialog {
     position: fixed;
@@ -19,22 +22,30 @@
     justify-content: center;
     align-items: center;
     .inner {
-        background: #fff;
-        padding: 3vw;
-        box-shadow: 0 0 8em #000;
+        background: #E5E5E5;
+        padding: 30px;
+        // box-shadow: 0 0 8em #000;
         min-width: 200px;
         max-width: 90%;
         min-height: 200px;
-        border-radius: 1.3em;
+        border-radius: 25px;
         position: relative;
-        padding-top: 100px;
+        // padding-top: 100px;
+        color: #000;
+        line-height: 1.3;
+        font-size: 18px;
+        letter-spacing: .05em;
+
+        a {
+          color: $color-purple;
+        }
     }
 }
 
 .close-button {
-    position: absolute;
-    top: 30px;
-    right: 30px;
+    position: fixed;
+    top: 60px;
+    right: 60px;
     background: url('../../assets/close.svg') no-repeat;
     background-position: 50% 50%;
     width: 50px;
