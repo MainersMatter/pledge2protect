@@ -101,6 +101,7 @@ label {
     text-indent: -15px;
 }
 .inline-field input[type="checkbox"] {
+    min-width: 20px;
     width: 20px;
     height: 20px;
     margin: 10px;
@@ -111,7 +112,7 @@ label {
 .form-group {
   display: flex;
   flex-direction: row;
-  margin-bottom: 15px;    
+  margin-bottom: 15px;
 }
 
 form .btn {
@@ -125,4 +126,9 @@ form .btn {
 .error::before {
   display: inline;
   content: "⚠ ";
+}
+
+.privacy-terms-link {
+    line-height: 1.6;
+    margin-top: 5px;
 }

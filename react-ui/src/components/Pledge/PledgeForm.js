@@ -80,7 +80,7 @@ const PledgeForm = () => {
                     <div className="inline-field">
                         <div className="form-group">
                             <input type="checkbox" id="privacy-policy-check" name="acceptPrivacyPolicy" ref={register({ required: true })} />
-                            <a className="btn-link" type="button" onClick={() => setPrivacyAndTermsDialogOpen(true)}>
+                            <a className="btn-link privacy-terms-link" type="button" onClick={() => setPrivacyAndTermsDialogOpen(true)}>
                                 I have read and agree with the Terms and Conditions and Privacy Policy
                             </a>
                         </div>

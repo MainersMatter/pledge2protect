@@ -11,11 +11,11 @@ const Support = () => {
                 <a
                 	className='about-us-links'
                 	href="mailto:dave@pledgetoprotectme.org">
-                		Email: <email>dave@pledgetoprotectme.org</email>
+                		Email: dave@pledgetoprotectme.org
                 </a>
             </p>
             { /*
-            <Link 
+            <Link
             	className='about-us-links'
             	to="/news">
             	News
