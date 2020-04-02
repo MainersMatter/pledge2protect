@@ -45,7 +45,7 @@ const PledgeCodeOfConduct = () => {
                             the same.
                         </li>
                         <li>
-                            Keep a 6’ distance from people who do not live in my household, at all
+                            Keep a 6+ foot distance from people who do not live in my household, at all
                             times.
                         </li>
                         <li>
@@ -71,7 +71,7 @@ const PledgeCodeOfConduct = () => {
                             Call my doctor or 211 if I have fever or other&nbsp;
                             <button className="btn-link" type="button" onClick={() => setSymptomsDialogOpen(true)}>
                                 symptoms
-                            </button>. Emergency? dial 911.
+                            </button>. Emergency? Dial 911.
                         </li>
                     </ol>
                 </div>

@@ -1,5 +1,10 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import {  
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation
+} from 'react-router-dom';
 
 // need to convert into home.page.jsx
 import HomeUIWrapper from './components/home-ui-wrapper';
@@ -24,21 +29,36 @@ import './buttons.scss';
 import './utils.scss';
 
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 
 function App() {
-	library.add(fab);
-	return (
+  library.add(fab);
+  
+  return (
   	<div className="app-wrapper">
-    	<Header />
-    	<Switch>
-    		<Route exact path='/' component={HomeUIWrapper} />
-    		<Route  path='/why-take-pledge' component={WhyTakePledgePage} />
-    		<Route  path='/resources' component={ResourcesPage} />
-    		<Route  path='/news' component={NewsPage} />
-    		<Route  path='/privacy' component={PrivacyPage} />
-    		<Route path='/terms-and-conditions' component={TermsPage} />
-	    </Switch>
-      <Footer />
+      <Router>
+        <ScrollToTop />
+      	<Header />      	
+        <Switch>
+      		<Route exact path='/' component={HomeUIWrapper} />
+      		<Route  path='/why-take-pledge' component={WhyTakePledgePage} />
+      		<Route  path='/resources' component={ResourcesPage} />
+      		<Route  path='/news' component={NewsPage} />
+      		<Route  path='/privacy' component={PrivacyPage} />
+      		<Route path='/terms-and-conditions' component={TermsPage} />
+        </Switch>
+        <Footer />
+      </Router>
+
     </div>
 );
 }
