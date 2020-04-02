@@ -69,7 +69,7 @@ const PledgeCodeOfConduct = () => {
                         </li>
                         <li>
                             Call my doctor or 211 if I have fever or other&nbsp;
-                            <button type="button" onClick={() => setSymptomsDialogOpen(true)}>
+                            <button className="btn-link" type="button" onClick={() => setSymptomsDialogOpen(true)}>
                                 symptoms
                             </button>. Emergency? dial 911.
                         </li>

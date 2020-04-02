@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import axios from 'axios';
 
+import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
+import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
+
 import './Pledge.scss';
 import stateMapping from './states';
-import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 
 
 const PledgeForm = () => {
@@ -13,6 +15,7 @@ const PledgeForm = () => {
     });
 
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
+    const [isPrivacyAndTermsDialogOpen, setPrivacyAndTermsDialogOpen] = useState(false);
 
     const onSubmit = async data => {
         try {
@@ -77,7 +80,9 @@ const PledgeForm = () => {
                     <div className="inline-field">
                         <label htmlFor="privacy-policy-check">
                             <input type="checkbox" id="privacy-policy-check" name="acceptPrivacyPolicy" ref={register({ required: true })} />
-                            <a href="">I have read and agree with the Privacy Policy</a>
+                            <button className="btn-link" type="button" onClick={() => setPrivacyAndTermsDialogOpen(true)}>
+                                I have read and agree with the Terms and Conditions and Privacy Policy
+                            </button>
                         </label>
                     </div>
 
@@ -86,6 +91,9 @@ const PledgeForm = () => {
             </form>
             { isConfirmationDialogOpen && (
                 <ConfirmationDialog closeHandler={() => setConfirmationDialogOpen(false)} />
+            ) }
+            { isPrivacyAndTermsDialogOpen && (
+                <PrivacyTermsDialog closeHandler={() => setPrivacyAndTermsDialogOpen(false)} />
             ) }
         </div>
     );
