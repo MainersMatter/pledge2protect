@@ -84,16 +84,6 @@
         strong {
             text-decoration: underline;
         }
-
-        button {
-            color: $color-purple;
-            padding: 0;
-            border: 0;
-            background: 0;
-            cursor: pointer;
-            text-decoration: underline;
-            font-weight: bold;
-        }
     }
     .is-collapsed .code-content {
         display: none;
