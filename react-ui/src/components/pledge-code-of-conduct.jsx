@@ -45,7 +45,7 @@ const PledgeCodeOfConduct = () => {
                             the same.
                         </li>
                         <li>
-                            Keep a 6+ foot distance from people who do not live in my household, at all
+                            Keep a distance of <strong>six feet</strong> from people who do not live in my household, at all
                             times.
                         </li>
                         <li>
