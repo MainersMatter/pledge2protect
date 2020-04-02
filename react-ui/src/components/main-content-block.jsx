@@ -10,7 +10,7 @@ const MainContentBlock = () => (
     <div className="main-content-block">
         <div className="call-to-action">
             <p className="call-to-action-blurb">
-                Take the Pledge to Stay Home to Help Reduce COVID-19 Spread in Maine!
+                Take the Pledge to Stay Home to Reduce COVID-19 Spread in Maine!
             </p>
             <Link 
               to="/#why-take-pledge"
