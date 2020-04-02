@@ -6,11 +6,11 @@ const PrivacyPolicyContent = () => (
         <h1>PrivacyPolicy</h1>
         <h3>1. Introduction</h3>
         <p>
-            PledgeToProtectME and its organizers "We") respect your privacy and are committed to protecting it through our compliance with this policy. This policy describes:
+            PledgeToProtectME and its organizers (<b>"We"</b>) respect your privacy and are committed to protecting it through our compliance with this policy. This policy describes:
         </p>
         <ul>
             <li>
-                The types of information we collect or you provide when you use the PledgeToProtectME website (the "Site").
+                The types of information we collect or you provide when you use the PledgeToProtectME website (the <b>"Site"</b>).
             </li>
             <li>
                 Our practices for collecting, using, maintaining, protecting, and disclosing that information.
@@ -22,15 +22,9 @@ const PrivacyPolicyContent = () => (
         </p>
 
         <h3>2. Information We Collect and How We Collect It</h3>
-        <p>We collect information from and about users of our Site:</p>
-        <ul>
-            <li>Directly from you when you provide it to us; and</li>
-            <li>
-                Automatically when you use the Site.
-            </li>
-        </ul>
-        <label>a. Information You provide to Us</label>
+        <p>We collect information from and about users of our Site directly from you when you provide it to us.</p>
 
+        <label>a. Information You provide to Us</label>
         <p>When you use this Site, we may ask you provide the following information:</p>
         <ul>
             <li>First and Last Name</li>
@@ -67,7 +61,7 @@ const PrivacyPolicyContent = () => (
         <p>We may update our privacy policy from time to time. If we make material changes to how we treat our users' personal information, we will post the new privacy policy on this page.</p>
         <p>The date the privacy policy was last revised is identified at the top of the page. You are responsible for ensuring we have an up-to-date active and deliverable email address for you and for periodically visiting this privacy policy to check for any changes.</p>
         <h3>Contact Information</h3>
-        <p>To ask questions or comment about this privacy policy and our privacy practices, contact us at: <email>dave@pledgetoprotectme.org</email></p>
+        <p>To ask questions or comment about this privacy policy and our privacy practices, contact us at: <a href="mailto:dave@pledgetoprotectme.org">dave@pledgetoprotectme.org</a></p>
     </>
 );
 
