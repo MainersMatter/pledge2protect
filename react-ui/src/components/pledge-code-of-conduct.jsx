@@ -64,7 +64,7 @@ const PledgeCodeOfConduct = () => {
                             delivery instead.
                         </li>
                         <li>
-                            <a href="/">Wash my hands</a> for a minimum of 20 seconds, multiple
+                            <a href="https://www.cdc.gov/healthywater/hygiene/hand/handwashing.html" target="_blank">Wash my hands</a> for a minimum of 20 seconds, multiple
                             times per day.
                         </li>
                         <li>
