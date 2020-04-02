@@ -11,8 +11,8 @@ import './privacy-terms-dialog.scss';
 const PrivacyTermsDialog = ({ closeHandler }) => (
     <Dialog closeHandler={closeHandler} classNames="privacy-terms-dialog">
         <div>
-            <TermsAndConditionsContent />
-            <PrivacyPolicyContent/>
+            <TermsAndConditionsContent mode="modal" />
+            <PrivacyPolicyContent />
         </div>
     </Dialog>
 );

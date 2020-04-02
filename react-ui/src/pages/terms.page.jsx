@@ -5,7 +5,7 @@ import TermsAndConditionsContent from '../components/PrivacyAndTerms/terms-and-c
 
 const TermsPage = () => (
 	<div className="page-content">
-        <TermsAndConditionsContent />
+        <TermsAndConditionsContent mode="page" />
 	</div>
 );
 
