@@ -20,7 +20,8 @@ const Header = () => {
                   </span>
               </h1>
           </Link>
-          <button
+          {/* Hiding for now since there's no links to show yet */}
+          {/*<button
               type="button"
               className="hamburger"
               onClick={() => setNavigationExpanded(!isNavigationExpanded)}
@@ -31,7 +32,7 @@ const Header = () => {
                   { isNavigationExpanded ? 'Hide ' : 'Show ' }
                   navigation
               </span>
-          </button>
+          </button>*/}
       </div>
       { /*
       <nav aria-expanded={isNavigationExpanded} className={isNavigationExpanded ? 'is-expanded' : 'is-collapsed'}>
