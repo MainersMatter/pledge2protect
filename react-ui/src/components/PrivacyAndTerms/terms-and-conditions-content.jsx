@@ -125,8 +125,7 @@ const TermsAndConditionsContent = ({ mode }) => {
                 provide you
                 with opportunities to share information about yourself with others. All information Company collects through
                 or in
-                connection with this Application is subject to the
-                <PrivacyPolicyLink>PledgetoProtectME Privacy Policy (the <b>"Privacy Policy"</b>)</PrivacyPolicyLink>.
+                connection with this Application is subject to the <PrivacyPolicyLink>PledgetoProtectME Privacy Policy (the <b>"Privacy Policy"</b>)</PrivacyPolicyLink>.
                 By downloading, installing, using, and providing information to or through this Application, you consent to
                 all actions taken by Company
                 with respect to your information in compliance with the Privacy Policy.
