@@ -4,7 +4,8 @@
     font-size: 1.125rem;
 
     &.dialog .inner {
-        max-width: 800px;
+        max-height: 90%;
+        overflow-y: auto;
     }
 
     h2 {
@@ -13,6 +14,6 @@
         color: $color-green-text;
     }
     h4 {
-    	color: $color-green-text;	
+    	color: $color-green-text;
     }
 }
