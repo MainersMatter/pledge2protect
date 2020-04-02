@@ -78,12 +78,12 @@ const PledgeForm = () => {
                 </div>
                 <div className='col-1_row-7'>
                     <div className="inline-field">
-                        <label htmlFor="privacy-policy-check">
+                        <div className="form-group">
                             <input type="checkbox" id="privacy-policy-check" name="acceptPrivacyPolicy" ref={register({ required: true })} />
-                            <button className="btn-link" type="button" onClick={() => setPrivacyAndTermsDialogOpen(true)}>
+                            <a className="btn-link" type="button" onClick={() => setPrivacyAndTermsDialogOpen(true)}>
                                 I have read and agree with the Terms and Conditions and Privacy Policy
-                            </button>
-                        </label>
+                            </a>
+                        </div>
                     </div>
 
                     <button className='btn' type='submit' disabled={!formState.isValid}>Take The Pledge</button>

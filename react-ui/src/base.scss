@@ -17,26 +17,36 @@ body {
     color: #005C3B;
     background-color: #fff;
 }
-
-button,
+/*
 input,
 optgroup,
 select,
-textarea {
+textarea 
+*/
+
+button{
     font-family: inherit;
     font-size: 100%;
-    line-height: 1.2;
+    line-height: 1.5;
     margin: 0;
 }
 
 p {
     font-family: 'Nunito';
-    line-height: 1.2; 
+    line-height: 1.2;
+    color: #1e1e1e;
 }
 
 strong {
  // color: $color-purple;   
 }
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 75px;
+}
+
 
 .app-wrapper {
     margin: 0 auto;
