@@ -1,0 +1,16 @@
+@import '../../variables';
+
+.privacy-terms-dialog {
+    font-size: 1.125rem;
+
+    &.dialog .inner {
+        max-height: 90%;
+        overflow-y: auto;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        font-size: 2.25rem;
+        color: $color-purple;
+    }
+}

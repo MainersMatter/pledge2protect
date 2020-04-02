@@ -9,6 +9,7 @@ import PrivacyPage from './pages/privacy.page.jsx';
 import NewsPage from './pages/news.page.jsx';
 import ResourcesPage from './pages/resources.page.jsx';
 import WhyTakePledgePage from './pages/why-take-pledge.page.jsx';
+import TermsPage from './pages/terms.page';
 
 // component imports
 import Header from './components/header';
@@ -35,6 +36,7 @@ function App() {
     		<Route  path='/resources' component={ResourcesPage} />
     		<Route  path='/news' component={NewsPage} />
     		<Route  path='/privacy' component={PrivacyPage} />
+    		<Route path='/terms-and-conditions' component={TermsPage} />
 	    </Switch>
       <Footer />
     </div>
