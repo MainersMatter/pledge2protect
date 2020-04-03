@@ -41,6 +41,11 @@ strong {
  // color: $color-purple;
 }
 
+a {
+    color: $color-purple;
+    overflow-wrap: break-word;
+}
+
 .page-content {
     display: flex;
     flex-direction: column;
