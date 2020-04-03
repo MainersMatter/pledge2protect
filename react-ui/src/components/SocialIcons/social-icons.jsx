@@ -5,7 +5,7 @@ import './social-icons.scss';
 
 
 const siteUrl = 'https://www.pledgetoprotectme.org/';
-const socialShareBlurb = 'Check this out';
+const socialShareBlurb = 'COVID-19 is spreading fast in Maine. Anyone can get it, anyone can spread it and it can be deadly. PledgeToProtectME and help stop COVID-19 in its tracks.';
 const encodedSiteUrl = encodeURIComponent(siteUrl);
 const encodedShareBlurb = encodeURIComponent(socialShareBlurb);
 
