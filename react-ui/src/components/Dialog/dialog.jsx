@@ -30,9 +30,8 @@ const Dialog = ({ children, closeHandler, classNames }) => {
                         className="close-button"
                         onClick={closeHandler}
                         title="Close"
-                    >
-                        <span className="sr-only">Close</span>
-                    </button>
+                        aria-label="Close"
+                    />
                     { children }
                 </div>
             </div>

@@ -41,7 +41,7 @@ const PledgeCodeOfConduct = () => {
                             the same.
                         </li>
                         <li>
-                            Keep a 6’ distance from people who do not live in my household, at all
+                            Keep a distance of <strong>six feet</strong> from people who do not live in my household, at all
                             times.
                         </li>
                         <li>
@@ -60,14 +60,14 @@ const PledgeCodeOfConduct = () => {
                             delivery instead.
                         </li>
                         <li>
-                            <a href="/">Wash my hands</a> for a minimum of 20 seconds, multiple
+                            <a href="https://www.cdc.gov/healthywater/hygiene/hand/handwashing.html" target="_blank">Wash my hands</a> for a minimum of 20 seconds, multiple
                             times per day.
                         </li>
                         <li>
                             Call my doctor or 211 if I have fever or other&nbsp;
-                            <button type="button" onClick={() => setSymptomsDialogOpen(true)}>
+                            <button className="btn-link" type="button" onClick={() => setSymptomsDialogOpen(true)}>
                                 symptoms
-                            </button>. Emergency? dial 911.
+                            </button>. Emergency? Dial 911.
                         </li>
                     </ul>
                 </div>

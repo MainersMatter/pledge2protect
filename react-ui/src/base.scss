@@ -16,21 +16,50 @@ body {
     font-family: 'Nunito';
     color: #005C3B;
     background-color: #fff;
+    line-height: 1.2;
 }
-
-button,
+/*
 input,
 optgroup,
 select,
-textarea {
+textarea
+*/
+
+button {
     font-family: inherit;
     font-size: 100%;
-    line-height: 1.15;
+    line-height: 1.5;
     margin: 0;
 }
+
+p {
+    font-family: 'Nunito';
+    color: #1e1e1e;
+}
+
+strong {
+ // color: $color-purple;
+}
+
+a {
+    color: $color-purple;
+    overflow-wrap: break-word;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 75px;
+}
+
 
 .app-wrapper {
     margin: 0 auto;
     max-width: $global-max-width;
+}
+
+.important {
+    font-weight: bold;
+    font-style: italic;
 }
 

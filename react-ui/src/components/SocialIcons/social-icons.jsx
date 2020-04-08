@@ -5,25 +5,25 @@ import './social-icons.scss';
 
 
 const siteUrl = 'https://www.pledgetoprotectme.org/';
-const socialShareBlurb = 'Check this out';
+const socialShareBlurb = 'COVID-19 is spreading fast in Maine. Anyone can get it, anyone can spread it and it can be deadly. PledgeToProtectME and help stop COVID-19 in its tracks.';
 const encodedSiteUrl = encodeURIComponent(siteUrl);
 const encodedShareBlurb = encodeURIComponent(socialShareBlurb);
 
 const socialNetworkUrls = {
     facebook: {
-        follow: 'https://www.facebook.com/',
+        follow: 'https://www.facebook.com/PledgetoProtectME',
         share: `https://www.facebook.com/sharer/sharer.php?u=${encodedSiteUrl}`,
     },
     linkedin: {
-        follow: 'https://www.linkedin.com/',
+        follow: 'https://www.linkedin.com/company/pledge-to-protect-me',
         share: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedSiteUrl}&summary=${encodedShareBlurb}`,
     },
     twitter: {
-        follow: 'https://twitter.com/',
+        follow: 'https://twitter.com/PledgeProtectME',
         share: `https://twitter.com/intent/tweet?text=${encodedShareBlurb}&url=${encodedSiteUrl}`,
     },
     instagram: {
-        follow: 'https://www.instagram.com/',
+        follow: 'https://www.instagram.com/pledgetoprotectme/',
         // Instagram does not support share links
     },
 };

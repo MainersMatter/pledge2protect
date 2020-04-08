@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.symptoms-dialog {
+.privacy-terms-dialog {
     font-size: 1.125rem;
 
     &.dialog .inner {
@@ -11,9 +11,6 @@
     h2 {
         text-transform: uppercase;
         font-size: 2.25rem;
-        color: $color-green-text;
-    }
-    h4 {
-    	color: $color-green-text;
+        color: $color-purple;
     }
 }

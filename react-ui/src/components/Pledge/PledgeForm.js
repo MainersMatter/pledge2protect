@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import axios from 'axios';
 
+import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
+import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
+
 import './Pledge.scss';
 import stateMapping from './states';
-import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 
 
 const PledgeForm = () => {
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, errors, formState } = useForm({
+        mode: "onChange"
+    });
 
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
+    const [isPrivacyAndTermsDialogOpen, setPrivacyAndTermsDialogOpen] = useState(false);
 
     const onSubmit = async data => {
         try {
@@ -25,7 +30,7 @@ const PledgeForm = () => {
 
     return (
         <div className="pledge-form-container">
-            <form className="pledge-form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="pledge-form" onSubmit={handleSubmit(onSubmit)} aria-describedby="required-fields-msg">
                 <div className='col-1_row-1'>
                     <label htmlFor="field-email">Email*:</label>
                     <input id="field-email" name='emailAddress' ref={register({ required: true })}/>
@@ -69,12 +74,26 @@ const PledgeForm = () => {
                     { errors.zipCode && <p className='error'>Zip Code must be either 5 or 10 digits</p> }
                 </div>
                 <div className='col-1_row-6'>
-                    <label>* Indicates this field is required.</label>
-                    <input className='btn' type='submit' value='Take The Pledge'/>
+                    <span id="required-fields-msg">* Indicates this field is required.</span>
+                </div>
+                <div className='col-1_row-7'>
+                    <div className="inline-field">
+                        <div className="form-group">
+                            <input type="checkbox" id="privacy-policy-check" name="acceptPrivacyPolicy" ref={register({ required: true })} />
+                            <a className="btn-link privacy-terms-link" type="button" onClick={() => setPrivacyAndTermsDialogOpen(true)}>
+                                I have read and agree with the Terms and Conditions and Privacy Policy
+                            </a>
+                        </div>
+                    </div>
+
+                    <button className='btn' type='submit' disabled={!formState.isValid}>Take The Pledge</button>
                 </div>
             </form>
             { isConfirmationDialogOpen && (
                 <ConfirmationDialog closeHandler={() => setConfirmationDialogOpen(false)} />
+            ) }
+            { isPrivacyAndTermsDialogOpen && (
+                <PrivacyTermsDialog closeHandler={() => setPrivacyAndTermsDialogOpen(false)} />
             ) }
         </div>
     );

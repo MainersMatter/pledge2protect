@@ -30,9 +30,15 @@
     padding-bottom: 20px;
 }
 
+.about-us-links-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .about-us-links {
     text-decoration: none;
     color: black;
+    padding-top: 15px;
 }
 
 .support {
