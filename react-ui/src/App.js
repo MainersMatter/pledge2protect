@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {  
+import {
   BrowserRouter as Router,
   Switch,
   Route,
@@ -42,20 +42,22 @@ const ScrollToTop = () => {
 
 function App() {
   library.add(fab);
-  
+
   return (
   	<div className="app-wrapper">
       <Router>
         <ScrollToTop />
-      	<Header />      	
-        <Switch>
-      		<Route exact path='/' component={HomeUIWrapper} />
-      		<Route  path='/why-take-pledge' component={WhyTakePledgePage} />
-      		<Route  path='/resources' component={ResourcesPage} />
-      		<Route  path='/news' component={NewsPage} />
-      		<Route  path='/privacy' component={PrivacyPage} />
-      		<Route path='/terms-and-conditions' component={TermsPage} />
-        </Switch>
+      	<Header />
+      	  <main>
+            <Switch>
+                <Route exact path='/' component={HomeUIWrapper} />
+                <Route  path='/why-take-pledge' component={WhyTakePledgePage} />
+                <Route  path='/resources' component={ResourcesPage} />
+                <Route  path='/news' component={NewsPage} />
+                <Route  path='/privacy' component={PrivacyPage} />
+                <Route path='/terms-and-conditions' component={TermsPage} />
+            </Switch>
+          </main>
         <Footer />
       </Router>
 

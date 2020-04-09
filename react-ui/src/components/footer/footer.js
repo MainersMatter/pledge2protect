@@ -6,10 +6,10 @@ import './footer.scss';
 
 const Footer = () => {
     return (
-        <div className='footer'>
+        <footer className='footer'>
             <AboutUs/>
             <Support/>
-        </div>
+        </footer>
     )
 };
 
