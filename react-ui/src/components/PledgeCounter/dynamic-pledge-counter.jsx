@@ -4,20 +4,25 @@ import axios from 'axios';
 import PledgeCounter from './pledge-counter';
 
 
-const PLEDGE_GOAL = 1338404;
+const PLEDGE_GOAL = 1000;
 
 const DynamicPledgeCounter = () => {
     const [pledgeCount, setPledgeCount] = useState(0);
 
     useEffect(() => {
         const getPledgeCount = async () => {
-            const response = await axios.get('/pledge/count');
-            if (response && response.data && response.data.pledges) {
-                setPledgeCount(response.data.pledges);
+            try {
+                const response = await axios.get('/pledge/count');
+                if (response && response.data && response.data.pledges) {
+                    setPledgeCount(response.data.pledges);
+                }
+            }
+            catch (error) {
+                // swallow the error, it will try again anyway
             }
         }
 
-        // fetch the pledges on mount
+         // fetch the pledges on mount
         getPledgeCount();
 
         // then keep fetching them on an interval after that
