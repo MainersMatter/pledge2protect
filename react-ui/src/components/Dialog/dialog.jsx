@@ -23,7 +23,13 @@ const Dialog = ({ children, closeHandler, classNames }) => {
     return (
         <>
             <div className="dialog-backdrop" />
-            <div className={`dialog ${classNames}`} role="dialog" aria-modal="true">
+            <div
+                className={`dialog ${classNames}`}
+                aria-modal="true"
+                role="dialog"
+                onClick={(evt) => evt.target.className === `dialog ${classNames}` && closeHandler()}
+                aria-hidden="true"
+            >
                 <div className="inner">
                     <button
                         type="button"
