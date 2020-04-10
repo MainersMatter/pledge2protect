@@ -6,9 +6,10 @@ import {
     useLocation,
 } from 'react-router-dom';
 
-// need to convert into home.page.jsx
+// font awesome imports
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+// need to convert into home.page.jsx
 import HomeUIWrapper from './components/home-ui-wrapper';
 
 // page imports
@@ -21,8 +22,6 @@ import TermsPage from './pages/terms.page';
 // component imports
 import Header from './components/header';
 import Footer from './components/footer/footer';
-
-// font awesome imports
 
 import './base.scss';
 import './buttons.scss';
