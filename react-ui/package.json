@@ -27,6 +27,7 @@
     "serve": "^11.3.0"
   },
   "devDependencies": {
+    "react-axe": "^3.4.1",
     "react-fontawesome": "^1.7.1"
   },
   "scripts": {
