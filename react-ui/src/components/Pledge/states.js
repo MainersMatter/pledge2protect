@@ -48,7 +48,7 @@ const stateMappings = [
     { value: 'WA', label: 'Washington' },
     { value: 'WV', label: 'West Virginia' },
     { value: 'WI', label: 'Wisconsin' },
-    { value: 'WY', label: 'Wyoming' }
+    { value: 'WY', label: 'Wyoming' },
 ];
 
 export default stateMappings;

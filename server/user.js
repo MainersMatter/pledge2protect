@@ -1,6 +1,5 @@
-const mysql = require('mysql');
 const Mailchimp = require('mailchimp-api-v3');
-const crypto = require('crypto')
+const crypto = require('crypto');
 
 const connection = require('./db.js');
 
@@ -18,15 +17,15 @@ exports.addEmailSubscriber = async (user) => {
             email_address: user.emailAddress.toLowerCase(),
             status: 'pending',
             merge_fields: {
-                'MMERGE6': user.firstName,
-                'MMERGE1': user.lastName,
+                MMERGE6: user.firstName,
+                MMERGE1: user.lastName,
                 'ADDRESS[addr1]': user.addressLine1,
                 'ADDRESS[addr2]': user.addressLine2,
                 'ADDRESS[city]': user.city,
                 'ADDRESS[state]': user.state,
                 'ADDRESS[zip]': user.zipCode,
-                'ADDRESS[country]': 'USA'
-            }
+                'ADDRESS[country]': 'USA',
+            },
         });
 
         if (result.errors) {
@@ -43,14 +42,14 @@ exports.addEmailSubscriber = async (user) => {
             // https://mailchimp.com/developer/guides/manage-subscribers-with-the-mailchimp-api/#Identify_a_contact
             const emailId = crypto.createHash('md5').update(user.emailAddress.toLowerCase()).digest('hex');
             return {
-                id: emailId
+                id: emailId,
             };
         }
 
         let errorMessage = err.detail;
 
         if (err.errors && err.errors.length > 0) {
-            err.errors.forEach(fieldError => {
+            err.errors.forEach((fieldError) => {
                 errorMessage += `\n    ${fieldError.field}: ${fieldError.message}`;
             });
         }
@@ -62,32 +61,30 @@ exports.addEmailSubscriber = async (user) => {
 
 exports.savePledge = (user, callback) => {
     const userRecord = {
-        'email_address': user.emailAddress.toLowerCase(),
-        'first_name': user.firstName,
-        'last_name': user.lastName,
-        'address_line_1': user.addressLine1,
-        'address_line_2': user.addressLine2,
-        'city': user.city,
-        'state': user.state,
-        'zip_code': user.zipCode,
-        'has_pledged': user.hasPledged,
-        'subscribed_email_id': user.subscribedEmailId
+        email_address: user.emailAddress.toLowerCase(),
+        first_name: user.firstName,
+        last_name: user.lastName,
+        address_line_1: user.addressLine1,
+        address_line_2: user.addressLine2,
+        city: user.city,
+        state: user.state,
+        zip_code: user.zipCode,
+        has_pledged: user.hasPledged,
+        subscribed_email_id: user.subscribedEmailId,
     };
 
     const sql = 'INSERT INTO user set ?';
-    connection.query(sql, userRecord, function (error, results) {
+    connection.query(sql, userRecord, (error, results) => {
         if (error) {
             // if the user has already been saved previously
             if (error.code === 'ER_DUP_ENTRY') {
                 // pretend that everything was successful rather than returning an error
                 callback(null, 1);
-            }
-            else {
+            } else {
                 console.error(`There was an error saving user: ${error}`);
                 callback('There was an error saving user', null);
             }
-        }
-        else{
+        } else {
             callback(null, results.affectedRows);
         }
     });
@@ -95,12 +92,11 @@ exports.savePledge = (user, callback) => {
 
 exports.getCountUserPledges = (callback) => {
     const sql = 'SELECT count(email_address) pledges FROM user WHERE has_pledged = true';
-    connection.query(sql, function (error, results) {
+    connection.query(sql, (error, results) => {
         if (error) {
             console.error(`There was an error getting count of pledges: ${error}`);
             callback('There was an error getting count of pledges', null);
-        }
-        else{
+        } else {
             callback(null, results[0]);
         }
     });

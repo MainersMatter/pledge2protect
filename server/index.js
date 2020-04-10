@@ -15,12 +15,12 @@ function runServer() {
     // Priority serve any static files.
     app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
     app.use(bodyParser.json()); // for parsing application/json
-    app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+    app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
     app.get('/pledge/count', (req, res) => {
         res.set('Content-Type', 'application/json');
 
-        getCountUserPledges(function(error, pledgeCount) {
+        getCountUserPledges((error, pledgeCount) => {
             if (error) {
                 res.status(500)
                     .send({ error: true, message: error });
@@ -36,7 +36,7 @@ function runServer() {
         user.hasPledged = true;
 
         // validate the user data
-        if(!user || !user.emailAddress || !user.firstName || !user.lastName){
+        if (!user || !user.emailAddress || !user.firstName || !user.lastName) {
             res.status(400)
                 .send({ error: true, message: 'Please provide user emailAddress, firstName and lastName' });
             return;
@@ -57,7 +57,7 @@ function runServer() {
         }
 
         // save the user in the database
-        savePledge(user,  function(error) {
+        savePledge(user, (error) => {
             if (error) {
                 res.status(500)
                     .send({ error: true, message: error });

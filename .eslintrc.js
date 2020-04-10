@@ -27,12 +27,14 @@ module.exports = {
     ],
     rules: {
         'indent': ['error', 4],
-        'react/jsx-indent': [2, 4],
-        'react/jsx-indent-props': [2, 4],
-        'react/jsx-one-expression-per-line': 0,
+        'max-len': ['warn', { 'code': 120 }],
         'no-console': 0,
         'no-debugger': 0,
         'no-plusplus': 0,
+        'import/no-extraneous-dependencies': ['error', { 'devDependencies': true }],
         'react/jsx-filename-extension': 0,
+        'react/jsx-indent': [2, 4],
+        'react/jsx-indent-props': [2, 4],
+        'react/jsx-one-expression-per-line': 0,
     },
 };
