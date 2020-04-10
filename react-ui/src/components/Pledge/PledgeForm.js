@@ -6,7 +6,6 @@ import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
 
 import './Pledge.scss';
-import stateMapping from './states';
 
 
 const PledgeForm = () => {
@@ -30,57 +29,71 @@ const PledgeForm = () => {
 
     return (
         <div className="pledge-form-container">
-            <form className="pledge-form" onSubmit={handleSubmit(onSubmit)} aria-describedby="required-fields-msg">
+            <form className="pledge-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className='col-1_row-1'>
-                    <label htmlFor="field-email">Email*:</label>
-                    <input id="field-email" name='emailAddress' ref={register({ required: true })}/>
-                    { errors.emailAddress && <p className='error'>This field is required</p> }
+                    <label htmlFor="field-email">Email<span aria-hidden="true">*</span>:</label>
+                    <input
+                        id="field-email"
+                        name='emailAddress'
+                        type="email"
+                        aria-describedby="error-email"
+                        aria-required="true"
+                        aria-invalid={errors.emailAddress}
+                        ref={register({ required: true })}
+                    />
+                    { errors.emailAddress && <p className='error' id="error-email" aria-live="polite">This field is required</p> }
                 </div>
                 <div className='col-1_row-2'>
-                    <label htmlFor="field-firstname">First Name*:</label>
-                    <input id="field-firstname" name='firstName' ref={register({ required: true })}/>
-                    { errors.firstName && <p className='error'>This field is required</p> }
+                    <label htmlFor="field-firstname">First Name<span aria-hidden="true">*</span>:</label>
+                    <input
+                        id="field-firstname"
+                        name='firstName'
+                        type="text"
+                        aria-describedby="error-firstname"
+                        aria-required="true"
+                        aria-invalid={errors.firstName}
+                        ref={register({ required: true })}/>
+                    { errors.firstName && <p className='error' id="error-firstname" aria-live="polite">This field is required</p> }
                 </div>
                 <div className='col-2_row-2'>
-                    <label htmlFor="field-lastname">Last Name*:</label>
-                    <input id="field-lastname" name='lastName' ref={register({ required: true })}/>
-                    { errors.lastName && <p className='error'>This field is required</p> }
-                </div>
-                <div className='col-1_row-3'>
-                    <label htmlFor="field-address1">Address Line 1:</label>
-                    <input id="field-address1" name='addressLine1' ref={register()}/>
-                </div>
-                <div className='col-2_row-3'>
-                    <label htmlFor="field-address2">Address Line 2:</label>
-                    <input id="field-address2" name='addressLine2' ref={register()}/>
-                </div>
-                <div className='col-1_row-4'>
-                    <label htmlFor="field-city">City:</label>
-                    <input id="field-city" name='city' ref={register()}/>
-                </div>
-                <div className='col-2_row-4'>
-                    <label htmlFor="field-state">State:</label>
-                    <select id="field-state" name='state' defaultValue="ME" ref={register()}>
-                        { stateMapping.map((state, index) => (
-                            <option key={state.value} value={state.value}>
-                                {state.label}
-                            </option>
-                        )) }
-                    </select>
+                    <label htmlFor="field-lastname">Last Name<span aria-hidden="true">*</span>:</label>
+                    <input
+                        id="field-lastname"
+                        name='lastName'
+                        type="text"
+                        aria-describedby="error-lastname"
+                        aria-required="true"
+                        aria-invalid={errors.lastName}
+                        ref={register({ required: true })}
+                    />
+                    { errors.lastName && <p className='error' id="error-lastname" aria-live="polite">This field is required</p> }
                 </div>
                 <div className='col-1_row-5'>
                     <label htmlFor="field-zip">Zip Code:</label>
-                    <input id="field-zip" name='zipCode' ref={register({ minLength: 5, maxLength: 10 })}/>
-                    { errors.zipCode && <p className='error'>Zip Code must be either 5 or 10 digits</p> }
+                    <input
+                        id="field-zip"
+                        name='zipCode'
+                        type="tel"
+                        aria-describedby="error-zip"
+                        aria-invalid={errors.zipCode}
+                        ref={register({ minLength: 5, maxLength: 10 })}
+                    />
+                    { errors.zipCode && <p className='error' id="error-zip" aria-live="polite">Zip Code must be either 5 or 10 digits</p> }
                 </div>
                 <div className='col-1_row-6'>
-                    <span id="required-fields-msg">* Indicates this field is required.</span>
+                    <span id="required-fields-msg" aria-hidden="true">* Indicates this field is required.</span>
                 </div>
                 <div className='col-1_row-7'>
                     <div className="inline-field">
                         <div className="form-group">
-                            <input type="checkbox" id="privacy-policy-check" name="acceptPrivacyPolicy"
-                                   aria-labelledby="privacy-terms-link" ref={register({ required: true })} />
+                            <input
+                                type="checkbox"
+                                id="privacy-policy-check"
+                                name="acceptPrivacyPolicy"
+                                aria-labelledby="privacy-terms-link"
+                                aria-required="true"
+                                ref={register({ required: true })}
+                            />
                             <a id="privacy-terms-link" className="btn-link privacy-terms-link"
                                onClick={() => setPrivacyAndTermsDialogOpen(true)}>
                                 I have read and agree with the Terms and Conditions and Privacy Policy
