@@ -8,17 +8,18 @@ import App from './App';
 
 
 if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line global-require
     const axe = require('react-axe');
     axe(React, ReactDOM, 1000);
 }
 
 ReactDOM.render(
-	<React.StrictMode>
-		<BrowserRouter>
-	  	<App />
-	  </BrowserRouter>
-	</React.StrictMode>,
-	document.getElementById('root'),
+    <React.StrictMode>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
