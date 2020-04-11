@@ -5,7 +5,7 @@ import axios from 'axios';
 import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
 
-import './Pledge.scss';
+import './pledge-form.scss';
 
 
 const PledgeForm = () => {

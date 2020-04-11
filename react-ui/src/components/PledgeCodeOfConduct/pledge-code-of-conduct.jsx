@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import './styles.pledge-code-of-conduct.scss';
-import chevronDown from '../assets/chevron-down.svg';
-import chevronUp from '../assets/chevron-up.svg';
-import SymptomsDialog from './SymptomsDialog/symptoms-dialog';
+import './pledge-code-of-conduct.scss';
+import chevronDown from '../../assets/chevron-down.svg';
+import chevronUp from '../../assets/chevron-up.svg';
+import SymptomsDialog from '../SymptomsDialog/symptoms-dialog';
 
 
 const PledgeCodeOfConduct = () => {

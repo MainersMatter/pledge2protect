@@ -1,6 +1,8 @@
 import React from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
-import './styles.home-ui-wrapper.scss';
+
+import './twitter-widget.scss';
+
 
 const TwitterWidget = () => (
     <div className="twitter-widget">

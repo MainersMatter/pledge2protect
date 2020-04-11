@@ -10,7 +10,7 @@ $form-grid-column-gap: 30px;
     grid-template-rows: repeat(5, [row] auto);
 }
 
-.pledge-form-container {
+.home-page .pledge-form-container {
     /* Allows the "Take a Pledge" button to lie alongside the full pledge of conduct dropdown button */
     @media(min-width: $pledge-form-breakpoint) {
         margin-bottom: -5em;

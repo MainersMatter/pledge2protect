@@ -13,17 +13,14 @@
 }
 
 body {
+    margin: 0;
     font-family: 'Nunito';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: #005C3B;
     background-color: #fff;
     line-height: 1.2;
 }
-/*
-input,
-optgroup,
-select,
-textarea
-*/
 
 button {
     font-family: inherit;
