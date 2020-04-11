@@ -9,6 +9,7 @@ const Support = () => (
             <a
                 className="about-us-links"
                 href="mailto:dave@pledgetoprotectme.org"
+                aria-label="Contact Us"
             >
                 Email: dave@pledgetoprotectme.org
             </a>
