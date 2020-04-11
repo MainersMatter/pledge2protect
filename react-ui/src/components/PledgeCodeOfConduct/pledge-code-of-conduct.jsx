@@ -45,8 +45,8 @@ const PledgeCodeOfConduct = () => {
                             the same.
                         </li>
                         <li>
-                            Keep a distance of <strong>six feet</strong> from people who do not live in my household, at all
-                            times.
+                            Keep a distance of <strong>six feet</strong> from people who do not live in my household,
+                            at all times.
                         </li>
                         <li>
                             Go out only for <strong>essential</strong> trips (grocery, pharmacy,
@@ -64,14 +64,29 @@ const PledgeCodeOfConduct = () => {
                             delivery instead.
                         </li>
                         <li>
-                            <a href="https://www.cdc.gov/healthywater/hygiene/hand/handwashing.html" target="_blank">Wash my hands</a> for a minimum of 20 seconds, multiple
-                            times per day.
+                            <span id="wash-hands-instr" aria-labelledby="wash-my-hands-link wash-hands-instr">
+                                <a
+                                    id="wash-my-hands-link"
+                                    href="https://www.cdc.gov/healthywater/hygiene/hand/handwashing.html"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Wash my hands
+                                </a> for a minimum of 20 seconds, multiple times per day.
+                            </span>
                         </li>
                         <li>
-                            Call my doctor or 211 if I have fever or other&nbsp;
-                            <button className="btn-link" type="button" onClick={() => setSymptomsDialogOpen(true)}>
-                                symptoms
-                            </button>. Emergency? Dial 911.
+                            <span id="who-to-call" aria-labelledby="who-to-call symptoms-list-btn">
+                                Call my doctor or 211 if I have fever or other&nbsp;
+                                <button
+                                    id="symptoms-list-btn"
+                                    className="btn-link"
+                                    type="button"
+                                    onClick={() => setSymptomsDialogOpen(true)}
+                                >
+                                    symptoms
+                                </button>. Emergency? Dial 911.
+                            </span>
                         </li>
                     </ol>
                 </div>

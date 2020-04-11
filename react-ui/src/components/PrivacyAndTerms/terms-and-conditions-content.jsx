@@ -22,7 +22,7 @@ const TermsAndConditionsContent = ({ mode }) => {
         <>
             <h1>User Agreement</h1>
             <p>
-                This PledgetoProtectME User Agreement (<b>"Agreement"</b>) is a binding agreement between you (<b>"End
+                This PledgeToProtectME User Agreement (<b>"Agreement"</b>) is a binding agreement between you (<b>"End
                 User"</b> or <b>"you"</b>) and MyHealthMath, Inc. (<b>"Company"</b>).
                 This Agreement governs all use that you may make of (a) the Pledge to Protect Software-as-a-Service
                 application made available by Company and accessed
@@ -125,7 +125,7 @@ const TermsAndConditionsContent = ({ mode }) => {
                 provide you
                 with opportunities to share information about yourself with others. All information Company collects through
                 or in
-                connection with this Application is subject to the <PrivacyPolicyLink>PledgetoProtectME Privacy Policy (the <b>"Privacy Policy"</b>)</PrivacyPolicyLink>.
+                connection with this Application is subject to the <PrivacyPolicyLink>PledgeToProtectME Privacy Policy (the <b>"Privacy Policy"</b>)</PrivacyPolicyLink>.
                 By downloading, installing, using, and providing information to or through this Application, you consent to
                 all actions taken by Company
                 with respect to your information in compliance with the Privacy Policy.

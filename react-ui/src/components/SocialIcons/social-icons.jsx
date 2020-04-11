@@ -1,6 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import facebookLogo from '../../assets/social-facebook.svg';
+import facebookWhiteLogo from '../../assets/social-facebook-white.svg';
+import linkedInLogo from '../../assets/social-linkedin.svg';
+import linkedInWhiteLogo from '../../assets/social-linkedin-white.svg';
+import twitterLogo from '../../assets/social-twitter.svg';
+import twitterWhiteLogo from '../../assets/social-twitter-white.svg';
+import instagramLogo from '../../assets/social-instagram.svg';
+import instagramWhiteLogo from '../../assets/social-instagram-white.svg';
+
 import './social-icons.scss';
 
 
@@ -30,26 +39,34 @@ const socialNetworkUrls = {
 
 const SocialIcons = ({ mode, variant }) => (
     <div className={`social-icons variant-${variant}`}>
-        <a href={socialNetworkUrls.facebook[mode]} className="facebook" title="Facebook">
-            <span className="sr-only">
-                Facebook
-            </span>
+        <a
+            href={socialNetworkUrls.facebook[mode]}
+            className="facebook"
+            aria-label={`${mode} on Facebook`}
+        >
+            <img src={variant === 'white' ? facebookWhiteLogo : facebookLogo} alt="" />
         </a>
-        <a href={socialNetworkUrls.linkedin[mode]} className="linkedin" title="LinkedIn">
-            <span className="sr-only">
-                LinkedIn
-            </span>
+        <a
+            href={socialNetworkUrls.linkedin[mode]}
+            className="linkedin"
+            aria-label={`${mode} on LinkedIn`}
+        >
+            <img src={variant === 'white' ? linkedInWhiteLogo : linkedInLogo} alt="" />
         </a>
-        <a href={socialNetworkUrls.twitter[mode]} className="twitter" title="Twitter">
-            <span className="sr-only">
-                Twitter
-            </span>
+        <a
+            href={socialNetworkUrls.twitter[mode]}
+            className="twitter"
+            aria-label={`${mode} on Twitter`}
+        >
+            <img src={variant === 'white' ? twitterWhiteLogo : twitterLogo} alt="" />
         </a>
         { mode === 'follow' && (
-            <a href={socialNetworkUrls.instagram[mode]} className="instagram" title="Instagram">
-                <span className="sr-only">
-                    Instagram
-                </span>
+            <a
+                href={socialNetworkUrls.instagram[mode]}
+                className="instagram"
+                aria-label="Follow on Instagram"
+            >
+                <img src={variant === 'white' ? instagramWhiteLogo : instagramLogo} alt="" />
             </a>
         ) }
     </div>
