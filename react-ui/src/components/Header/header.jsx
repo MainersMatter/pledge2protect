@@ -16,7 +16,7 @@ const Header = () => {
                 <Link to="/">
                     <h1>
                         <span className="sr-only">
-                            PledgetoProtectME
+                            Pledge To Protect ME
                         </span>
                     </h1>
                 </Link>
