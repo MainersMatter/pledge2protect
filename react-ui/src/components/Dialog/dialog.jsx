@@ -1,47 +1,36 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import AriaDialog from 'react-aria-modal';
 
 import './dialog.scss';
 
 
-const Dialog = ({ children, closeHandler, classNames }) => {
-    useEffect(() => {
-        // Close the dialog on Escape
-        const keydownHandler = (evt) => {
-            if (evt.which === 27) {
-                closeHandler();
-            }
-        };
-        document.addEventListener('keydown', keydownHandler);
-
-        const cleanup = () => {
-            document.removeEventListener('keydown', keydownHandler);
-        };
-        return cleanup;
-    });
+const Dialog = ({
+    children,
+    closeHandler,
+    title,
+    classNames,
+}) => {
+    const appNode = document.getElementById('root');
 
     return (
-        <>
-            <div className="dialog-backdrop" />
-            <div
-                className={`dialog ${classNames}`}
-                aria-modal="true"
-                role="dialog"
-                onClick={(evt) => evt.target.className === `dialog ${classNames}` && closeHandler()}
-                aria-hidden="true"
-            >
-                <div className="inner">
-                    <button
-                        type="button"
-                        className="close-button"
-                        onClick={closeHandler}
-                        title="Close"
-                        aria-label="Close"
-                    />
-                    { children }
-                </div>
-            </div>
-        </>
+        <AriaDialog
+            onExit={closeHandler}
+            titleText={title}
+            applicationNode={appNode}
+            dialogClass={`react-aria-modal-dialog ${classNames}`}
+            underlayClass="react-aria-modal-underlay"
+            includeDefaultStyles={false}
+        >
+            <button
+                type="button"
+                className="close-button"
+                onClick={closeHandler}
+                title="Close"
+                aria-label="Close"
+            />
+            { children }
+        </AriaDialog>
     );
 };
 
@@ -51,6 +40,7 @@ Dialog.propTypes = {
         PropTypes.node,
     ]).isRequired,
     closeHandler: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
     classNames: PropTypes.string,
 };
 

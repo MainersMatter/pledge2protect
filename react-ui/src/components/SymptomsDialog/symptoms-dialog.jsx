@@ -6,7 +6,11 @@ import Dialog from '../Dialog/dialog';
 
 
 const SymptomsDialog = ({ closeHandler }) => (
-    <Dialog closeHandler={closeHandler} classNames="symptoms-dialog">
+    <Dialog
+        closeHandler={closeHandler}
+        classNames="symptoms-dialog"
+        title="Symptoms"
+    >
         <div>
             <h2>Symptoms</h2>
 
@@ -34,7 +38,11 @@ const SymptomsDialog = ({ closeHandler }) => (
             </p>
             <div>
                 <h4>Source:</h4>
-                <a href="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html" target="_blank">
+                <a
+                    href="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
                 </a>
             </div>
