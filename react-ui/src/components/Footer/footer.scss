@@ -39,6 +39,12 @@
     text-decoration: none;
     color: black;
     padding-top: 15px;
+
+    &:hover,
+    &:focus {
+        color: $color-purple;
+        text-decoration: underline;
+    }
 }
 
 .support {
