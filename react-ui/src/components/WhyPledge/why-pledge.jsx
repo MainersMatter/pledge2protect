@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.why-pledge.css';
+import './why-pledge.scss';
 
 const WhyPledge = () => (
     <div id="why-take-pledge" className='why-pledge-content'>

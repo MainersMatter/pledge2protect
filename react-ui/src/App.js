@@ -9,10 +9,9 @@ import {
 // font awesome imports
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-// need to convert into home.page.jsx
-import HomeUIWrapper from './components/home-ui-wrapper';
 
 // page imports
+import HomePage from './pages/home.page';
 import PrivacyPage from './pages/privacy.page';
 import NewsPage from './pages/news.page';
 import ResourcesPage from './pages/resources.page';
@@ -20,12 +19,8 @@ import WhyTakePledgePage from './pages/why-take-pledge.page';
 import TermsPage from './pages/terms.page';
 
 // component imports
-import Header from './components/header';
-import Footer from './components/footer/footer';
-
-import './base.scss';
-import './buttons.scss';
-import './utils.scss';
+import Header from './components/Header/header';
+import Footer from './components/Footer/footer';
 
 
 const ScrollToTop = () => {
@@ -49,7 +44,7 @@ function App() {
                 <Header />
                 <main>
                     <Switch>
-                        <Route exact path="/" component={HomeUIWrapper} />
+                        <Route exact path="/" component={HomePage} />
                         <Route path="/why-take-pledge" component={WhyTakePledgePage} />
                         <Route path="/resources" component={ResourcesPage} />
                         <Route path="/news" component={NewsPage} />
@@ -59,7 +54,6 @@ function App() {
                 </main>
                 <Footer />
             </Router>
-
         </div>
     );
 }

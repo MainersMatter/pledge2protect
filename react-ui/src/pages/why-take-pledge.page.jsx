@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PledgeForm from '../components/Pledge/PledgeForm';
+import PledgeForm from '../components/PledgeForm/pledge-form';
 
 
 const WhyTakePledgePage = () => (
@@ -26,7 +26,7 @@ const WhyTakePledgePage = () => (
 		</div>
 		<PledgeForm />
 	</section>
-) 
+)
 
 
 export default WhyTakePledgePage;
