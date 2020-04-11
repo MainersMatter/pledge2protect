@@ -3,10 +3,14 @@
 .confirmation-dialog {
     text-align: center;
 
+    .inner {
+        background: #fff;
+        max-width: 718px;
+    }
+
     .upper {
         background: $color-green;
         color: $color-green-text;
-        width: 718px;
         max-width: 100%;
 
         &:before {
@@ -36,11 +40,11 @@
         }
     }
     .lower {
-        color: #fff;
         background: $color-green-text;
         padding-bottom: .5em;
 
         p {
+            color: #fff;
             text-transform: uppercase;
             font-size: 1.125rem;
             margin: 0;
