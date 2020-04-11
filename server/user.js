@@ -19,12 +19,7 @@ exports.addEmailSubscriber = async (user) => {
             merge_fields: {
                 MMERGE6: user.firstName,
                 MMERGE1: user.lastName,
-                'ADDRESS[addr1]': user.addressLine1,
-                'ADDRESS[addr2]': user.addressLine2,
-                'ADDRESS[city]': user.city,
-                'ADDRESS[state]': user.state,
                 'ADDRESS[zip]': user.zipCode,
-                'ADDRESS[country]': 'USA',
             },
         });
 
@@ -64,10 +59,6 @@ exports.savePledge = (user, callback) => {
         email_address: user.emailAddress.toLowerCase(),
         first_name: user.firstName,
         last_name: user.lastName,
-        address_line_1: user.addressLine1,
-        address_line_2: user.addressLine2,
-        city: user.city,
-        state: user.state,
         zip_code: user.zipCode,
         has_pledged: user.hasPledged,
         subscribed_email_id: user.subscribedEmailId,
