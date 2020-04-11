@@ -9,7 +9,11 @@ import './privacy-terms-dialog.scss';
 
 
 const PrivacyTermsDialog = ({ closeHandler }) => (
-    <Dialog closeHandler={closeHandler} classNames="privacy-terms-dialog">
+    <Dialog
+        closeHandler={closeHandler}
+        classNames="privacy-terms-dialog"
+        title="Privacy Policy"
+    >
         <div>
             <TermsAndConditionsContent mode="modal" />
             <PrivacyPolicyContent />
@@ -18,7 +22,7 @@ const PrivacyTermsDialog = ({ closeHandler }) => (
 );
 
 PrivacyTermsDialog.propTypes = {
-    closeHandler: PropTypes.func.isRequired
+    closeHandler: PropTypes.func.isRequired,
 };
 
 export default PrivacyTermsDialog;

@@ -1,12 +1,9 @@
 @import '../../variables';
 
 .confirmation-dialog {
+    background: #fff;
+    max-width: 718px;
     text-align: center;
-
-    .inner {
-        background: #fff;
-        max-width: 718px;
-    }
 
     .upper {
         background: $color-green;
@@ -40,6 +37,7 @@
         }
     }
     .lower {
+        text-align: center;
         background: $color-green-text;
         padding-bottom: .5em;
 

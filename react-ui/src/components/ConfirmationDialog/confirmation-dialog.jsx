@@ -7,7 +7,11 @@ import SocialIcons from '../SocialIcons/social-icons';
 
 
 const ConfirmationDialog = ({ closeHandler }) => (
-    <Dialog closeHandler={closeHandler} classNames="confirmation-dialog">
+    <Dialog
+        closeHandler={closeHandler}
+        classNames="confirmation-dialog"
+        title="Thanks for pledging to help stop community spread."
+    >
         <div className="upper">
             <h2>You are a vector for good!</h2>
             <p>Thanks for doing your part to stop community spread.</p>
