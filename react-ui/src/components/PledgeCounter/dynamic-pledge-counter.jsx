@@ -16,20 +16,19 @@ const DynamicPledgeCounter = () => {
                 if (response && response.data && response.data.pledges) {
                     setPledgeCount(response.data.pledges);
                 }
-            }
-            catch (error) {
+            } catch (error) {
                 // swallow the error, it will try again anyway
             }
-        }
+        };
 
-         // fetch the pledges on mount
+        // fetch the pledges on mount
         getPledgeCount();
 
         // then keep fetching them on an interval after that
-        let timer = setInterval(getPledgeCount, 3000);
+        const timer = setInterval(getPledgeCount, 5000);
 
         return () => clearInterval(timer);
-    }, []);
+    }, [setPledgeCount]);
 
     return (
         <PledgeCounter pledgesCount={pledgeCount} pledgesGoal={PLEDGE_GOAL} />
