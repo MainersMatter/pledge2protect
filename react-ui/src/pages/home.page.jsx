@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {} from 'react';
 
 import MainContentBlock from '../components/MainContentBlock/main-content-block';
 import DynamicPledgeCounter from '../components/PledgeCounter/dynamic-pledge-counter';
@@ -12,13 +12,20 @@ import './home-page.scss';
 
 
 function HomePage() {
+    const formRef = React.createRef();
+    const handleAddYourName = React.useCallback(() => {
+        if (formRef && formRef.current) {
+            formRef.current.focus();
+        }
+    }, [formRef]);
+
     return (
         <div className="home-page">
             <MainContentBlock />
             <DynamicPledgeCounter />
             <div className="why-and-form">
-                <WhyPledge />
-                <PledgeForm />
+                <WhyPledge handleAddYourName={handleAddYourName} />
+                <PledgeForm ref={formRef} />
             </div>
             <PledgeCodeOfConduct />
             <TwitterWidget />

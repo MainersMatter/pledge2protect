@@ -8,7 +8,7 @@ import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
 import './pledge-form.scss';
 
 
-const PledgeForm = () => {
+const PledgeForm = (props, ref) => {
     const {
         register, handleSubmit, errors, formState,
     } = useForm({
@@ -39,10 +39,14 @@ const PledgeForm = () => {
                             id="field-email"
                             name="emailAddress"
                             type="email"
-                            aria-describedby="error-email"
+                            aria-describedby={`${errors.emailAddress ? 'error-email' : ''}`}
                             aria-required="true"
                             aria-invalid={errors.emailAddress}
-                            ref={register({ required: true })}
+                            ref={(e) => {
+                                register(e);
+                                // eslint-disable-next-line no-param-reassign
+                                ref.current = e;
+                            }}
                         />
                     </label>
                     { errors.emailAddress && <p className="error" id="error-email" aria-live="polite">This field is required</p> }
@@ -53,7 +57,7 @@ const PledgeForm = () => {
                             id="field-firstname"
                             name="firstName"
                             type="text"
-                            aria-describedby="error-firstname"
+                            aria-describedby={`${errors.emailAddress ? 'error-firstname' : ''}`}
                             aria-required="true"
                             aria-invalid={errors.firstName}
                             ref={register({ required: true })}
@@ -67,7 +71,7 @@ const PledgeForm = () => {
                             id="field-lastname"
                             name="lastName"
                             type="text"
-                            aria-describedby="error-lastname"
+                            aria-describedby={`${errors.emailAddress ? 'error-lastname' : ''}`}
                             aria-required="true"
                             aria-invalid={errors.lastName}
                             ref={register({ required: true })}
@@ -81,7 +85,7 @@ const PledgeForm = () => {
                             id="field-zip"
                             name="zipCode"
                             type="tel"
-                            aria-describedby="error-zip"
+                            aria-describedby={`${errors.emailAddress ? 'error-zip' : ''}`}
                             aria-invalid={errors.zipCode}
                             ref={register({ minLength: 5, maxLength: 10 })}
                         />
@@ -125,4 +129,4 @@ const PledgeForm = () => {
     );
 };
 
-export default PledgeForm;
+export default React.forwardRef(PledgeForm);

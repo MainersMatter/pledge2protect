@@ -4,7 +4,7 @@ import React from 'react';
 
 const Support = () => (
     <div className="support">
-        <h4 className="about-us-header">Support</h4>
+        <h2 className="about-us-header">Support</h2>
         <p className="about-us-body">
             <a
                 className="about-us-links"

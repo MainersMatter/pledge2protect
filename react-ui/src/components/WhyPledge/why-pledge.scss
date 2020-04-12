@@ -10,3 +10,16 @@
     color: #60269E;
     line-height: 1.2;
 }
+
+.add-your-name-link {
+    color: #60269E;
+    line-height: 1.2;
+    font-size: 1.17em;
+    font-weight: bold;
+    text-decoration: none !important;
+
+    &:hover,
+    &:focus  {
+        text-decoration: underline !important;
+    }
+}

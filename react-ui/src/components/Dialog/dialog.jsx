@@ -14,23 +14,26 @@ const Dialog = ({
     const appNode = document.getElementById('root');
 
     return (
-        <AriaDialog
-            onExit={closeHandler}
-            titleText={title}
-            applicationNode={appNode}
-            dialogClass={`react-aria-modal-dialog ${classNames}`}
-            underlayClass="react-aria-modal-underlay"
-            includeDefaultStyles={false}
-        >
-            <button
-                type="button"
-                className="close-button"
-                onClick={closeHandler}
-                title="Close"
-                aria-label="Close"
-            />
-            { children }
-        </AriaDialog>
+        <main>
+            <AriaDialog
+                onExit={closeHandler}
+                titleText={title}
+                applicationNode={appNode}
+                dialogClass={`react-aria-modal-dialog ${classNames}`}
+                underlayClass="react-aria-modal-underlay"
+                includeDefaultStyles={false}
+            >
+                <button
+                    type="button"
+                    className="close-button"
+                    onClick={closeHandler}
+                    title="Close"
+                    aria-label="Close"
+                />
+                <h1 className="sr-only">{title}</h1>
+                { children }
+            </AriaDialog>
+        </main>
     );
 };
 

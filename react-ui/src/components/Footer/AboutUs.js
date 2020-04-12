@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const AboutUs = () => (
     <div className="about-us">
-        <h4 className="about-us-header">About Us</h4>
+        <h2 className="about-us-header">About Us</h2>
 
         <p className="about-us-body">We are a network of Maine developers, business analysts,
             UI/UX designers, entrepreneurs, government officials, and
