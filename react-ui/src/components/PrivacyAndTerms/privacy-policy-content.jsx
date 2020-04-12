@@ -3,15 +3,15 @@ import React from 'react';
 
 const PrivacyPolicyContent = () => (
     <>
-        <h1>Privacy Policy</h1>
+        <h2>Privacy Policy</h2>
         <span>Last modified: April 1, 2020</span>
         <h3>1. Introduction</h3>
         <p>
-            PledgeToProtectME and its organizers (<b>"We"</b>) respect your privacy and are committed to protecting it through our compliance with this policy. This policy describes:
+            PledgeToProtectME and its organizers (<b>&quot;We&quot;</b>) respect your privacy and are committed to protecting it through our compliance with this policy. This policy describes:
         </p>
         <ul>
             <li>
-                The types of information we collect or you provide when you use the PledgeToProtectME website (the <b>"Site"</b>).
+                The types of information we collect or you provide when you use the PledgeToProtectME website (the <b>&quot;Site&quot;</b>).
             </li>
             <li>
                 Our practices for collecting, using, maintaining, protecting, and disclosing that information.
@@ -25,20 +25,20 @@ const PrivacyPolicyContent = () => (
         <h3>2. Information We Collect and How We Collect It</h3>
         <p>We collect information from and about users of our Site directly from you when you provide it to us.</p>
 
-        <label>a. Information You provide to Us</label>
+        <h4>a. Information You provide to Us</h4>
         <p>When you use this Site, we may ask you provide the following information:</p>
         <ul>
             <li>First and Last Name</li>
             <li>Email Address</li>
             <li>City or Town, State, and Zip Code</li>
         </ul>
-        <label>b. Third-Party Information Collection</label>
+        <h4>b. Third-Party Information Collection</h4>
         <p>When you use the Site or its content, certain third parties may use automatic information collection technologies to collect information about you or your device. These third parties may include:</p>
         <ul>
             <li>Analytics companies.</li>
             <li>Your internet service provider.</li>
         </ul>
-        <p>These third parties may use tracking technologies to collect information about you when you use this Site. The information they collect may be associated with your personal information or they may collect information, including personal information, about your online activities over time and across different websites, apps, and other online services websites. We do not control these third parties' tracking technologies or how they may be used.</p>
+        <p>These third parties may use tracking technologies to collect information about you when you use this Site. The information they collect may be associated with your personal information or they may collect information, including personal information, about your online activities over time and across different websites, apps, and other online services websites. We do not control these third parties&apos; tracking technologies or how they may be used.</p>
         <h3>3. How We Use Your Information</h3>
         <p>We use information we collect about you or you provide to us, including any personal information, to:</p>
         <ul>
@@ -59,7 +59,7 @@ const PrivacyPolicyContent = () => (
         <h3>5. Data Security</h3>
         <p>The transmission of information via the internet is not completely secure. Although we do our best to protect your personal information, we cannot guarantee the security of your personal information transmitted through our Site. Any transmission of personal information is at your own risk. We are not responsible for circumvention of any privacy settings or security measures we provide.</p>
         <h3>6. Changes to Our Privacy Policy</h3>
-        <p>We may update our privacy policy from time to time. If we make material changes to how we treat our users' personal information, we will post the new privacy policy on this page.</p>
+        <p>We may update our privacy policy from time to time. If we make material changes to how we treat our users&apos; personal information, we will post the new privacy policy on this page.</p>
         <p>The date the privacy policy was last revised is identified at the top of the page. You are responsible for ensuring we have an up-to-date active and deliverable email address for you and for periodically visiting this privacy policy to check for any changes.</p>
         <h3>Contact Information</h3>
         <p>To ask questions or comment about this privacy policy and our privacy practices, contact us at: <a href="mailto:dave@pledgetoprotectme.org">dave@pledgetoprotectme.org</a></p>

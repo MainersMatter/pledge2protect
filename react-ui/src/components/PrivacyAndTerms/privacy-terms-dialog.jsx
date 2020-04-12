@@ -12,7 +12,7 @@ const PrivacyTermsDialog = ({ closeHandler }) => (
     <Dialog
         closeHandler={closeHandler}
         classNames="privacy-terms-dialog"
-        title="Privacy Policy"
+        title="Terms and Conditions and Privacy Policy"
     >
         <div>
             <TermsAndConditionsContent mode="modal" />

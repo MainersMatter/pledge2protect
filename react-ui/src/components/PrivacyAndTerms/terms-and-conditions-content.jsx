@@ -12,7 +12,7 @@ const TermsAndConditionsContent = ({ mode }) => {
         if (mode === 'page') {
             return (
                 <Link to="/privacy">{children}</Link>
-            )
+            );
         }
 
         return children;
@@ -20,18 +20,18 @@ const TermsAndConditionsContent = ({ mode }) => {
 
     return (
         <>
-            <h1>User Agreement</h1>
+            <h2>User Agreement</h2>
             <p>
-                This PledgeToProtectME User Agreement (<b>"Agreement"</b>) is a binding agreement between you (<b>"End
-                User"</b> or <b>"you"</b>) and MyHealthMath, Inc. (<b>"Company"</b>).
+                This PledgeToProtectME User Agreement (<b>&quot;Agreement&quot;</b>) is a binding agreement between you
+                (<b>&quot;End User&quot;</b> or <b>&quot;you&quot;</b>) and MyHealthMath, Inc. (<b>&quot;Company&quot;</b>).
                 This Agreement governs all use that you may make of (a) the Pledge to Protect Software-as-a-Service
                 application made available by Company and accessed
-                at www.pledgetoprotect.com (the <b>"SaaS Application"</b>), (b) the Pledge to Protect mobile software
+                at www.pledgetoprotectme.org (the <b>&quot;SaaS Application&quot;</b>), (b) the Pledge to Protect mobile software
                 applications made available in third party mobile platforms
-                (together, the <b>"Website Apps"</b>), in both cases including all related documentation (the <b>"Website
-                Application"</b>) or (c) products and services accessible in the
+                (together, the <b>&quot;Website Apps&quot;</b>), in both cases including all related documentation (the
+                <b>&quot;Website Application&quot;</b>) or (c) products and services accessible in the
                 Application, and certain features, functionality, and content accessible on or through the Application
-                (collectively, <b>"Content and Services"</b>). The Mobile Apps
+                (collectively, <b>&quot;Content and Services&quot;</b>). The Mobile Apps
                 are licensed, not sold, to you, and this Agreement provides you with a right of access to the SaaS
                 Application rather than a license to it or ownership of it.
             </p>
@@ -44,15 +44,16 @@ const TermsAndConditionsContent = ({ mode }) => {
                 HAVE DOWNLOADED IT.
             </p>
             <h3>1. License and Access.</h3>
+            <h4>a. License Grant for Mobile Apps.</h4>
             <p>
-                <label>a. License Grant for Mobile Apps.</label> Subject to the terms of this Agreement, to the extent you
+                Subject to the terms of this Agreement, to the extent you
                 choose to download, install or use a Mobile App, Company grants you a limited, non-exclusive,
                 and nontransferable license to:
                 <ol type="I">
                     <li>
                         download, install, and use the Application for your personal, non-commercial use on a single mobile
-                        device owned or otherwise controlled by you (<b>"Mobile Device"</b>)
-                        strictly in accordance with the Application's documentation; and
+                        device owned or otherwise controlled by you (<b>&quot;Mobile Device&quot;</b>)
+                        strictly in accordance with the Application&apos;s documentation; and
                     </li>
                     <li>
                         access, stream, download, and use on such Mobile Device the Content and Services made available in
@@ -61,10 +62,11 @@ const TermsAndConditionsContent = ({ mode }) => {
                     </li>
                 </ol>
             </p>
+            <h4>b. Access Right for SaaS Application.</h4>
             <p>
-                <label>b. Access Right for SaaS Application.</label> Subject to the terms of this Agreement, to the extent
-                you choose to use the SaaS Application, <u>Company hereby grants
-                you a non-exclusive, non-transferable right to access and use the Application during the Term.</u>
+                Subject to the terms of this Agreement, to the extent
+                you choose to use the SaaS Application,
+                <u>Company hereby grants you a non-exclusive, non-transferable right to access and use the Application during the Term.</u>
             </p>
             <h3>2. License and Access Restrictions.</h3>
             <p>
@@ -125,7 +127,7 @@ const TermsAndConditionsContent = ({ mode }) => {
                 provide you
                 with opportunities to share information about yourself with others. All information Company collects through
                 or in
-                connection with this Application is subject to the <PrivacyPolicyLink>PledgeToProtectME Privacy Policy (the <b>"Privacy Policy"</b>)</PrivacyPolicyLink>.
+                connection with this Application is subject to the <PrivacyPolicyLink>PledgeToProtectME Privacy Policy (the <b>&quot;Privacy Policy&quot;</b>)</PrivacyPolicyLink>.
                 By downloading, installing, using, and providing information to or through this Application, you consent to
                 all actions taken by Company
                 with respect to your information in compliance with the Privacy Policy.
@@ -135,7 +137,7 @@ const TermsAndConditionsContent = ({ mode }) => {
                 Company may from time to time in its sole discretion develop and provide Application updates, which may
                 include
                 upgrades, bug fixes, patches, error corrections, and/or new features (collectively, including related
-                documentation, <b>"Updates"</b>). Updates may also modify or delete in their entirety certain features and
+                documentation, <b>&quot;Updates&quot;</b>). Updates may also modify or delete in their entirety certain features and
                 functionality.
                 You agree that Company has no obligation to provide any Updates or to continue to provide or enable any
                 particular
@@ -157,7 +159,7 @@ const TermsAndConditionsContent = ({ mode }) => {
                 applications,
                 and other products, services, and/or materials) or provide links to third-party websites or services,
                 including through
-                third-party advertising (<b>"Third-Party Materials"</b>). You acknowledge and agree that Company is not
+                third-party advertising (<b>&quot;Third-Party Materials&quot;</b>). You acknowledge and agree that Company is not
                 responsible for
                 Third-Party Materials, including their accuracy, completeness, timeliness, validity, copyright compliance,
                 legality,
@@ -166,7 +168,7 @@ const TermsAndConditionsContent = ({ mode }) => {
                 to you or any other person or entity for any Third-Party Materials. Third-Party Materials and links thereto
                 are provided
                 solely as a convenience to you, and you access and use them entirely at your own risk and subject to such
-                third parties'
+                third parties&apos;
                 terms and conditions.
             </p>
             <h3>8. Term and Termination.</h3>
@@ -189,14 +191,14 @@ const TermsAndConditionsContent = ({ mode }) => {
                             <li>you must cease all use of the Application and delete all copies of the Application from your
                                 Mobile Device and account.
                             </li>
-                            <li>Termination will not limit any of Company's rights or remedies at law or in equity.</li>
+                            <li>Termination will not limit any of Company&apos;s rights or remedies at law or in equity.</li>
                         </ol>
                     </li>
                 </ol>
             </p>
             <h3>9. Disclaimer of Warranties.</h3>
             <p>
-                THE APPLICATION IS PROVIDED TO LICENSEE "AS IS" AND WITH ALL FAULTS AND DEFECTS WITHOUT WARRANTY OF ANY
+                THE APPLICATION IS PROVIDED TO LICENSEE &quot;AS IS&quot; AND WITH ALL FAULTS AND DEFECTS WITHOUT WARRANTY OF ANY
                 KIND. TO
                 THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW, COMPANY, ON ITS OWN BEHALF AND ON BEHALF OF ITS
                 AFFILIATES AND
@@ -260,7 +262,7 @@ const TermsAndConditionsContent = ({ mode }) => {
                 actions,
                 judgments, settlements, interest, awards, penalties, fines, costs, or expenses of whatever kind, including
                 reasonable
-                attorneys' fees, arising from or relating to your use or misuse of the Application or your breach of this
+                attorneys&apos; fees, arising from or relating to your use or misuse of the Application or your breach of this
                 Agreement,
                 including but not limited to the content you submit or make available through this Application.
             </p>
@@ -401,8 +403,8 @@ const TermsAndConditionsContent = ({ mode }) => {
             </ol>
             <p>
                 The Application is offered by MyHealthMath, Inc., whose mailing address is One Monument Way, Suite 250,
-                Portland, Maine 04101. With any questions, complaints or claims, please contact 207-221-0201 or <a
-                href="mailto:dave@pledgetoprotectme.org">dave@pledgetoprotectme.org</a>.
+                Portland, Maine 04101. With any questions, complaints or claims, please contact 207-221-0201
+                or <a href="mailto:dave@pledgetoprotectme.org">dave@pledgetoprotectme.org</a>.
             </p>
         </>
     );
