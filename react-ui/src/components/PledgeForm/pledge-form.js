@@ -8,7 +8,7 @@ import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
 import './pledge-form.scss';
 
 
-const PledgeForm = () => {
+const PledgeForm = (props, ref) => {
     const {
         register, handleSubmit, errors, formState,
     } = useForm({
@@ -42,7 +42,11 @@ const PledgeForm = () => {
                             aria-describedby={`${errors.emailAddress ? 'error-email' : ''}`}
                             aria-required="true"
                             aria-invalid={errors.emailAddress}
-                            ref={register({ required: true })}
+                            ref={(e) => {
+                                register(e);
+                                // eslint-disable-next-line no-param-reassign
+                                ref.current = e;
+                            }}
                         />
                     </label>
                     { errors.emailAddress && <p className="error" id="error-email" aria-live="polite">This field is required</p> }
@@ -125,4 +129,4 @@ const PledgeForm = () => {
     );
 };
 
-export default PledgeForm;
+export default React.forwardRef(PledgeForm);
