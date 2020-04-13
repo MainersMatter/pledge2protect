@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AriaDialog from 'react-aria-modal';
 
+import closeIcon from '../../assets/close.svg'
+
 import './dialog.scss';
 
 
@@ -29,7 +31,9 @@ const Dialog = ({
                     onClick={closeHandler}
                     title="Close"
                     aria-label="Close"
-                />
+                >
+                    <img src={closeIcon} alt="" />
+                </button>
                 <h1 className="sr-only">{title}</h1>
                 { children }
             </AriaDialog>

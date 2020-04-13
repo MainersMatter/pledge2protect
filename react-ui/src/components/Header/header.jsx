@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
+import logo from '../../assets/PPME_Opt2_Horiz_green-01.svg';
 
 import './header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,12 +14,9 @@ const Header = () => {
     return (
         <header className="global-header">
             <div className="logo-hamburger">
-                <Link to="/">
-                    <h1>
-                        <span className="sr-only">
-                            Pledge To Protect ME
-                        </span>
-                    </h1>
+                <h1 className="sr-only">Pledge To Protect ME</h1>
+                <Link to="/" aria-label="Pledge To Protect ME home page">
+                    <img src={logo} alt="" />
                 </Link>
                 {/* Hiding for now since there's no links to show yet */}
                 {/*<button
