@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link, useRouteMatch } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 import logo from '../../assets/PPME_Opt2_Horiz_green-01.svg';
 
 import './header.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+
+
+const StyledLink = ({ to, children }) => {
+    const match = useRouteMatch({ path: to, exact: true });
+
+    return (
+        <Link
+            className={match ? 'nav-link-active' : 'nav-link'}
+            to={to}
+        >
+            {children}
+        </Link>
+    );
+};
+
+StyledLink.propTypes = {
+    to: PropTypes.string.isRequired,
+    children: PropTypes.string.isRequired,
+};
 
 
 const Header = () => {
@@ -18,8 +38,7 @@ const Header = () => {
                 <Link to="/" aria-label="Pledge To Protect ME home page">
                     <img src={logo} alt="" />
                 </Link>
-                {/* Hiding for now since there's no links to show yet */}
-                {/*<button
+                <button
                     type="button"
                     className="hamburger"
                     onClick={() => setNavigationExpanded(!isNavigationExpanded)}
@@ -30,29 +49,22 @@ const Header = () => {
                         { isNavigationExpanded ? 'Hide ' : 'Show ' }
                         navigation
                     </span>
-                </button>*/}
+                </button>
             </div>
-          { /*
-          <nav aria-expanded={isNavigationExpanded} className={isNavigationExpanded ? 'is-expanded' : 'is-collapsed'}>
-              <ul>
-                  <li>
-                      <Link to="/why-take-pledge">
-                          Why Take The Pledge
-                      </Link>
-                  </li>
-                  <li>
-                      <Link to="/news">
-                          News
-                      </Link>
-                  </li>
-                  <li>
-                      <Link to="/resources">
-                          Resources
-                      </Link>
-                  </li>
-              </ul>
-          </nav>
-        */ }
+            <nav aria-expanded={isNavigationExpanded} className={isNavigationExpanded ? 'is-expanded' : 'is-collapsed'}>
+                <ul>
+                    <li>
+                        <StyledLink to="/">
+                            The Pledge
+                        </StyledLink>
+                    </li>
+                    <li>
+                        <StyledLink to="/challenges">
+                            Challenges
+                        </StyledLink>
+                    </li>
+                </ul>
+            </nav>
         </header>
     );
 };

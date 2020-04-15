@@ -33,13 +33,23 @@
             padding-top: .5em;
         }
 
-        a {
+        .nav-link {
             color: $nav-link-color;
             text-decoration: none;
             padding: 1em 0;
             display: block;
             text-transform: uppercase;
             font-size: .875rem;
+
+            &-active {
+                color: $color-purple;
+                text-decoration: none;
+                padding: 1em 0;
+                display: block;
+                text-transform: uppercase;
+                font-size: .875rem;
+            }
+
             &:hover {
                 color: darken($nav-link-color, 15%);
             }

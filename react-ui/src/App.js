@@ -17,6 +17,7 @@ import NewsPage from './pages/news.page';
 import ResourcesPage from './pages/resources.page';
 import WhyTakePledgePage from './pages/why-take-pledge.page';
 import TermsPage from './pages/terms.page';
+import ChallengePage from './pages/challenge.page';
 
 // component imports
 import Header from './components/Header/header';
@@ -50,6 +51,7 @@ function App() {
                         <Route path="/news" component={NewsPage} />
                         <Route path="/privacy" component={PrivacyPage} />
                         <Route path="/terms-and-conditions" component={TermsPage} />
+                        <Route path="/challenges" component={ChallengePage} />
                     </Switch>
                 </main>
                 <Footer />
