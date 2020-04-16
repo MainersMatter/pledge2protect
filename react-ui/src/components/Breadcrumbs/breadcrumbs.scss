@@ -1,0 +1,21 @@
+@import "../../variables";
+
+.breadcrumbs-container {
+    display: flex;
+
+    .breadcrumb-link {
+        color: $color-gray-text;
+
+        & a {
+            color: $color-gray-text;
+            text-decoration: none;
+            padding-right: 10px;
+
+            &:hover,
+            &:focus {
+                color: $color-purple;
+                text-decoration: underline;
+            }
+        }
+    }
+}
