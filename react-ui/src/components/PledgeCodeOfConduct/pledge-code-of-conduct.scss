@@ -24,7 +24,7 @@
         &-toggle {
             display: flex;
             align-items: center;
-            background: $color-green;
+            background: $color-green-light;
             color: $color-green-text;
             border: 0;
             margin: 0;
@@ -60,7 +60,7 @@
 
         &-content {
             display: block;
-            background: $color-green;
+            background: $color-green-light;
             color: $color-purple;
             padding: 5% 8%;
             font-size: 1.5rem;
