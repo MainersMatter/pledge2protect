@@ -5,7 +5,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    background: #3DAE8A;
+    background: #E6F1ED;
     @media(min-width: 550px) {
         flex-wrap: nowrap;
     }
@@ -20,13 +20,13 @@
 }
 
 .about-us-header {
-    color: white;
+    color: $color-dark-gray-text;
     text-transform: uppercase;
     font-size: 1em;
 }
 
 .about-us-body {
-    color: white;
+    color: $color-dark-gray-text;
     border-bottom: 1px solid #1F684E;
     padding-bottom: 20px;
 }
@@ -38,7 +38,7 @@
 
 .about-us-links {
     text-decoration: none;
-    color: white;
+    color: $color-dark-gray-text;
     padding-top: 15px;
 
     &:hover,
@@ -49,7 +49,7 @@
 }
 
 .support {
-    color: white;
+    color: $color-dark-gray-text;
     min-width: 15em;
     padding: 16px $global-padding-horizontal-small;
     @media(min-width: $global-padding-breakpoint) {

@@ -2,8 +2,8 @@
 
 .global-header {
     background: #fff;
-    padding: 25px $global-padding-horizontal-small;
-    border-bottom: solid 2px #46D3A1;
+    padding: 15px $global-padding-horizontal-small;
+    border-bottom: solid 2px;
 
     h1 {
         position: absolute;
@@ -50,7 +50,8 @@
                 font-size: .875rem;
             }
 
-            &:hover {
+            &:hover,
+            &:focus {
                 color: darken($nav-link-color, 15%);
             }
         }

@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
-    background-color: $color-green;
+    background-color: $color-green-light;
     padding: 1em $global-padding-horizontal-small;
     @media(min-width: $global-padding-breakpoint) {
         padding: 1em $global-padding-horizontal-large;
