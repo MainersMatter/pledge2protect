@@ -5,6 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs/breadcrumbs';
 import SpreadChallenge from '../components/Challenges/spread-challenge';
 import LikeAndFollowChallenge from '../components/Challenges/like-and-follow-challenge';
 import ShowOffChallenge from '../components/Challenges/show-off-challenge';
+import twitterIcon from '../assets/twitter-icon.svg';
 
 import './challenge-page.scss';
 
@@ -17,15 +18,21 @@ const ChallengePage = () => (
                 { label: 'Social Challenges', path: '/challenges' },
             ]}
         />
-        <h2>Challenges</h2>
         <div className="challenges-page">
             <div className="challenges-container">
+                <h2>Challenges</h2>
                 <SpreadChallenge />
                 <LikeAndFollowChallenge />
                 <ShowOffChallenge />
             </div>
             <div className="twitter-container">
-                <div className="twitter-widget-content" aria-hidden="true">
+                <div className="twitter-widget-frame" aria-hidden="true">
+                    <div className="twitter-widget-header">
+                        <div className="twitter-icon">
+                            <img src={twitterIcon} alt="" />
+                        </div>
+                        @PledgeToProtectME
+                    </div>
                     <TwitterTimelineEmbed
                         sourceType="profile"
                         screenName="PledgeProtectME"
