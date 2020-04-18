@@ -11,7 +11,11 @@ const ShowOffChallenge = () => (
         title="Show Off Your Pledge"
         icon={icon}
     >
-        TODO
+        <p>
+            Post your pledge in your window.  Print this placard and display it in
+            your front window or car.
+        </p>
+        <button type="button" className="btn">Download</button>
     </Accordion>
 );
 

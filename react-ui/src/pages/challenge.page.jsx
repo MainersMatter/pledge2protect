@@ -34,11 +34,13 @@ const ChallengePage = () => (
                         </div>
                         <span>@PledgeToProtectME</span>
                     </div>
-                    <TwitterTimelineEmbed
-                        sourceType="profile"
-                        screenName="PledgeProtectME"
-                        options={{ height: 400 }}
-                    />
+                    <div className="twitter-widget-body">
+                        <TwitterTimelineEmbed
+                            sourceType="profile"
+                            screenName="PledgeProtectME"
+                            options={{ height: 400 }}
+                        />
+                    </div>
                 </div>
                 <div className="share-container">
                     <span>SHARE ON:</span>
