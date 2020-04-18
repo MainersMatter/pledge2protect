@@ -6,10 +6,18 @@
     .challenges-container {
         width: 100%;
         padding-right: 25px;
+        line-height: 132.9%;
+        text-align: justify;
+        letter-spacing: 0.05em;
 
         b {
             font-weight: bold;
             color: $color-purple;
+        }
+
+        .btn {
+            padding-left: 50px;
+            padding-right: 50px;
         }
     }
 
@@ -54,6 +62,10 @@
                 span {
                     color: $color-green-text;
                 }
+            }
+
+            .twitter-widget-body {
+                height: 400px
             }
         }
 
