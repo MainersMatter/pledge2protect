@@ -14,7 +14,7 @@ const StyledLink = ({ to, children }) => {
 
     return (
         <Link
-            className={match ? 'nav-link-active' : 'nav-link'}
+            className={`nav-link ${match ? 'nav-link-active' : ''}`}
             to={to}
         >
             {children}
