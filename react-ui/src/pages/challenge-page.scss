@@ -1,3 +1,16 @@
-.challenges-container {
-    width: 500px;
+@import "../variables";
+
+.challenges-page {
+    display: flex;
+
+
+    .challenges-container {
+        width: 500px;
+        flex-shrink: 1;
+    }
+
+    .twitter-container {
+        border-left: 1px solid $color-green-med;
+        flex-shrink: 2;
+    }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
 import Breadcrumbs from '../components/Breadcrumbs/breadcrumbs';
 import SpreadChallenge from '../components/Challenges/spread-challenge';
@@ -17,10 +18,21 @@ const ChallengePage = () => (
             ]}
         />
         <h2>Challenges</h2>
-        <div className="challenges-container">
-            <SpreadChallenge />
-            <LikeAndFollowChallenge />
-            <ShowOffChallenge />
+        <div className="challenges-page">
+            <div className="challenges-container">
+                <SpreadChallenge />
+                <LikeAndFollowChallenge />
+                <ShowOffChallenge />
+            </div>
+            <div className="twitter-container">
+                <div className="twitter-widget-content" aria-hidden="true">
+                    <TwitterTimelineEmbed
+                        sourceType="profile"
+                        screenName="PledgeProtectME"
+                        options={{ height: 400 }}
+                    />
+                </div>
+            </div>
         </div>
     </div>
 );
