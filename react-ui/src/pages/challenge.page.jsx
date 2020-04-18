@@ -6,6 +6,7 @@ import SpreadChallenge from '../components/Challenges/spread-challenge';
 import LikeAndFollowChallenge from '../components/Challenges/like-and-follow-challenge';
 import ShowOffChallenge from '../components/Challenges/show-off-challenge';
 import twitterIcon from '../assets/twitter-icon.svg';
+import SocialIcons from '../components/SocialIcons/social-icons';
 
 import './challenge-page.scss';
 
@@ -31,13 +32,17 @@ const ChallengePage = () => (
                         <div className="twitter-icon">
                             <img src={twitterIcon} alt="" />
                         </div>
-                        @PledgeToProtectME
+                        <span>@PledgeToProtectME</span>
                     </div>
                     <TwitterTimelineEmbed
                         sourceType="profile"
                         screenName="PledgeProtectME"
                         options={{ height: 400 }}
                     />
+                </div>
+                <div className="share-container">
+                    <span>SHARE ON:</span>
+                    <SocialIcons mode="share" />
                 </div>
             </div>
         </div>
