@@ -6,9 +6,9 @@ import SpreadChallenge from '../components/Challenges/spread-challenge';
 import LikeAndFollowChallenge from '../components/Challenges/like-and-follow-challenge';
 import ShowOffChallenge from '../components/Challenges/show-off-challenge';
 import twitterIcon from '../assets/twitter-icon.svg';
+import SocialIcons from '../components/SocialIcons/social-icons';
 
 import './challenge-page.scss';
-import SocialIcons from '../components/SocialIcons/social-icons';
 
 
 const ChallengePage = () => (
