@@ -24,19 +24,25 @@
                 background-color: $color-green-light;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
-                color: $color-green-text;
                 text-align: center;
 
                 .twitter-icon {
-                    width: 50px;
-                    height: 50px;
+                    width: 60px;
+                    height: 60px;
                     background: #fff;
                     border-radius: 50%;
-                    border: 2px solid $color-green-light;
+                    border: 4px solid $color-green-light;
+                    position: relative;
+                    left: 125px;
+                    top: -25px;
 
                     img {
-                        padding-top: 5px;
+                        padding-top: 15px;
                     }
+                }
+
+                span {
+                    color: $color-green-text;
                 }
             }
         }

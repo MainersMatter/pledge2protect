@@ -32,7 +32,7 @@ const ChallengePage = () => (
                         <div className="twitter-icon">
                             <img src={twitterIcon} alt="" />
                         </div>
-                        @PledgeToProtectME
+                        <span>@PledgeToProtectME</span>
                     </div>
                     <TwitterTimelineEmbed
                         sourceType="profile"
