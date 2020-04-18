@@ -11,6 +11,7 @@
     cursor: pointer;
     text-align: center;
     border-radius: 25px;
+    overflow-wrap: unset;
 
     &:hover {
         background-color: darken($button-background-color, 15%);
