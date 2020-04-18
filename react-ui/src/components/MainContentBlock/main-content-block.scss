@@ -49,9 +49,8 @@ $main-content-block-breakpoint-small: 650px;
         text-align: right;
         font-style: normal;
         font-weight: bold;
-        font-size: 1.25rem;
         color: #333;
-        font-size: calc(2.25rem - ((#{$global-max-width} - 100vw) / 50);
+        font-size: calc(2.25rem - ((#{$global-max-width} - 100vw) / 50));
         @media(min-width: $main-content-block-breakpoint-small) {
             color: $img-overlay-text;
             max-width: none;
