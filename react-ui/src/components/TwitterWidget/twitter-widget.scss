@@ -1,9 +1,11 @@
+@import '../../variables';
+
 .twitter-widget {
     display: flex;
-    border-bottom: solid 2px #00754A;
+    border-bottom: solid 2px $color-green-text;
     flex-wrap: wrap;
-}
 
-.twitter-widget-content {
-    margin-left: 100px;
+    &-content {
+        margin-left: 100px;
+    }
 }

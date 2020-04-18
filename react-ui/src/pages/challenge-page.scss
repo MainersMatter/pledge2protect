@@ -1,3 +1,44 @@
-.challenges-container {
-    width: 500px;
+@import "../variables";
+
+.challenges-page {
+    display: flex;
+
+    .challenges-container {
+        width: 100%;
+    }
+
+    .twitter-container {
+        border-left: 1px solid $color-green-med;
+        width: 100%;
+        padding-bottom: 100px;
+
+        .twitter-widget-frame {
+            margin: 0 auto;
+            margin-top: 50px;
+            max-width: 300px;
+            box-shadow: 5px 5px 4px rgba(0, 117, 74, 0.2);
+            border-radius: 10px;
+
+            .twitter-widget-header {
+                height: 90px;
+                background-color: $color-green-light;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                color: $color-green-text;
+                text-align: center;
+
+                .twitter-icon {
+                    width: 50px;
+                    height: 50px;
+                    background: #fff;
+                    border-radius: 50%;
+                    border: 2px solid $color-green-light;
+
+                    img {
+                        padding-top: 5px;
+                    }
+                }
+            }
+        }
+    }
 }
