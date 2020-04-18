@@ -1,15 +1,17 @@
 @import "../../variables";
 
+$icon-size: 50px;
+$toggle-padding-left: 6%;
+$chevron-size: 50px;
+
 .accordion {
     display: flex;
-    padding: 25px;
-
-    @media(min-width: $global-padding-breakpoint) {
-        padding: 1em $global-padding-horizontal-large;
-    }
+    flex-direction: column;
+    padding: 25px 0;
 
     img {
-
+        width: $icon-size;
+        height: $icon-size;
     }
 
     &-container {
@@ -19,6 +21,7 @@
     &-toggle {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         text-align: left;
         color: #349974;
         background: transparent;
@@ -31,13 +34,14 @@
 
         .toggle-text {
             display: inline-block;
-            padding-left: 45px;
+            padding-left: $toggle-padding-left;
+            width: 100%;
         }
 
         .chevron {
             display: flex;
-            width: 50px;
-            height: 50px;
+            width: $chevron-size;
+            height: $chevron-size;
 
             img {
                 margin: 0 auto;
@@ -54,6 +58,7 @@
 
     &-content {
         display: block;
+        padding: 0 $chevron-size 0 calc(#{$icon-size} + #{$toggle-padding-left});
     }
 
     .is-collapsed &-content {

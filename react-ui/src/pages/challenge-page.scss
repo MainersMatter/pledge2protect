@@ -5,6 +5,16 @@
 
     .challenges-container {
         width: 100%;
+        padding-right: 25px;
+
+        b {
+            font-weight: bold;
+            color: $color-purple;
+        }
+    }
+
+    .social-icons {
+        justify-content: left;
     }
 
     .twitter-container {
