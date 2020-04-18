@@ -36,5 +36,6 @@ module.exports = {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
         'react/jsx-one-expression-per-line': 0,
+        'react/no-unescaped-entities': 0,
     },
 };
