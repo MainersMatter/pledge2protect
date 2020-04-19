@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './confirmation-dialog.scss';
 import Dialog from '../Dialog/dialog';
@@ -14,7 +15,7 @@ const ConfirmationDialog = ({ closeHandler }) => (
     >
         <div className="upper">
             <h2>You are a vector for good!</h2>
-            <p>Thanks for doing your part to stop community spread.</p>
+            <p>Thanks for Pledging to Protect Maine! Now, <Link to="/challenges">challenge yourself...</Link></p>
         </div>
         <div className="lower">
             <p>Share this pledge on:</p>
