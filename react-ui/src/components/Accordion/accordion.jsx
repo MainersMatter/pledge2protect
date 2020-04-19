@@ -21,7 +21,7 @@ const Accordion = ({
                 aria-expanded={isCodeExpanded}
                 aria-controls={`${id}-content`}
             >
-                <img src={icon} alt="" />
+                { icon && <img src={icon} alt="" /> }
                 <span className="toggle-text">
                     {title}
                 </span>
