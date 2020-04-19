@@ -46,8 +46,11 @@ a {
 .page-content {
     display: flex;
     flex-direction: column;
-    padding: 10px 75px;
     background-color: #FFFAF6;
+    padding: 10px $global-padding-horizontal-small;
+    @media(min-width: $global-padding-breakpoint) {
+        padding: 10px $global-padding-horizontal-large;
+    }
 }
 
 
