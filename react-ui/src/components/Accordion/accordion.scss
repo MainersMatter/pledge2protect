@@ -3,6 +3,7 @@
 $icon-size: 50px;
 $toggle-padding-left: 6%;
 $chevron-size: 50px;
+$accordion-padding-breakpoint: 600px;
 
 .accordion {
     display: flex;
@@ -58,7 +59,10 @@ $chevron-size: 50px;
 
     &-content {
         display: block;
-        padding: 0 $chevron-size 0 calc(#{$icon-size} + #{$toggle-padding-left});
+        padding: 0;
+        @media(min-width: $accordion-padding-breakpoint) {
+            padding: 0 $chevron-size 0 calc(#{$icon-size} + #{$toggle-padding-left});
+        }
     }
 
     .is-collapsed &-content {
