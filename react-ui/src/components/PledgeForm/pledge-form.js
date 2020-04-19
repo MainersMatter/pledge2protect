@@ -39,17 +39,19 @@ const PledgeForm = (props, ref) => {
                             id="field-email"
                             name="emailAddress"
                             type="email"
+                            autoCorrect="off"
+                            spellCheck="false"
                             aria-describedby={`${errors.emailAddress ? 'error-email' : ''}`}
                             aria-required="true"
                             aria-invalid={errors.emailAddress}
                             ref={(e) => {
-                                register(e);
+                                register(e, { required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ });
                                 // eslint-disable-next-line no-param-reassign
                                 ref.current = e;
                             }}
                         />
                     </label>
-                    { errors.emailAddress && <p className="error" id="error-email" aria-live="polite">This field is required</p> }
+                    { errors.emailAddress && <p className="error" id="error-email" aria-live="polite">Please enter a valid email address</p> }
                 </div>
                 <div className="col-1_row-2">
                     <label htmlFor="field-firstname">First Name<span aria-hidden="true">*</span>:
@@ -87,7 +89,7 @@ const PledgeForm = (props, ref) => {
                             type="tel"
                             aria-describedby={`${errors.emailAddress ? 'error-zip' : ''}`}
                             aria-invalid={errors.zipCode}
-                            ref={register({ minLength: 5, maxLength: 10 })}
+                            ref={register({ pattern: /^\d{5}(-\d{4})?$/ })}
                         />
                     </label>
                     { errors.zipCode && <p className="error" id="error-zip" aria-live="polite">Zip Code must be either 5 or 10 digits</p>}
