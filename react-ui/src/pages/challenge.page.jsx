@@ -1,6 +1,7 @@
 import React from 'react';
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
+import DynamicPledgeCounter from '../components/PledgeCounter/dynamic-pledge-counter';
 import Breadcrumbs from '../components/Breadcrumbs/breadcrumbs';
 import SpreadChallenge from '../components/Challenges/spread-challenge';
 import LikeAndFollowChallenge from '../components/Challenges/like-and-follow-challenge';
@@ -13,6 +14,7 @@ import './challenge-page.scss';
 
 const ChallengePage = () => (
     <div className="page-content">
+        <DynamicPledgeCounter />
         <Breadcrumbs
             crumbs={[
                 { label: 'Home', path: '/' },

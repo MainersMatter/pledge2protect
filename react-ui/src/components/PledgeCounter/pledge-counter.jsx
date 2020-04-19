@@ -14,7 +14,7 @@ const PledgeCounter = ({ pledgesCount, pledgesGoal }) => (
             aria-live="polite"
             aria-label={`${pledgesCount.toLocaleString()} people have taken the pledge!`}
         >
-            { pledgesCount.toLocaleString() }
+            {pledgesCount.toLocaleString()}
         </span>
         <progress
             className="pledges-progress"
