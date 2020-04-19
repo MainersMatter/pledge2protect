@@ -31,7 +31,7 @@ const DynamicPledgeCounter = () => {
     }, [setPledgeCount]);
 
     return (
-        <PledgeCounter pledgesCount={237} pledgesGoal={PLEDGE_GOAL} />
+        <PledgeCounter pledgesCount={pledgeCount} pledgesGoal={PLEDGE_GOAL} />
     );
 };
 
