@@ -16,7 +16,7 @@ const ShowOffChallenge = () => (
             your front window or car.
         </p>
         <a
-            href="../../assets/PPME_placard.pdf"
+            href="/PPME_placard.pdf"
             className="btn"
             download="PledgeToProtectME_Placard.pdf"
             aria-label="Download the Pledge To Protect ME Placard"
