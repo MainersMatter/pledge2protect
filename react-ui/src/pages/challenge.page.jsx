@@ -8,6 +8,7 @@ import LikeAndFollowChallenge from '../components/Challenges/like-and-follow-cha
 import ShowOffChallenge from '../components/Challenges/show-off-challenge';
 import twitterIcon from '../assets/twitter-icon.svg';
 import SocialIcons from '../components/SocialIcons/social-icons';
+import self-monitor from '../components/Challenges/self-monitor
 
 import './challenge-page.scss';
 
