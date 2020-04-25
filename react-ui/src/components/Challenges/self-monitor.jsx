@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Accordion from '../Accordion/accordion';
-import SocialIcons from '../SocialIcons/social-icons';
 import icon from '../../assets/Vitals.svg';
 
 
@@ -12,17 +11,14 @@ const SelfMonitor = () => (
         icon={icon}
     >
         <p>
-            Take care of yourself and reduce anxiety by using the PledgeToProtectME and GetWellNetwork COVID-19 Self-Monitoring Tool.
+            Take care of yourself and reduce anxiety by using the PledgeToProtectME and GetWellNetwork
+            COVID-19 Self-Monitoring Tool.
         </p>
         <p>
             <b>It's simple, interactive, and sophisticated!</b>
         </p>
-        
-        <a
-            href="https://apps.getwellnetwork.com/loop-enroll/pledgetoprotectme-covid/"
-            className="btn"
-            aria-label="Sign Up Here"
-        >
+
+        <a href="https://apps.getwellnetwork.com/loop-enroll/pledgetoprotectme-covid/" className="btn">
             Sign Up Here
         </a>
     </Accordion>
