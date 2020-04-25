@@ -45,6 +45,7 @@ const PledgeForm = (props, ref) => {
                             aria-required="true"
                             aria-invalid={errors.emailAddress}
                             ref={(e) => {
+                                // eslint-disable-next-line no-useless-escape
                                 register(e, { required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ });
                                 // eslint-disable-next-line no-param-reassign
                                 ref.current = e;
