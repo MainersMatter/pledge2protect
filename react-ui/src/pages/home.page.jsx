@@ -23,10 +23,7 @@ function HomePage() {
         <div className="home-page">
             <MainContentBlock />
             <DynamicPledgeCounter />
-            <div className="why-and-form">
-                <WhyPledge handleAddYourName={handleAddYourName} />
-                <PledgeForm ref={formRef} />
-            </div>
+            <PledgeForm ref={formRef} />
             <PledgeCodeOfConduct />
             <TwitterWidget />
             <ResourcesSection />
