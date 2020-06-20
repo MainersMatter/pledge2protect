@@ -17,8 +17,7 @@ exports.addEmailSubscriber = async (user) => {
             email_address: user.emailAddress.toLowerCase(),
             status: 'pending',
             merge_fields: {
-                MMERGE6: user.firstName,
-                MMERGE1: user.lastName,
+                MMERGE6: user.fullName,
                 'ADDRESS[zip]': user.zipCode,
             },
         });
