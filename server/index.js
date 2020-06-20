@@ -32,23 +32,62 @@ function runServer() {
     });
 
     app.post('/pledge', async (req, res) => {
-        const user = req.body;
-        user.hasPledged = true;
+        const payload = req.body;
+        payload.hasPledged = true;
 
         // validate the user data
-        if (!user || !user.emailAddress || !user.firstName || !user.lastName) {
+        if (!payload || !payload.emailAddress || !payload.fullName || !payload.state || !payload.acceptPrivacyPolicy || !payload.destinationEmail) {
             res.status(400)
-                .send({ error: true, message: 'Please provide user emailAddress, firstName and lastName' });
+                .send({ error: true, message: 'Please provide all required fields' });
             return;
         }
 
-        if (process.env.ENABLE_EMAIL_SUBSCRIPTION === 'true') {
-            try {
-                // subscribe the pledged user to our email list
-                const subscribedResult = await addEmailSubscriber(user);
+        const memberParameters = Object.entries(payload).reduce((accumulator, pair) => {
+            if (pair[0].startsWith('member')) {
+                const memberIndex = pair[0].charAt(pair[0].length - 1);
+                const field = (pair[0].includes('Email') ? 'email' : 'name');
+                if (accumulator[memberIndex] === undefined) {
+                    accumulator[memberIndex] = {};
+                }
+                // eslint-disable-next-line
+                accumulator[memberIndex][field] = pair[1];
+            }
+            return accumulator;
+        }, {});
 
-                // add the subscribed email id from the MailChimp list to the user
-                user.subscribedEmailId = subscribedResult.id;
+        if (process.env.ENABLE_EMAIL_SUBSCRIPTION === 'true') {
+            const mainUser = {
+                emailAddress: payload.emailAddress,
+                fullName: payload.fullName,
+                zipCode: payload.zipCode,
+            };
+            const destinationUsers = payload.destinationEmail.split(',').map((email) => (
+                {
+                    emailAddress: email.trim(),
+                }
+            ));
+            const partyUsers = Object.values(memberParameters).map((member) => (
+                {
+                    emailAddress: member.email,
+                    fullName: member.name,
+                }
+            ));
+            const allUsers = [mainUser].concat(destinationUsers, partyUsers);
+
+            try {
+                // eslint-disable-next-line
+                const resultPromises = allUsers.map(async (user) => {
+                    const subscribedResult = await addEmailSubscriber(user);
+                    return subscribedResult.id;
+                });
+
+                // TODO: restore this after the DB has been migrated
+                if (process.env.ENABLE_LOGGING_TO_PLEDGES_DATABASE === 'true') {
+                    // subscribe the pledged user to our email list
+                    const mainSubscribedResult = await addEmailSubscriber(mainUser);
+                    // add the subscribed email id from the MailChimp list to the user
+                    payload.subscribedEmailId = mainSubscribedResult.id;
+                }
             } catch (error) {
                 res.status(500)
                     .send({ error: true, message: error.message });
@@ -56,16 +95,21 @@ function runServer() {
             }
         }
 
-        // save the user in the database
-        savePledge(user, (error) => {
-            if (error) {
-                res.status(500)
-                    .send({ error: true, message: error });
-                return;
-            }
+        if (process.env.ENABLE_LOGGING_TO_PLEDGES_DATABASE === 'true') {
+            // save the user in the database
+            // TODO: We now collect only full names, not a first and last name, but the DB has not been migrated
+            savePledge(payload, (error) => {
+                if (error) {
+                    res.status(500)
+                        .send({ error: true, message: error });
+                    return;
+                }
 
+                res.send('success');
+            });
+        } else {
             res.send('success');
-        });
+        }
     });
 
     // All remaining requests return the React app, so it can handle routing.
