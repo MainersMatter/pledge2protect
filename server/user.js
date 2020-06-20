@@ -13,14 +13,21 @@ exports.addEmailSubscriber = async (user) => {
     }
 
     try {
-        const result = await mailchimp.post(`lists/${process.env.MAILCHIMP_LIST_ID}/members`, {
-            email_address: user.emailAddress.toLowerCase(),
+        const payload = {
             status: 'pending',
-            merge_fields: {
-                MMERGE6: user.fullName,
-                'ADDRESS[zip]': user.zipCode,
-            },
-        });
+            email_address: user.emailAddress.toLowerCase(),
+        };
+        if (user.fullName || user.zipCode) {
+            payload.merge_fields = {};
+            if (user.fullName) {
+                payload.merge_fields.MMERGE6 = user.fullName;
+            }
+            if (user.zipCode) {
+                payload.merge_fields['ADDRESS[zip]'] = user.zipCode;
+            }
+        }
+
+        const result = await mailchimp.post(`lists/${process.env.MAILCHIMP_LIST_ID}/members`, payload);
 
         if (result.errors) {
             console.error(`result.errors: ${result.errors}`);
