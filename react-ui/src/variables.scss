@@ -1,6 +1,7 @@
 // Colors
 $color-green-light: #B3D6C9;
 $color-green-med: #349974;
+$color-green-background: #00754A;
 $color-purple: #8D48E6;
 $color-green-text: #00653a;
 $color-gray-text: #6E6C6B;
@@ -17,7 +18,7 @@ $global-padding-horizontal-large: 75px;
 // Header and nav
 $header-hamburger-breakpoint: 760px;
 $nav-link-padding: 2em;
-$nav-link-color: $color-green-text;
+$nav-link-color: #fff;
 
 // Buttons
 $button-background-color: $color-purple;
