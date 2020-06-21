@@ -19,7 +19,7 @@ const ResourcesSection = () => (
     */ }
         <div className="resource-box social">
             <p>Follow us on social media:</p>
-            <SocialIcons mode="follow" />
+            <SocialIcons mode="follow" variant="white" />
         </div>
     </div>
 );

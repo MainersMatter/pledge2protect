@@ -11,11 +11,12 @@ const ConfirmationDialog = ({ closeHandler }) => (
     <Dialog
         closeHandler={closeHandler}
         classNames="confirmation-dialog"
-        title="Thanks for pledging to help stop community spread."
+        title="Thanks for pledging to protect Maine."
     >
         <div className="upper">
-            <h2>You are a vector for good!</h2>
-            <p>Thanks for Pledging to Protect Maine! Now, <Link to="/challenges">challenge yourself...</Link></p>
+            <h2>Welcome to Maine!</h2>
+            <p>Please print a copy of this pledge and keep it with you.</p>
+            <p>We are happy to see you and wish you a healthy and relaxing visit!</p>
         </div>
         <div className="lower">
             <p>Share this pledge on:</p>
