@@ -22,6 +22,9 @@
         background: url(/static/media/chevron-down.293a0582.svg) no-repeat right 12px bottom 50%/30px 30px,
             linear-gradient(to left, $color-purple 0%, $color-purple 56px, #eeeeee 56px);
     }
+    hr {
+        margin: 100px 0 12px;
+    }
 }
 
 .bullet-points {

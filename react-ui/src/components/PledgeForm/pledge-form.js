@@ -10,6 +10,8 @@ import stateMappings from './states';
 import './pledge-form.scss';
 
 
+const GET_WELL_LOOP_URL = 'https://apps.getwellnetwork.com/loop-enroll/pledgetoprotectme-covid/';
+
 const PledgeForm = (props, ref) => {
     const {
         register, handleSubmit, errors, formState,
@@ -40,6 +42,10 @@ const PledgeForm = (props, ref) => {
         }
         try {
             await axios.post('/pledge', data);
+            if (data['requirement-quarantined'] === false && data['requirement-origin'] === false) {
+                window.location = GET_WELL_LOOP_URL;
+                return;
+            }
             setConfirmationDialogOpen(true);
         } catch (error) {
             console.error(`Error occurred posting pledge: ${error}`);
@@ -118,7 +124,7 @@ const PledgeForm = (props, ref) => {
                                 4. I will enroll in
                                 {' '}
                                 <a
-                                    href="https://apps.getwellnetwork.com/loop-enroll/pledgetoprotectme-covid/"
+                                    href={GET_WELL_LOOP_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -373,13 +379,14 @@ const PledgeForm = (props, ref) => {
                                 type="button"
                                 onClick={() => setPrivacyAndTermsDialogOpen(true)}
                             >
-                                I have read and agree with the Privacy Policy
+                                I have read and agree with the Terms and Conditions and Privacy Policy
                             </button>
                         </div>
                     </div>
 
                     <button className="btn" type="submit" disabled={!formState.isValid}>Take The Pledge</button>
                 </div>
+                <hr />
             </form>
             { isConfirmationDialogOpen && (
                 <ConfirmationDialog closeHandler={() => setConfirmationDialogOpen(false)} />

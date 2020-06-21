@@ -7,9 +7,9 @@ $resources-section-breakpoint: 600px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 1em $global-padding-horizontal-small;
+    padding: 48px $global-padding-horizontal-small;
     @media(min-width: $global-padding-breakpoint) {
-        padding: 1em $global-padding-horizontal-large;
+        padding: 48px $global-padding-horizontal-large;
     }
     @media(min-width: $resources-section-breakpoint) {
         flex-wrap: nowrap;
@@ -21,12 +21,16 @@ $resources-section-breakpoint: 600px;
 .resource-box {
     font-size: 1.125rem;
     font-weight: bold;
-    color: $color-purple;
-    border: solid 2px $color-purple;
+    background: $color-purple;
+    border-radius: 10px;
 
     margin-bottom: 1em;
     @media(min-width: $resources-section-breakpoint) {
         margin-bottom: 0;
+    }
+
+    p {
+        color: #fff;
     }
 
     > span {
@@ -44,6 +48,14 @@ $resources-section-breakpoint: 600px;
         padding: 1em;
         p {
             margin: 0 0 .5em;
+        }
+        a {
+            width: 50px;
+            height: 50px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
         }
     }
 }

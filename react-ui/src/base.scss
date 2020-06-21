@@ -38,6 +38,12 @@ strong {
  // color: $color-purple;
 }
 
+hr {
+    background: $color-green-background;
+    height: 2px;
+    width: 100%;
+}
+
 a {
     color: $color-purple;
     overflow-wrap: break-word;
