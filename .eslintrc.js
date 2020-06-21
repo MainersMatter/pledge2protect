@@ -27,6 +27,7 @@ module.exports = {
     ],
     rules: {
         'indent': ['error', 4],
+        'jsx-a11y/label-has-associated-control': [2, {assert: 'either'}],
         'max-len': ['warn', { 'code': 120 }],
         'no-console': 0,
         'no-debugger': 0,
