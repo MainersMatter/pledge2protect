@@ -18,8 +18,6 @@ function HomePage() {
             <MainContentBlock />
             <WelcomeToMaine />
             <PledgeForm ref={formRef} />
-            <PledgeCodeOfConduct />
-            <TwitterWidget />
             <ResourcesSection />
         </div>
     );

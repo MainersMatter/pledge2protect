@@ -1,6 +1,7 @@
 @import '../../variables';
 
 .pledge-form {
+    margin: 48px 0 0;
     background: white;
     padding: 0 $global-padding-horizontal-small;
     @media(min-width: $global-padding-breakpoint) {
@@ -21,6 +22,51 @@
         background: url(/static/media/chevron-down.293a0582.svg) no-repeat right 12px bottom 50%/30px 30px,
             linear-gradient(to left, $color-purple 0%, $color-purple 56px, #eeeeee 56px);
     }
+}
+
+.bullet-points {
+    color: #000;
+    line-height: 1.5;
+    h3 {
+        font-size: 2.25rem;
+        margin: 1em 0 .5em;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    li {
+        display: flex;
+        padding: 10px 0 0;
+    }
+    label {
+        margin: 5px 0 0;
+        line-height: 1.5;
+        font-weight: normal;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #000;
+        strong {
+            font-weight: normal;
+            color: $color-green-text;
+        }
+    }
+    a:link,
+    a:visited {
+        color: $color-green-text;
+    }
+    .tooltip-icon {
+        padding: 0 10px;
+        margin-top: 12px;
+    }
+    .try-my-best li {
+        display: block;
+    }
+}
+
+.instructions {
+    margin: 48px 0;
+    color: $color-green-text;
 }
 
 $form-grid-column-gap: 30px;
@@ -137,14 +183,13 @@ form .btn {
     background: url('../../assets/remove-member.svg') no-repeat;
     width: 35px;
     height: 35px;
-    padding: 0;
+    padding: 0 18px;
     margin: 0 0 13px 13px;
 }
 
 .wrap-member-email.is-last {
     display: flex;
     align-items: flex-end;
-    flex-wrap: wrap;
     margin-bottom: 12px;
     label {
         margin: 0;
