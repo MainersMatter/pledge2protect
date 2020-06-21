@@ -280,7 +280,7 @@ const TermsAndConditionsContent = ({ mode }) => {
                 prior to
                 exporting, re-exporting, releasing, or otherwise making the Application available outside the United States.
             </p>
-            <n3>13. US Government Rights.</n3>
+            <h3>13. US Government Rights.</h3>
             <p>
                 The Application is commercial computer software, as such term is defined in 48 C.F.R. §2.101. Accordingly,
                 if you

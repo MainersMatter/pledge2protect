@@ -60,3 +60,24 @@
     }
 }
 
+.minor-dialog {
+    color: #fff;
+    background: $color-green-background;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    max-width: 500px;
+    .close-button {
+        width: 40px;
+        height: 40px;
+        img {
+            max-width: 100%;
+            height: auto;
+            filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(187deg) brightness(106%) contrast(101%);
+            &:hover,
+            &:focus {
+                filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(187deg) brightness(106%) contrast(101%) brightness(85%);
+            }
+        }
+    }
+}
+

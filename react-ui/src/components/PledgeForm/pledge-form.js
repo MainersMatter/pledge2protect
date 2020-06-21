@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
+import Dialog from '../Dialog/dialog';
 import stateMappings from './states';
 
 import './pledge-form.scss';
@@ -18,6 +19,9 @@ const PledgeForm = (props, ref) => {
 
     const [isPledgePromptShown, setPledgePromptShown] = useState(false);
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
+    const [isCovidTestDialogOpen, setCovidTestDialogOpen] = useState(false);
+    const [isStateDialogOpen, setStateDialogOpen] = useState(false);
+    const [isDestinationEmailsDialogOpen, setDestinationEmailsDialogOpen] = useState(false);
     const [isPrivacyAndTermsDialogOpen, setPrivacyAndTermsDialogOpen] = useState(false);
     const [partyMembersCount, setPartyMembersCount] = useState(1);
     const partyMembersArray = new Array(partyMembersCount).fill(0);
@@ -85,6 +89,7 @@ const PledgeForm = (props, ref) => {
                             <button
                                 type="button"
                                 className="tooltip-icon"
+                                onClick={() => setCovidTestDialogOpen(true)}
                             >
                                 <span className="sr-only">Testing information</span>
                             </button>
@@ -197,6 +202,7 @@ const PledgeForm = (props, ref) => {
                                 <button
                                     type="button"
                                     className="tooltip-icon"
+                                    onClick={() => setStateDialogOpen(true)}
                                 >
                                     <span className="sr-only">State information</span>
                                 </button>
@@ -244,6 +250,7 @@ const PledgeForm = (props, ref) => {
                                 <button
                                     type="button"
                                     className="tooltip-icon"
+                                    onClick={() => setDestinationEmailsDialogOpen(true)}
                                 >
                                     <span className="sr-only">Destination email information</span>
                                 </button>
@@ -376,6 +383,34 @@ const PledgeForm = (props, ref) => {
             </form>
             { isConfirmationDialogOpen && (
                 <ConfirmationDialog closeHandler={() => setConfirmationDialogOpen(false)} />
+            ) }
+            { isCovidTestDialogOpen && (
+                <Dialog
+                    classNames="covid-test-dialog minor-dialog"
+                    title="Information on test results"
+                    closeHandler={() => setCovidTestDialogOpen(false)}
+                >
+                    Please keep in mind you might need to provide evidence, so we encourage you to carry your results
+                    with you.
+                </Dialog>
+            ) }
+            { isStateDialogOpen && (
+                <Dialog
+                    classNames="state-dialog minor-dialog"
+                    title="Information on states of origin"
+                    closeHandler={() => setStateDialogOpen(false)}
+                >
+                    If members of the travel party come from different states, you will have to sign a pledge per state.
+                </Dialog>
+            ) }
+            { isDestinationEmailsDialogOpen && (
+                <Dialog
+                    classNames="destination-emails-dialog minor-dialog"
+                    title="Information on destination emails"
+                    closeHandler={() => setDestinationEmailsDialogOpen(false)}
+                >
+                    If visiting multiple destinations, enter email addresses separated by a comma.
+                </Dialog>
             ) }
             { isPrivacyAndTermsDialogOpen && (
                 <PrivacyTermsDialog closeHandler={() => setPrivacyAndTermsDialogOpen(false)} />
