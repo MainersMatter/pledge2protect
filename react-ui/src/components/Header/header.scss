@@ -1,9 +1,9 @@
 @import '../../variables';
 
 .global-header {
-    background: #fff;
+    background: $color-green-background;
     padding: 15px $global-padding-horizontal-small;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
     margin-bottom: 5px;
 
     h1 {
