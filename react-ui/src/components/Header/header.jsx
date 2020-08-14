@@ -4,7 +4,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-import logo from '../../assets/PPME_Opt2_Horiz_White-01 1.png';
+import logo from '../../assets/PPME_Opt2_Horiz_green-01.svg';
 
 import './header.scss';
 
