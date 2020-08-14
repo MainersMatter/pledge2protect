@@ -8,6 +8,7 @@ $main-content-block-breakpoint-small: 650px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 34% center;
+    box-shadow: inset 0px 6px 6px -3px rgba(0,0,0,0.3);
     height: 520px;
 
     @media(min-width: $main-content-block-breakpoint-small) {
