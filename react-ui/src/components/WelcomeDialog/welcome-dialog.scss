@@ -1,0 +1,55 @@
+@import '../../variables';
+
+$welcome-bg-img: '../../assets/michael-browning-DmWsS9AWN6c-unsplash 1.jpg';
+
+div.welcome-dialog {
+    max-width: 1280px;
+    background: url($welcome-bg-img) top center no-repeat #fff;
+    background-size: 1280px;
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+
+    .text {
+        margin-top: 50px;
+        h2 {
+            margin: 0;
+            text-transform: uppercase;
+        }
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 30px auto 0;
+        .btn {
+            margin: 20px 0;
+            background: $color-purple;
+            color: #fff;
+            max-width: 400px;
+        }
+    }
+    @media (min-width: 500px) {
+        .text {
+            margin-top: 0;
+        }
+    }
+    @media (min-width: 950px) {
+        flex-direction: row;
+        .text {
+            margin-right: 7vw;
+        }
+        .buttons {
+            justify-content: center;
+        }
+        @media (min-height: 550px) {
+            .text {
+                margin-right: 0;
+                margin-top: 360px;
+                padding-bottom: 50px;
+                h2 {
+                    margin: 1em 0;
+                }
+            }
+        }
+    }
+}

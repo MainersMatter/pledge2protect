@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React, { useState } from 'react';
 
 import MainContentBlock from '../components/MainContentBlock/main-content-block';
 import WelcomeToMaine from '../components/WelcomeToMaine/welcome-to-maine';
@@ -13,11 +13,13 @@ import './home-page.scss';
 function HomePage() {
     const formRef = React.createRef();
 
+    const [visitIntention, setVisitIntention] = useState(undefined);
+
     return (
         <div className="home-page">
             <MainContentBlock />
-            <WelcomeToMaine />
-            <PledgeForm ref={formRef} />
+            <WelcomeToMaine setVisitIntention={setVisitIntention} />
+            <PledgeForm ref={formRef} visitIntention={visitIntention} />
             <ResourcesSection />
         </div>
     );
