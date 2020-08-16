@@ -11,7 +11,7 @@ import stateMappings from './states';
 import './pledge-form.scss';
 
 
-const GET_WELL_LOOP_URL = 'https://apps.getwellnetwork.com/loop-enroll/pledgetoprotectme-covid/';
+const GET_WELL_LOOP_URL = 'https://apps.getwellnetwork.com/loop-enroll/welcome-to-maine/';
 
 const PledgeForm = (props, ref) => {
     const {
@@ -67,7 +67,7 @@ const PledgeForm = (props, ref) => {
                             You must check at least one pledge item
                         </p>
                     ) }
-                    <h3>I pledge that,</h3>
+                    <h3>Before arriving I pledge that,</h3>
                     <ul>
                         <li className="inline-field">
                             <input
@@ -112,7 +112,7 @@ const PledgeForm = (props, ref) => {
                                 ref={register()}
                             />
                             <label htmlFor="requirement-origin">
-                                3. I am from a county with a low incidence of COVID-19 in Vermont or New Hampshire, or
+                                3. I am from an approved state with a low incidence of COVID-19; Vermont, New Hampshire, Connecticut, New York, New Jersey, or
                             </label>
                         </li>
                         <li className="inline-field">
@@ -138,7 +138,7 @@ const PledgeForm = (props, ref) => {
                         </li>
                     </ul>
 
-                    <h3>I will try my best to,</h3>
+                    <h3>While visiting I will try my best to,</h3>
                     <ul className="try-my-best">
                         <li>
                             5. To keep a distance of <strong>six feet</strong> from people who are not in my traveling
@@ -158,13 +158,10 @@ const PledgeForm = (props, ref) => {
 
                 { visitIntention !== 'return' && (
                     <>
-                        <p className="instructions">
-                            Send a copy of this pledge including your name and date for each member of your travel party to your
-                            destinations.
-                        </p>
+                        <h3>Now complete these 3 easy steps and click Submit!</h3>
 
                         <div className="pledge-info">
-                            <h3>Your Info</h3>
+                            <h4>Your Info</h4>
                             <div className="pledge-form-grid">
                                 <div className="wrap-fullname">
                                     <label htmlFor="field-fullname">Full Name<span aria-hidden="true">*</span>:
@@ -253,7 +250,7 @@ const PledgeForm = (props, ref) => {
                                     ) }
                                 </div>
                             </div>
-                            <h3>Where are you heading to?</h3>
+                            <h4>Where are you heading to?</h4>
                             <div className="pledge-form-grid">
                                 <div className="wrap-destination-email">
                                     <label htmlFor="field-destination-email">
@@ -289,7 +286,12 @@ const PledgeForm = (props, ref) => {
                                 </div>
                             </div>
 
-                            <h3>Party Members</h3>
+                            <h4>Party Members</h4>
+
+                            <p className="instructions">
+                                Send a copy of this pledge to each member of your travel party.
+                            </p>
+
                             <div className="pledge-form-grid">
                                 { partyMembersArray.map((_, memberIndex) => (
                                     <>

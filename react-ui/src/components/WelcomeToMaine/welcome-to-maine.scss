@@ -3,9 +3,9 @@
 .welcome-to-maine {
     background: $color-green-background;
     line-height: 1.5;
-    padding: 75px $global-padding-horizontal-small 30px;
+    padding: 75px $global-padding-horizontal-small 75px;
     @media(min-width: $global-padding-breakpoint) {
-        padding: 75px $global-padding-horizontal-large 30px;
+        padding: 75px $global-padding-horizontal-large 75px;
     }
     h2 {
         font-size: 2.25rem;
@@ -21,7 +21,7 @@
         font-weight: bold;
     }
     .buttons {
-        margin: 30px 0 60px;
+        margin: 30px 0 20px;
         .btn {
             margin: 0 2em 0 0;
         }

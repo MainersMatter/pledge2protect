@@ -5,7 +5,7 @@ import './welcome-to-maine.scss';
 import WelcomeDialog from '../WelcomeDialog/welcome-dialog';
 
 
-const WelcomeToMaine = ({ setVisitIntention }) => {
+const WelcomeToMaine = ({ visitIntention, setVisitIntention }) => {
     const [isReasonDialogOpen, setReasonDialogOpen] = useState(false);
 
     return (
@@ -14,14 +14,23 @@ const WelcomeToMaine = ({ setVisitIntention }) => {
                 <h2>Welcome to Maine!</h2>
                 <p>Your actions to protect your wellbeing and the wellbeing of others are commendable. And we can't wait to welcome you to Maine!</p>
                 <p className="agree">Agreeing to and signing this pledge will make your visit to Maine more safe, smooth, and free of worries.</p>
-                <div className="buttons">
-                    <button type="button" className="btn squarish" onClick={() => { setReasonDialogOpen(true); }}>
-                        Visitor
-                    </button>
-                    <button type="button" className="btn squarish" onClick={() => { window.location.href = '#business-owner'; }}>
-                        Business Owner
-                    </button>
-                </div>
+                { visitIntention === undefined && (
+                    <div className="buttons">
+                        <button type="button" className="btn squarish" onClick={() => { setReasonDialogOpen(true); }}>
+                            Visitor
+                        </button>
+                        <button
+                            type="button"
+                            className="btn squarish"
+                            onClick={() => {
+                                setVisitIntention('business');
+                                window.location.href = '#business-owner';
+                            }}
+                        >
+                            Business Owner
+                        </button>
+                    </div>
+                ) }
             </div>
             { isReasonDialogOpen && (
                 <WelcomeDialog closeHandler={() => setReasonDialogOpen(false)} setVisitIntention={setVisitIntention} />
@@ -31,6 +40,7 @@ const WelcomeToMaine = ({ setVisitIntention }) => {
 };
 
 WelcomeToMaine.propTypes = {
+    visitIntention: PropTypes.string.isRequired,
     setVisitIntention: PropTypes.func.isRequired,
 };
 
