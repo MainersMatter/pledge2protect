@@ -22,6 +22,7 @@ const WelcomeDialog = ({ setVisitIntention, closeHandler }) => (
                 onClick={() => {
                     setVisitIntention('return');
                     closeHandler();
+                    setTimeout(() => { window.location.href='#pledge'; }, 1);
                 }}
             >
                 Returning from Vacation
@@ -32,6 +33,7 @@ const WelcomeDialog = ({ setVisitIntention, closeHandler }) => (
                 onClick={() => {
                     setVisitIntention('vacation');
                     closeHandler();
+                    setTimeout(() => { window.location.href='#pledge'; }, 1);
                 }}
             >
                 Coming to Vacation

@@ -18,7 +18,7 @@ function HomePage() {
     return (
         <div className="home-page">
             <MainContentBlock />
-            <WelcomeToMaine setVisitIntention={setVisitIntention} />
+            <WelcomeToMaine visitIntention={visitIntention} setVisitIntention={setVisitIntention} />
             <PledgeForm ref={formRef} visitIntention={visitIntention} />
             <ResourcesSection />
         </div>
