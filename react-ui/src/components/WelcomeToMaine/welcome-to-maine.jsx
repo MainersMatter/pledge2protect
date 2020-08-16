@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './welcome-to-maine.scss';
-import Dialog from '../Dialog/dialog';
+import WelcomeDialog from '../WelcomeDialog/welcome-dialog';
 
 
-const WelcomeToMaine = () => {
+const WelcomeToMaine = ({ setVisitIntention }) => {
     const [isReasonDialogOpen, setReasonDialogOpen] = useState(false);
 
     return (
@@ -23,16 +24,14 @@ const WelcomeToMaine = () => {
                 </div>
             </div>
             { isReasonDialogOpen && (
-                <Dialog
-                    classNames="reason-dialog"
-                    title="Please let us know the reason for your visit"
-                    closeHandler={() => setReasonDialogOpen(false)}
-                >
-                    Reason for visit
-                </Dialog>
+                <WelcomeDialog closeHandler={() => setReasonDialogOpen(false)} setVisitIntention={setVisitIntention} />
             ) }
         </>
-    )
+    );
+};
+
+WelcomeToMaine.propTypes = {
+    setVisitIntention: PropTypes.func.isRequired,
 };
 
 export default WelcomeToMaine;
