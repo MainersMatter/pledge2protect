@@ -8,7 +8,8 @@ div.welcome-dialog {
     background-size: 1280px;
     display: flex;
     flex-direction: column;
-    min-height: 90vh;
+    height: 90vh;
+    max-height: 660px;
 
     .text {
         margin-top: 50px;
