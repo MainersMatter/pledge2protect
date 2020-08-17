@@ -1,5 +1,7 @@
 @import '../../variables';
 
+$form-grid-breakpoint: 560px;
+
 .pledge-form {
     margin: 48px 0 0;
     background: white;
@@ -23,11 +25,14 @@
         color: $color-green-text;
     }
     select {
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-        background: url(/static/media/chevron-down.293a0582.svg) no-repeat right 12px bottom 50%/30px 30px,
-            linear-gradient(to left, $color-purple 0%, $color-purple 56px, #eeeeee 56px);
+        background: #eee;
+        @media (max-width: $form-grid-breakpoint), (min-width: 750px) {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background: url(/static/media/chevron-down.293a0582.svg) no-repeat right 12px bottom 50%/30px 30px,
+                linear-gradient(to left, $color-purple 0%, $color-purple 56px, #eeeeee 56px);
+        }
     }
     hr {
         margin: 100px 0 12px;
@@ -78,16 +83,24 @@
 $form-grid-column-gap: 30px;
 
 .pledge-form-grid {
-    @media(min-width: 510px) {
+    @media(min-width: $form-grid-breakpoint) {
         display: grid;
         grid-column-gap: $form-grid-column-gap;
         grid-row-gap: .5em;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: 1fr .65fr .35fr;
     }
 }
 
-.wrap-zip {
-    max-width: 300px;
+.wrap-email {
+    grid-column: 2 / span 2;
+}
+
+.wrap-dependents {
+    .inline-field label {
+        padding-left: 0;
+        text-indent: 0;
+        margin-top: 5px;
+    }
 }
 
 input, select {

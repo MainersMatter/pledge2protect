@@ -204,6 +204,30 @@ const PledgeForm = (props, ref) => {
                                         </p>
                                     ) }
                                 </div>
+                                <div className="wrap-phone">
+                                    <label htmlFor="field-phone">Phone number<span aria-hidden="true">*</span>:
+                                        <input
+                                            id="field-phone"
+                                            name="phoneNumber"
+                                            type="tel"
+                                            autoCorrect="off"
+                                            spellCheck="false"
+                                            aria-describedby={`${errors.phoneNumber ? 'error-phone' : ''}`}
+                                            aria-required="true"
+                                            aria-invalid={errors.phoneNumber}
+                                            ref={(e) => {
+                                                register(e, { required: true, pattern: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/ });
+                                                // eslint-disable-next-line no-param-reassign
+                                                ref.current = e;
+                                            }}
+                                        />
+                                    </label>
+                                    { errors.phoneNumber && (
+                                        <p className="error" id="error-phone" aria-live="polite">
+                                            Please enter a valid phone number
+                                        </p>
+                                    ) }
+                                </div>
                                 <div className="wrap-state">
                                     <label htmlFor="field-state">
                                         State<span aria-hidden="true">*</span>:
@@ -250,6 +274,26 @@ const PledgeForm = (props, ref) => {
                                     ) }
                                 </div>
                             </div>
+
+                            <div className="dependents">
+                                <div className="wrap-dependents">
+                                    <div className="inline-field">
+                                        <div className="form-group">
+                                            <input
+                                                type="checkbox"
+                                                id="dependents-certification"
+                                                name="dependentsCertification"
+                                            />
+                                            <label htmlFor="dependents-certification">
+                                                I also certify that all persons in my care who are under the age of 18, or
+                                                who are dependent on my care, meet the criteria described in this pledge.
+                                                Please provide the ages of such persons in your care.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <h4>Where are you heading to?</h4>
                             <div className="pledge-form-grid">
                                 <div className="wrap-destination-email">
