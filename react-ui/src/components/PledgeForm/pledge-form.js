@@ -30,6 +30,8 @@ const PledgeForm = (props, ref) => {
     const [isPrivacyAndTermsDialogOpen, setPrivacyAndTermsDialogOpen] = useState(false);
     const [partyMembersCount, setPartyMembersCount] = useState(1);
     const partyMembersArray = new Array(partyMembersCount).fill(0);
+    const [dependentsCount, setDependentsCount] = useState(0);
+    const dependentsArray = new Array(dependentsCount).fill(0);
 
     const onSubmit = async (data) => {
         if (
@@ -138,7 +140,10 @@ const PledgeForm = (props, ref) => {
                         </li>
                     </ul>
 
-                    <h3>While visiting I will try my best to,</h3>
+                    <h3>
+                        { visitIntention === 'return' ? 'Upon returning ' : 'While visiting '}
+                        I will try my best to,
+                    </h3>
                     <ul className="try-my-best">
                         <li>
                             5. To keep a distance of <strong>six feet</strong> from people who are not in my traveling
@@ -283,6 +288,11 @@ const PledgeForm = (props, ref) => {
                                                 type="checkbox"
                                                 id="dependents-certification"
                                                 name="dependentsCertification"
+                                                onChange={(evt) => {
+                                                    if (evt.target.checked && dependentsCount === 0) {
+                                                        setDependentsCount(1);
+                                                    }
+                                                }}
                                             />
                                             <label htmlFor="dependents-certification">
                                                 I also certify that all persons in my care who are under the age of 18, or
@@ -292,45 +302,83 @@ const PledgeForm = (props, ref) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <h4>Where are you heading to?</h4>
-                            <div className="pledge-form-grid">
-                                <div className="wrap-destination-email">
-                                    <label htmlFor="field-destination-email">
-                                        Destination E-mail<span aria-hidden="true">*</span>:
-                                        <button
-                                            type="button"
-                                            className="tooltip-icon"
-                                            onClick={() => setDestinationEmailsDialogOpen(true)}
-                                        >
-                                            <span className="sr-only">Destination email information</span>
-                                        </button>
-                                        <input
-                                            id="field-destination-email"
-                                            name="destinationEmail"
-                                            type="text"
-                                            inputMode="email"
-                                            autoCorrect="off"
-                                            spellCheck="false"
-                                            aria-describedby={`${errors.destinationEmail ? 'error-email' : ''}`}
-                                            aria-required="true"
-                                            aria-invalid={errors.destinationEmail}
-                                            ref={register({
-                                                required: true,
-                                                pattern: /^([\w-.+]+@([\w-]+.)+[\w-]{2,4}( *, *)?)+$/,
-                                            })}
-                                        />
-                                    </label>
-                                    { errors.destinationEmail && (
-                                        <p className="error" id="error-destination-email" aria-live="polite">
-                                            Please enter a valid email address or comma-separated list of email addresses
-                                        </p>
-                                    ) }
+                                <div className="pledge-form-grid">
+                                    { dependentsArray.map((_, dependentIndex) => (
+                                        <>
+                                            <div className="wrap-dependent-fullname">
+                                                <label htmlFor={`field-dependent-fullname-${dependentIndex}`}>
+                                                    Full Name<span aria-hidden="true">*</span>:
+                                                    <input
+                                                        id={`field-dependent-fullname-${dependentIndex}`}
+                                                        name={`dependentFullName-${dependentIndex}`}
+                                                        type="text"
+                                                        aria-describedby={`${
+                                                            errors[`dependentFullName-${dependentIndex}`] ?
+                                                                `error-dependent-fullname-${dependentIndex}` : ''}
+                                                        `}
+                                                        aria-required="true"
+                                                        aria-invalid={errors[`dependentFullName-${dependentIndex}`]}
+                                                        ref={register({ required: true })}
+                                                    />
+                                                </label>
+                                                { errors[`dependentFullName-${dependentIndex}`] && (
+                                                    <p className="error" id={`error-dependent-fullname-${dependentIndex}`} aria-live="polite">
+                                                        This field is required
+                                                    </p>
+                                                ) }
+                                            </div>
+                                            <div className={
+                                                `wrap-dependent-age ${(dependentIndex === dependentsCount - 1 ? 'is-last' : '')}`
+                                            }
+                                            >
+                                                <label htmlFor={`field-dependent-age-${dependentIndex}`}>
+                                                    Age<span aria-hidden="true">*</span>:
+                                                    <input
+                                                        id={`field-dependent-age-${dependentIndex}`}
+                                                        name={`dependentAge-${dependentIndex}`}
+                                                        type="tel"
+                                                        aria-describedby={`${
+                                                            errors[`dependentAge-${dependentIndex}`] ?
+                                                                `error-dependent-age-${dependentIndex}` : ''}
+                                                        `}
+                                                        aria-required="true"
+                                                        aria-invalid={errors[`dependentAge-${dependentIndex}`]}
+                                                        ref={register({ required: true, pattern: /^\d{1,3}$/ })}
+                                                    />
+                                                </label>
+                                                { (dependentIndex === dependentsCount - 1 && (
+                                                    <button
+                                                        type="button"
+                                                        className="remove-dependent"
+                                                        onClick={() => { setDependentsCount(dependentsCount - 1); }}
+                                                        title="Remove dependent"
+                                                    >
+                                                        <span className="sr-only">Remove dependent</span>
+                                                    </button>
+                                                )) }
+                                            </div>
+                                            { errors[`dependentAge-${dependentIndex}`] && (
+                                                <p className="error" id={`error-dependent-age-${dependentIndex}`} aria-live="polite">
+                                                    Please enter a valid dependent age between 0 and 120
+                                                </p>
+                                            ) }
+                                        </>
+                                    )) }
                                 </div>
+
+                                <button
+                                    type="button"
+                                    className="add-dependent"
+                                    onClick={() => {
+                                        setDependentsCount(dependentsCount + 1);
+                                    }}
+                                >
+                                    Add minor or dependent
+                                </button>
                             </div>
 
-                            <h4>Party Members</h4>
+                            <h4>Party Members (18+)</h4>
 
                             <p className="instructions">
                                 Send a copy of this pledge to each member of your travel party.
@@ -410,6 +458,70 @@ const PledgeForm = (props, ref) => {
                             >
                                 Add participant
                             </button>
+
+                            <h4>Where are you heading to?</h4>
+
+                            <p className="instructions">
+                                Send a copy of this pledge including your name and date for each member of your travel party to your destinations.
+                            </p>
+
+                            <div className="pledge-form-grid">
+                                <div className="wrap-destination-email">
+                                    <label htmlFor="field-destination-email">
+                                        Destination E-mail<span aria-hidden="true">*</span>:
+                                        <button
+                                            type="button"
+                                            className="tooltip-icon"
+                                            onClick={() => setDestinationEmailsDialogOpen(true)}
+                                        >
+                                            <span className="sr-only">Destination email information</span>
+                                        </button>
+                                        <input
+                                            id="field-destination-email"
+                                            name="destinationEmail"
+                                            type="text"
+                                            inputMode="email"
+                                            autoCorrect="off"
+                                            spellCheck="false"
+                                            aria-describedby={`${errors.destinationEmail ? 'error-email' : ''}`}
+                                            aria-required="true"
+                                            aria-invalid={errors.destinationEmail}
+                                            ref={register({
+                                                required: true,
+                                                pattern: /^([\w-.+]+@([\w-]+.)+[\w-]{2,4}( *, *)?)+$/,
+                                            })}
+                                        />
+                                    </label>
+                                    { errors.destinationEmail && (
+                                        <p className="error" id="error-destination-email" aria-live="polite">
+                                            Please enter a valid email address or comma-separated list of email addresses
+                                        </p>
+                                    ) }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="wrap-arrival-date">
+                            <label htmlFor="field-arrival-date">
+                                Date<span aria-hidden="true">*</span>:
+                                <input
+                                    id="field-arrival-date"
+                                    name="arrivalDate"
+                                    type="date"
+                                    min={`${new Date().getFullYear()}-${('0' + (new Date().getMonth() + 1)).slice(-2)}-${('0' + new Date().getDate()).slice(-2)}`}
+                                    aria-describedby={`${errors.arrivalDate ? 'error-arrival-date' : ''}`}
+                                    aria-required="true"
+                                    aria-invalid={errors.arrivalDate}
+                                    ref={register({
+                                        required: true,
+                                    })}
+                                />
+                            </label>
+                            { errors.arrivalDate && (
+                                <p className="error" id="error-arrival-date" aria-live="polite">
+                                    Please enter a valid date
+                                </p>
+                            ) }
                         </div>
                     </>
                 ) }
