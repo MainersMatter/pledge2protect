@@ -1,5 +1,7 @@
 @import '../../variables';
 
+$form-grid-breakpoint: 560px;
+
 .pledge-form {
     margin: 48px 0 0;
     background: white;
@@ -14,7 +16,7 @@
     h3, h4 {
         text-transform: uppercase;
         color: $color-purple;
-        margin: 1em 0 .5em;
+        margin: 1.5em 0 .5em;
     }
     h4 {
         font-size: 1.75rem;
@@ -23,11 +25,14 @@
         color: $color-green-text;
     }
     select {
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-        background: url(/static/media/chevron-down.293a0582.svg) no-repeat right 12px bottom 50%/30px 30px,
-            linear-gradient(to left, $color-purple 0%, $color-purple 56px, #eeeeee 56px);
+        background: #eee;
+        @media (max-width: $form-grid-breakpoint), (min-width: 750px) {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background: url(/static/media/chevron-down.293a0582.svg) no-repeat right 12px bottom 50%/30px 30px,
+                linear-gradient(to left, $color-purple 0%, $color-purple 56px, #eeeeee 56px);
+        }
     }
     hr {
         margin: 100px 0 12px;
@@ -71,23 +76,40 @@
 }
 
 .instructions {
-    margin: 48px 0;
     color: $color-green-text;
 }
 
 $form-grid-column-gap: 30px;
 
 .pledge-form-grid {
-    @media(min-width: 510px) {
+    @media(min-width: $form-grid-breakpoint) {
         display: grid;
         grid-column-gap: $form-grid-column-gap;
         grid-row-gap: .5em;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: 1fr .65fr .35fr;
     }
 }
 
-.wrap-zip {
-    max-width: 300px;
+.wrap-email,
+.wrap-dependent-age,
+.wrap-member-email {
+    grid-column: 2 / span 2;
+}
+
+.dependents {
+    margin-top: 1em;
+}
+
+.wrap-dependents {
+    .inline-field label {
+        padding-left: 0;
+        text-indent: 0;
+        margin-top: 5px;
+    }
+}
+
+.wrap-destination-email {
+    grid-column: 1 / span 3;
 }
 
 input, select {
@@ -171,7 +193,9 @@ form .btn {
 }
 
 .add-member,
-.remove-member {
+.remove-member,
+.add-dependent,
+.remove-dependent {
     border: 0;
     background-color: transparent;
     cursor: pointer;
@@ -180,12 +204,14 @@ form .btn {
         opacity: .7;
     }
 }
-.add-member {
+.add-member,
+.add-dependent {
     background: url('../../assets/add-member.svg') no-repeat;
     height: 35px;
     padding: 0 0 0 50px;
 }
-.remove-member {
+.remove-member,
+.remove-dependent {
     background: url('../../assets/remove-member.svg') no-repeat;
     width: 35px;
     height: 35px;
@@ -193,15 +219,18 @@ form .btn {
     margin: 0 0 13px 13px;
 }
 
-.wrap-member-email.is-last {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 12px;
-    label {
-        margin: 0;
-        flex-grow: 2;
-    }
-    .error {
-        flex-basis: 100%;
+.wrap-member-email,
+.wrap-dependent-age {
+    &.is-last {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 12px;
+        label {
+            margin: 0;
+            flex-grow: 2;
+        }
+        .error {
+            flex-basis: 100%;
+        }
     }
 }
