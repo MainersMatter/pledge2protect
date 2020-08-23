@@ -551,7 +551,6 @@ const PledgeForm = (props, ref) => {
 
                     <button className="btn" type="submit" disabled={!formState.isValid}>Take The Pledge</button>
                 </div>
-                <hr />
             </form>
             { isConfirmationDialogOpen && (
                 <ConfirmationDialog closeHandler={() => setConfirmationDialogOpen(false)} />
