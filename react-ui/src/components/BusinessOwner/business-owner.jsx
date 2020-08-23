@@ -52,7 +52,7 @@ const BusinessOwner = () => {
 
                 { isEmbedCodeOpen && (
                     <code className="embed-code">
-                        &lt;img src="{`https://${document.location.host}${badge}`}" width="351" height="307" alt="Pledge to Protect ME badge" /&gt;
+                        &lt;img src="{badge}" width="351" height="307" alt="Pledge to Protect ME badge" /&gt;
                     </code>
                 ) }
             </div>
