@@ -13,6 +13,12 @@ import './pledge-form.scss';
 
 const GET_WELL_LOOP_URL = 'https://apps.getwellnetwork.com/loop-enroll/welcome-to-maine/';
 
+const DEPENDENT_RELATIONSHIP_CHOICES = [
+    { value: 'son-daughter', label: 'Son/Daughter' },
+    { value: 'niece-nephew', label: 'Niece/Nephew' },
+    { value: 'grandson-granddaughter', label: 'Grandson/Granddaughter' },
+];
+
 const PledgeForm = (props, ref) => {
     const {
         register, handleSubmit, errors, formState,
@@ -32,6 +38,8 @@ const PledgeForm = (props, ref) => {
     const partyMembersArray = new Array(partyMembersCount).fill(0);
     const [dependentsCount, setDependentsCount] = useState(0);
     const dependentsArray = new Array(dependentsCount).fill(0);
+    const [destinationsCount, setDestinationsCount] = useState(1);
+    const destinationsArray = new Array(destinationsCount).fill(0);
 
     const onSubmit = async (data) => {
         if (
@@ -47,11 +55,8 @@ const PledgeForm = (props, ref) => {
         }
         try {
             await axios.post('/pledge', data);
-            if (data['requirement-quarantined'] === false && data['requirement-origin'] === false) {
-                window.location = GET_WELL_LOOP_URL;
-                return;
-            }
-            setConfirmationDialogOpen(true);
+            window.location = GET_WELL_LOOP_URL;
+            return;
         } catch (error) {
             console.error(`Error occurred posting pledge: ${error}`);
             // TODO: replace with something nicer
@@ -80,9 +85,9 @@ const PledgeForm = (props, ref) => {
                                 ref={register()}
                             />
                             <label htmlFor="requirement-quarantined">
-                                1. I have stayed home "in quarantine" except for essential trips during which I used a
-                                mask and hand washing precautions
-                                for <strong>14 days before my arrival in Maine</strong>, or
+                                1. I commit to staying "in quarantine" except for essential trips during which I will
+                                use a mask and hand washing precautions
+                                for <strong>14 days upon my arrival in Maine</strong>, or
                             </label>
                         </li>
                         <li className="inline-field">
@@ -114,48 +119,27 @@ const PledgeForm = (props, ref) => {
                                 ref={register()}
                             />
                             <label htmlFor="requirement-origin">
-                                3. I am from an approved state with a low incidence of COVID-19; Vermont, New Hampshire, Connecticut, New York, New Jersey, or
-                            </label>
-                        </li>
-                        <li className="inline-field">
-                            <input
-                                type="checkbox"
-                                id="requirement-getwellloop"
-                                name="requirement-getwellloop"
-                                onChange={() => setPledgePromptShown(false)}
-                                ref={register()}
-                            />
-                            <label htmlFor="requirement-getwellloop">
-                                4. I will enroll in
-                                {' '}
-                                <a
-                                    href={GET_WELL_LOOP_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    GetWellLoop
-                                </a> now, a simple symptom self-monitoring system to monitor my symptoms during my visit
-                                in Maine.
+                                3. I am from an approved state with a low incidence of COVID-19; Vermont, New Hampshire, Connecticut, New York, New Jersey, and
                             </label>
                         </li>
                     </ul>
 
                     <h3>
-                        { visitIntention === 'return' ? 'Upon returning ' : 'While visiting '}
+                        { visitIntention === 'return' ? 'Upon returning ' : 'While in Maine '}
                         I will try my best to,
                     </h3>
                     <ul className="try-my-best">
                         <li>
-                            5. To keep a distance of <strong>six feet</strong> from people who are not in my traveling
+                            To keep a distance of <strong>six feet</strong> from people who are not in my traveling
                             party.
                         </li>
-                        <li>6. To wash my hands for 20 seconds with soap and water frequently.</li>
+                        <li>To wash my hands for 20 seconds with soap and water frequently.</li>
                         <li>
-                            7. To wear a mask at public gatherings and avoid public gatherings with greater than 50
+                            To wear a mask at public gatherings and avoid public gatherings with greater than 50
                             people when possible.
                         </li>
                         <li>
-                            8. To contact a health care professional or dial 211 if I have a fever or symptoms. In an
+                            To contact a health care professional or dial 211 if I have a fever or symptoms. In an
                             emergency I will call 911.
                         </li>
                     </ul>
@@ -176,7 +160,7 @@ const PledgeForm = (props, ref) => {
                                             type="text"
                                             aria-describedby={`${errors.fullName ? 'error-fullname' : ''}`}
                                             aria-required="true"
-                                            aria-invalid={errors.fullName}
+                                            aria-invalid={errors.fullName !== undefined}
                                             ref={register({ required: true })}
                                         />
                                     </label>
@@ -195,7 +179,7 @@ const PledgeForm = (props, ref) => {
                                             spellCheck="false"
                                             aria-describedby={`${errors.emailAddress ? 'error-email' : ''}`}
                                             aria-required="true"
-                                            aria-invalid={errors.emailAddress}
+                                            aria-invalid={errors.emailAddress !== undefined}
                                             ref={(e) => {
                                                 register(e, { required: true, pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/ });
                                                 // eslint-disable-next-line no-param-reassign
@@ -219,7 +203,7 @@ const PledgeForm = (props, ref) => {
                                             spellCheck="false"
                                             aria-describedby={`${errors.phoneNumber ? 'error-phone' : ''}`}
                                             aria-required="true"
-                                            aria-invalid={errors.phoneNumber}
+                                            aria-invalid={errors.phoneNumber !== undefined}
                                             ref={(e) => {
                                                 register(e, { required: true, pattern: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/ });
                                                 // eslint-disable-next-line no-param-reassign
@@ -248,7 +232,7 @@ const PledgeForm = (props, ref) => {
                                             name="state"
                                             aria-describedby={`${errors.state ? 'error-state' : ''}`}
                                             aria-required="true"
-                                            aria-invalid={errors.state}
+                                            aria-invalid={errors.state !== undefined}
                                             ref={register({ required: true })}
                                         >
                                             <option value="" key="none"> </option>
@@ -268,7 +252,7 @@ const PledgeForm = (props, ref) => {
                                             name="zipCode"
                                             type="tel"
                                             aria-describedby={`${errors.zipCode ? 'error-zip' : ''}`}
-                                            aria-invalid={errors.zipCode}
+                                            aria-invalid={errors.zipCode !== undefined}
                                             ref={register({ pattern: /^\d{5}(-\d{4})?$/ })}
                                         />
                                     </label>
@@ -306,24 +290,28 @@ const PledgeForm = (props, ref) => {
                                 <div className="pledge-form-grid">
                                     { dependentsArray.map((_, dependentIndex) => (
                                         <>
-                                            <div className="wrap-dependent-fullname">
-                                                <label htmlFor={`field-dependent-fullname-${dependentIndex}`}>
-                                                    Full Name<span aria-hidden="true">*</span>:
-                                                    <input
-                                                        id={`field-dependent-fullname-${dependentIndex}`}
-                                                        name={`dependentFullName-${dependentIndex}`}
-                                                        type="text"
+                                            <div className="wrap-dependent-relationship">
+                                                <label htmlFor={`field-dependent-relationship-${dependentIndex}`}>
+                                                    Relationship<span aria-hidden="true">*</span>:
+                                                    <select
+                                                        id={`field-dependent-relationship-${dependentIndex}`}
+                                                        name={`dependentRelationship-${dependentIndex}`}
                                                         aria-describedby={`${
-                                                            errors[`dependentFullName-${dependentIndex}`] ?
-                                                                `error-dependent-fullname-${dependentIndex}` : ''}
+                                                            errors[`dependentRelationship-${dependentIndex}`] ?
+                                                                `error-dependent-relationship-${dependentIndex}` : ''}
                                                         `}
                                                         aria-required="true"
-                                                        aria-invalid={errors[`dependentFullName-${dependentIndex}`]}
+                                                        aria-invalid={errors[`dependentRelationship-${dependentIndex}`] !== undefined}
                                                         ref={register({ required: true })}
-                                                    />
+                                                    >
+                                                        <option value="" key="none"> </option>
+                                                        { DEPENDENT_RELATIONSHIP_CHOICES.map((choiceObj) => (
+                                                            <option value={choiceObj.value} key={choiceObj.value}>{choiceObj.label}</option>
+                                                        )) }
+                                                    </select>
                                                 </label>
-                                                { errors[`dependentFullName-${dependentIndex}`] && (
-                                                    <p className="error" id={`error-dependent-fullname-${dependentIndex}`} aria-live="polite">
+                                                { errors[`dependentRelationship-${dependentIndex}`] && (
+                                                    <p className="error" id={`error-dependent-relationship-${dependentIndex}`} aria-live="polite">
                                                         This field is required
                                                     </p>
                                                 ) }
@@ -343,7 +331,7 @@ const PledgeForm = (props, ref) => {
                                                                 `error-dependent-age-${dependentIndex}` : ''}
                                                         `}
                                                         aria-required="true"
-                                                        aria-invalid={errors[`dependentAge-${dependentIndex}`]}
+                                                        aria-invalid={errors[`dependentAge-${dependentIndex}`] !== undefined}
                                                         ref={register({ required: true, pattern: /^\d{1,3}$/ })}
                                                     />
                                                 </label>
@@ -399,7 +387,7 @@ const PledgeForm = (props, ref) => {
                                                             `error-member-fullname-${memberIndex}` : ''}
                                                     `}
                                                     aria-required="true"
-                                                    aria-invalid={errors[`memberFullName-${memberIndex}`]}
+                                                    aria-invalid={errors[`memberFullName-${memberIndex}`] !== undefined}
                                                     ref={register({ required: true })}
                                                 />
                                             </label>
@@ -425,7 +413,7 @@ const PledgeForm = (props, ref) => {
                                                             `error-member-email-${memberIndex}` : ''}
                                                     `}
                                                     aria-required="true"
-                                                    aria-invalid={errors[`memberEmail-${memberIndex}`]}
+                                                    aria-invalid={errors[`memberEmail-${memberIndex}`] !== undefined}
                                                     ref={register({ required: true, pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/ })}
                                                 />
                                             </label>
@@ -466,62 +454,94 @@ const PledgeForm = (props, ref) => {
                             </p>
 
                             <div className="pledge-form-grid">
-                                <div className="wrap-destination-email">
-                                    <label htmlFor="field-destination-email">
-                                        Destination E-mail<span aria-hidden="true">*</span>:
-                                        <button
-                                            type="button"
-                                            className="tooltip-icon"
-                                            onClick={() => setDestinationEmailsDialogOpen(true)}
+                                { destinationsArray.map((_, destinationIndex) => (
+                                    <>
+                                        <div className="wrap-destination-email">
+                                            <label htmlFor={`field-destination-email-${destinationIndex}`}>
+                                                Destination E-mail<span aria-hidden="true">*</span>:
+                                                <input
+                                                    id={`field-destination-email-${destinationIndex}`}
+                                                    name={`destinationEmail-${destinationIndex}`}
+                                                    type="text"
+                                                    inputMode="email"
+                                                    autoCorrect="off"
+                                                    spellCheck="false"
+                                                    aria-describedby={`${
+                                                        errors[`destinationEmail-${destinationIndex}`] ?
+                                                            `error-destination-email-${destinationIndex}` : ''}
+                                                    `}
+                                                    aria-required="true"
+                                                    aria-invalid={errors[`destinationEmail-${destinationIndex}`] !== undefined}
+                                                    ref={register({
+                                                        required: true,
+                                                        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                                    })}
+                                                />
+                                            </label>
+                                            { errors[`destinationEmail-${destinationIndex}`] && (
+                                                <p
+                                                    className="error"
+                                                    id={`error-destination-email-${destinationIndex}`}
+                                                    aria-live="polite"
+                                                >
+                                                    Please enter a valid email address
+                                                </p>
+                                            ) }
+                                        </div>
+                                        <div className={
+                                            `wrap-arrival-date ${(destinationIndex === destinationsCount - 1 ? 'is-last' : '')}`
+                                        }
                                         >
-                                            <span className="sr-only">Destination email information</span>
-                                        </button>
-                                        <input
-                                            id="field-destination-email"
-                                            name="destinationEmail"
-                                            type="text"
-                                            inputMode="email"
-                                            autoCorrect="off"
-                                            spellCheck="false"
-                                            aria-describedby={`${errors.destinationEmail ? 'error-email' : ''}`}
-                                            aria-required="true"
-                                            aria-invalid={errors.destinationEmail}
-                                            ref={register({
-                                                required: true,
-                                                pattern: /^([\w-.+]+@([\w-]+.)+[\w-]{2,4}( *, *)?)+$/,
-                                            })}
-                                        />
-                                    </label>
-                                    { errors.destinationEmail && (
-                                        <p className="error" id="error-destination-email" aria-live="polite">
-                                            Please enter a valid email address or comma-separated list of email addresses
-                                        </p>
-                                    ) }
-                                </div>
+                                            <label htmlFor={`field-arrival-date-${destinationIndex}`}>
+                                                Date<span aria-hidden="true">*</span>:
+                                                <input
+                                                    id={`field-arrival-date-${destinationIndex}`}
+                                                    name={`arrivalDate-${destinationIndex}`}
+                                                    type="date"
+                                                    min={`${new Date().getFullYear()}-${('0' + (new Date().getMonth() + 1)).slice(-2)}-${('0' + new Date().getDate()).slice(-2)}`}
+                                                    aria-describedby={`${
+                                                        errors[`arrivalDate-${destinationIndex}`] ?
+                                                            `error-arrival-date-${destinationIndex}` : ''}
+                                                    `}
+                                                    aria-required="true"
+                                                    aria-invalid={errors[`arrivalDate-${destinationIndex}`] !== undefined}
+                                                    ref={register({
+                                                        required: true,
+                                                    })}
+                                                />
+                                            </label>
+                                            { errors[`arrivalDate-${destinationIndex}`] && (
+                                                <p
+                                                    className="error"
+                                                    id={`error-arrival-date-${destinationIndex}`}
+                                                    aria-live="polite"
+                                                >
+                                                    Please enter a valid date
+                                                </p>
+                                            ) }
+                                            { (destinationsCount > 1 && destinationIndex === destinationsCount - 1 && (
+                                                <button
+                                                    type="button"
+                                                    className="remove-destination"
+                                                    onClick={() => { setDestinationsCount(destinationsCount - 1); }}
+                                                    title="Remove destination"
+                                                >
+                                                    <span className="sr-only">Remove destination</span>
+                                                </button>
+                                            )) }
+                                        </div>
+                                    </>
+                                )) }
                             </div>
-                        </div>
-
-                        <div className="wrap-arrival-date">
-                            <label htmlFor="field-arrival-date">
-                                Date<span aria-hidden="true">*</span>:
-                                <input
-                                    id="field-arrival-date"
-                                    name="arrivalDate"
-                                    type="date"
-                                    min={`${new Date().getFullYear()}-${('0' + (new Date().getMonth() + 1)).slice(-2)}-${('0' + new Date().getDate()).slice(-2)}`}
-                                    aria-describedby={`${errors.arrivalDate ? 'error-arrival-date' : ''}`}
-                                    aria-required="true"
-                                    aria-invalid={errors.arrivalDate}
-                                    ref={register({
-                                        required: true,
-                                    })}
-                                />
-                            </label>
-                            { errors.arrivalDate && (
-                                <p className="error" id="error-arrival-date" aria-live="polite">
-                                    Please enter a valid date
-                                </p>
-                            ) }
+                            <button
+                                type="button"
+                                className="add-destination"
+                                onClick={() => {
+                                    setDestinationsCount(destinationsCount + 1);
+                                }}
+                            >
+                                Add destination
+                            </button>
                         </div>
                     </>
                 ) }

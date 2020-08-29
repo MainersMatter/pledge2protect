@@ -92,7 +92,8 @@ $form-grid-column-gap: 30px;
 
 .wrap-email,
 .wrap-dependent-age,
-.wrap-member-email {
+.wrap-member-email,
+.wrap-arrival-date {
     grid-column: 2 / span 2;
 }
 
@@ -106,10 +107,6 @@ $form-grid-column-gap: 30px;
         text-indent: 0;
         margin-top: 5px;
     }
-}
-
-.wrap-destination-email {
-    grid-column: 1 / span 3;
 }
 
 input, select {
@@ -195,7 +192,9 @@ form .btn {
 .add-member,
 .remove-member,
 .add-dependent,
-.remove-dependent {
+.remove-dependent,
+.add-destination,
+.remove-destination {
     border: 0;
     background-color: transparent;
     cursor: pointer;
@@ -205,13 +204,15 @@ form .btn {
     }
 }
 .add-member,
-.add-dependent {
+.add-dependent,
+.add-destination {
     background: url('../../assets/add-member.svg') no-repeat;
     height: 35px;
     padding: 0 0 0 50px;
 }
 .remove-member,
-.remove-dependent {
+.remove-dependent,
+.remove-destination {
     background: url('../../assets/remove-member.svg') no-repeat;
     width: 35px;
     height: 35px;
@@ -220,7 +221,8 @@ form .btn {
 }
 
 .wrap-member-email,
-.wrap-dependent-age {
+.wrap-dependent-age,
+.wrap-arrival-date {
     &.is-last {
         display: flex;
         align-items: flex-end;
