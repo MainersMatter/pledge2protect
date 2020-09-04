@@ -27,7 +27,7 @@ const WelcomeToMaine = ({ visitIntention, setVisitIntention }) => {
                                 window.location.href = '#business-owner';
                             }}
                         >
-                            Business Owner
+                            Host Business
                         </button>
                     </div>
                 ) }
