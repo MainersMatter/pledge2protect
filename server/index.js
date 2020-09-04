@@ -36,11 +36,15 @@ function runServer() {
         payload.hasPledged = true;
 
         // validate the user data
-        if (!payload || !payload.emailAddress || !payload.fullName || !payload.state || !payload.acceptPrivacyPolicy || !payload.destinationEmail) {
+        if (!isPayloadValid(payload)) {
             res.status(400)
                 .send({ error: true, message: 'Please provide all required fields' });
             return;
         }
+
+        const members = getParameterGroups(payload, ['memberFullName', 'memberEmail']);
+        const dependents = getParameterGroups(payload, ['dependentRelationship', 'dependentAge']);
+        const destinations = getParameterGroups(payload, ['destinationEmail', 'arrivalDate']);
 
         const memberParameters = Object.entries(payload).reduce((accumulator, pair) => {
             if (pair[0].startsWith('member')) {
@@ -121,6 +125,55 @@ function runServer() {
         console.error(`Node ${isDev ? 'dev server' : `cluster worker ${process.pid}`}: listening on port ${PORT}`);
     });
 }
+
+const isPayloadValid = (payload) => {
+    const requiredFields = [
+        'emailAddress',
+        'fullName',
+        'phoneNumber',
+        'state',
+        'acceptPrivacyPolicy',
+        'destinationEmail',
+    ];
+
+    if (!payload) {
+        return false;
+    }
+
+    const hasMissingFields = requiredFields.reduce((accumulator, field) => {
+        return (accumulator === true && payload[field]);
+    }, true);
+    if (hasMissingFields) {
+        return false;
+    }
+
+    if (
+        payload['requirement-quarantined'] === false
+        && payload['requirement-tested'] === false
+        && payload['requirement-origin'] === false
+    ) {
+        return false;
+    }
+
+    return true;
+};
+
+const getParameterGroups = (payload, parameters) => {
+    const output = [];
+    let checkIndex = 0;
+    while (true) {
+        const firstKey = `${parameters[0]}-${checkIndex}`;
+        if (payload[firstKey] === undefined) {
+            return output;
+        }
+        output.push([]);
+        parameters.forEach((parameter) => {
+            const key = `${parameter}-${checkIndex}`;
+            output[checkIndex].push(payload[key]);
+        });
+        checkIndex++;
+    }
+};
 
 // Multi-process to utilize all CPU cores.
 if (!isDev && cluster.isMaster) {

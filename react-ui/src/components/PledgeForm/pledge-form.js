@@ -122,6 +122,20 @@ const PledgeForm = (props, ref) => {
                                 3. I am from an approved state with a low incidence of COVID-19; Vermont, New Hampshire, Connecticut, New York, New Jersey, and
                             </label>
                         </li>
+                        <li className="inline-field get-well-loop">
+                            <label>
+                                I will enroll in
+                                {' '}
+                                <a
+                                    href={GET_WELL_LOOP_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    GetWellLoop
+                                </a> now, a simple symptom self-monitoring system to monitor my symptoms during my visit
+                                in Maine.
+                            </label>
+                        </li>
                     </ul>
 
                     <h3>
@@ -474,7 +488,7 @@ const PledgeForm = (props, ref) => {
                                                     aria-invalid={errors[`destinationEmail-${destinationIndex}`] !== undefined}
                                                     ref={register({
                                                         required: true,
-                                                        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                                        pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/,
                                                     })}
                                                 />
                                             </label>
