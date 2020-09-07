@@ -4,127 +4,17 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const bodyParser = require('body-parser');
 
-const { getCountUserPledges, savePledge, addEmailSubscriber } = require('./user');
+const {
+    getCountUserPledges,
+    savePledge,
+    saveDependent,
+    saveDestination,
+    addEmailSubscriber,
+    createParty,
+} = require('./user');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
-
-function runServer() {
-    const app = express();
-
-    // Priority serve any static files.
-    app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
-    app.use(bodyParser.json()); // for parsing application/json
-    app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-    app.get('/pledge/count', (req, res) => {
-        res.set('Content-Type', 'application/json');
-
-        getCountUserPledges((error, pledgeCount) => {
-            if (error) {
-                res.status(500)
-                    .send({ error: true, message: error });
-                return;
-            }
-
-            res.send(pledgeCount);
-        });
-    });
-
-    app.post('/pledge', async (req, res) => {
-        const payload = req.body;
-        payload.hasPledged = true;
-
-        // validate the user data
-        if (!isPayloadValid(payload)) {
-            res.status(400)
-                .send({ error: true, message: 'Please provide all required fields' });
-            return;
-        }
-
-        const members = getParameterGroups(payload, ['memberFullName', 'memberEmail']);
-        const dependents = getParameterGroups(payload, ['dependentRelationship', 'dependentAge']);
-        const destinations = getParameterGroups(payload, ['destinationEmail', 'arrivalDate']);
-
-        const memberParameters = Object.entries(payload).reduce((accumulator, pair) => {
-            if (pair[0].startsWith('member')) {
-                const memberIndex = pair[0].charAt(pair[0].length - 1);
-                const field = (pair[0].includes('Email') ? 'email' : 'name');
-                if (accumulator[memberIndex] === undefined) {
-                    accumulator[memberIndex] = {};
-                }
-                // eslint-disable-next-line
-                accumulator[memberIndex][field] = pair[1];
-            }
-            return accumulator;
-        }, {});
-
-        if (process.env.ENABLE_EMAIL_SUBSCRIPTION === 'true') {
-            const mainUser = {
-                emailAddress: payload.emailAddress,
-                fullName: payload.fullName,
-                zipCode: payload.zipCode,
-            };
-            const destinationUsers = payload.destinationEmail.split(',').map((email) => (
-                {
-                    emailAddress: email.trim(),
-                }
-            ));
-            const partyUsers = Object.values(memberParameters).map((member) => (
-                {
-                    emailAddress: member.email,
-                    fullName: member.name,
-                }
-            ));
-            const allUsers = [mainUser].concat(destinationUsers, partyUsers);
-
-            try {
-                // eslint-disable-next-line
-                const resultPromises = allUsers.map(async (user) => {
-                    const subscribedResult = await addEmailSubscriber(user);
-                    return subscribedResult.id;
-                });
-
-                // TODO: restore this after the DB has been migrated
-                if (process.env.ENABLE_LOGGING_TO_PLEDGES_DATABASE === 'true') {
-                    // subscribe the pledged user to our email list
-                    const mainSubscribedResult = await addEmailSubscriber(mainUser);
-                    // add the subscribed email id from the MailChimp list to the user
-                    payload.subscribedEmailId = mainSubscribedResult.id;
-                }
-            } catch (error) {
-                res.status(500)
-                    .send({ error: true, message: error.message });
-                return;
-            }
-        }
-
-        if (process.env.ENABLE_LOGGING_TO_PLEDGES_DATABASE === 'true') {
-            // save the user in the database
-            // TODO: We now collect only full names, not a first and last name, but the DB has not been migrated
-            savePledge(payload, (error) => {
-                if (error) {
-                    res.status(500)
-                        .send({ error: true, message: error });
-                    return;
-                }
-
-                res.send('success');
-            });
-        } else {
-            res.send('success');
-        }
-    });
-
-    // All remaining requests return the React app, so it can handle routing.
-    app.get('*', (request, response) => {
-        response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
-    });
-
-    app.listen(PORT, () => {
-        console.error(`Node ${isDev ? 'dev server' : `cluster worker ${process.pid}`}: listening on port ${PORT}`);
-    });
-}
 
 const isPayloadValid = (payload) => {
     const requiredFields = [
@@ -155,6 +45,10 @@ const isPayloadValid = (payload) => {
         return false;
     }
 
+    if (payload['dependentAge-0'] !== undefined && payload['dependentsCertification'] !== true) {
+        return false;
+    }
+
     return true;
 };
 
@@ -174,6 +68,169 @@ const getParameterGroups = (payload, parameters) => {
         checkIndex++;
     }
 };
+
+function runServer() {
+    const app = express();
+
+    // Priority serve any static files.
+    app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
+    app.use(bodyParser.json()); // for parsing application/json
+    app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+    app.get('/pledge/count', (req, res) => {
+        res.set('Content-Type', 'application/json');
+
+        getCountUserPledges((error, pledgeCount) => {
+            if (error) {
+                res.status(500)
+                    .send({ error: true, message: error });
+                return;
+            }
+
+            res.send(pledgeCount);
+        });
+    });
+
+    app.post('/pledge', async (req, res) => {
+        const payload = req.body;
+
+        // validate the user data
+        if (!isPayloadValid(payload)) {
+            res.status(400)
+                .send({ error: true, message: 'Please provide all required fields' });
+            return;
+        }
+
+        const members = getParameterGroups(payload, ['memberFullName', 'memberEmail']);
+        const dependents = getParameterGroups(payload, ['dependentRelationship', 'dependentAge']);
+        const destinations = getParameterGroups(payload, ['destinationEmail', 'arrivalDate']);
+
+        const subscribeResults = {
+            main: undefined,
+            destination: [],
+            party: [],
+        };
+
+        if (process.env.ENABLE_EMAIL_SUBSCRIPTION === 'true') {
+            const mainUser = {
+                emailAddress: payload.emailAddress,
+                fullName: payload.fullName,
+                state: payload.state,
+                zipCode: payload.zipCode,
+                phoneNumber: payload.phoneNumber,
+                isHost: true,
+                hasPledged: true,
+            };
+            const destinationUsers = destinations.map((destination) => (
+                {
+                    emailAddress: destination[0].trim(),
+                }
+            ));
+            const partyUsers = members.map((member) => (
+                {
+                    emailAddress: member[1],
+                    fullName: member[0],
+                    isHost: false,
+                    hasPledged: false,
+                }
+            ));
+
+            try {
+                const result = await addEmailSubscriber(mainUser);
+                subscribeResults.main = result.id;
+
+                // eslint-disable-next-line
+                const destinationPromises = destinationUsers.map(async (destination) => {
+                    const destResult = await addEmailSubscriber(destination, 'destination');
+                    subscribeResults.destination.push(destResult.id);
+                });
+
+                // eslint-disable-next-line
+                const partyPromises = partyUsers.map(async (member) => {
+                    const partyResult = await addEmailSubscriber(member);
+                    subscribeResults.party.push(partyResult.id);
+                });
+            } catch (error) {
+                res.status(500)
+                    .send({ error: true, message: error.message });
+                return;
+            }
+        }
+
+        createParty()
+            .then((partyId) => {
+                const promises = [];
+
+                const mainPayload = {
+                    emailAddress: payload.emailAddress,
+                    fullName: payload.fullName,
+                    zipCode: payload.zipCode,
+                    state: payload.state,
+                    phoneNumber: payload.phoneNumber,
+                    isHost: true,
+                    hasPledged: true,
+                    subscribedEmailId: subscribeResults.main,
+                    partyId,
+                };
+                promises.push(savePledge(mainPayload));
+
+                members.forEach(([fullName, email]) => {
+                    const memberPayload = {
+                        emailAddress: email,
+                        fullName,
+                        isHost: false,
+                        hasPledged: false,
+                        partyId,
+                    };
+                    const promise = savePledge(memberPayload);
+                    promises.push(promise);
+                });
+
+                dependents.forEach(([relationship, age]) => {
+                    const dependentPayload = {
+                        relationship,
+                        age,
+                        partyId,
+                    };
+                    const promise = saveDependent(dependentPayload);
+                    promises.push(promise);
+                });
+
+                destinations.forEach(([destinationEmail, arrivalDate]) => {
+                    const destinationPayload = {
+                        emailAddress: destinationEmail,
+                        arrivalDate,
+                        partyId,
+                    };
+                    const promise = saveDestination(destinationPayload);
+                    promises.push(promise);
+                });
+
+                Promise.all(promises)
+                    .then(() => {
+                        res.send('success');
+                    })
+                    .catch((err) => {
+                        res.status(500).send({ error: true, message: err });
+                    });
+
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).send({ error: true, message: 'Failed to create party' });
+            });
+
+    });
+
+    // All remaining requests return the React app, so it can handle routing.
+    app.get('*', (request, response) => {
+        response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+    });
+
+    app.listen(PORT, () => {
+        console.error(`Node ${isDev ? 'dev server' : `cluster worker ${process.pid}`}: listening on port ${PORT}`);
+    });
+}
 
 // Multi-process to utilize all CPU cores.
 if (!isDev && cluster.isMaster) {

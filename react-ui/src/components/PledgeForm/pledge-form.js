@@ -291,6 +291,7 @@ const PledgeForm = (props, ref) => {
                                                         setDependentsCount(1);
                                                     }
                                                 }}
+                                                ref={register()}
                                             />
                                             <label htmlFor="dependents-certification">
                                                 I also certify that all persons in my care who are under the age of 18, or
