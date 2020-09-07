@@ -53,15 +53,21 @@ const PledgeForm = (props, ref) => {
             await false;
             return;
         }
-        try {
-            await axios.post('/pledge', data);
+
+        if (visitIntention !== 'return') {
+            try {
+                await axios.post('/pledge', data);
+                window.location = GET_WELL_LOOP_URL;
+                return;
+            } catch (error) {
+                console.error(`Error occurred posting pledge: ${error}`);
+                // TODO: replace with something nicer
+                // eslint-disable-next-line no-alert
+                alert('Sorry there was an issue saving your pledge.  Please try again.');
+            }
+        } else {
             window.location = GET_WELL_LOOP_URL;
             return;
-        } catch (error) {
-            console.error(`Error occurred posting pledge: ${error}`);
-            // TODO: replace with something nicer
-            // eslint-disable-next-line no-alert
-            alert('Sorry there was an issue saving your pledge.  Please try again.');
         }
     };
 
