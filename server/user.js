@@ -6,28 +6,38 @@ const connection = require('./db.js');
 
 const mailchimp = process.env.MAILCHIMP_API_KEY ? new Mailchimp(process.env.MAILCHIMP_API_KEY) : {};
 
-exports.addEmailSubscriber = async (user) => {
-    if (!mailchimp || !process.env.MAILCHIMP_LIST_ID) {
+const lists = {
+    party: process.env.MAILCHIMP_LIST_ID,
+    destination: process.env.MAILCHIMP_DESTINATION_LIST_ID,
+};
+
+exports.addEmailSubscriber = async (user, list = 'party') => {
+    if (!mailchimp || !process.env.MAILCHIMP_LIST_ID || !process.env.MAILCHIMP_DESTINATION_LIST_ID) {
         const errorMessage = 'Unable to add email subscriber - missing Email Service configuration';
         throw new Error(errorMessage);
     }
+
+    const listId = lists[list];
 
     try {
         const payload = {
             status: 'pending',
             email_address: user.emailAddress.toLowerCase(),
         };
-        if (user.fullName || user.zipCode) {
+        if (user.fullName || user.zipCode || user.isHost !== undefined) {
             payload.merge_fields = {};
             if (user.fullName) {
-                payload.merge_fields.MMERGE6 = user.fullName;
+                payload.merge_fields.FULLNAME = user.fullName;
             }
             if (user.zipCode) {
                 payload.merge_fields['ADDRESS[zip]'] = user.zipCode;
             }
+            if (user.isHost !== undefined) {
+                payload.merge_fields.ISHOST = user.isHost + '';
+            }
         }
 
-        const result = await mailchimp.post(`lists/${process.env.MAILCHIMP_LIST_ID}/members`, payload);
+        const result = await mailchimp.post(`lists/${listId}/members`, payload);
 
         if (result.errors) {
             console.error(`result.errors: ${result.errors}`);
@@ -60,30 +70,75 @@ exports.addEmailSubscriber = async (user) => {
     }
 };
 
-exports.savePledge = (user, callback) => {
+exports.savePledge = (user) => {
     const userRecord = {
         email_address: user.emailAddress.toLowerCase(),
-        first_name: user.firstName,
-        last_name: user.lastName,
+        full_name: user.fullName,
         zip_code: user.zipCode,
+        state: user.state,
+        phone_number: user.phoneNumber,
+        is_host: user.isHost,
         has_pledged: user.hasPledged,
         subscribed_email_id: user.subscribedEmailId,
+        party_id: user.partyId,
     };
 
     const sql = 'INSERT INTO user set ?';
-    connection.query(sql, userRecord, (error, results) => {
-        if (error) {
-            // if the user has already been saved previously
-            if (error.code === 'ER_DUP_ENTRY') {
-                // pretend that everything was successful rather than returning an error
-                callback(null, 1);
+    return new Promise((resolve, reject) => {
+        connection.query(sql, userRecord, (error, results) => {
+            if (error) {
+                // if the user has already been saved previously
+                if (error.code === 'ER_DUP_ENTRY') {
+                    // pretend that everything was successful rather than returning an error
+                    resolve(null, 1);
+                } else {
+                    console.error(`There was an error saving user: ${error}`);
+                    reject('There was an error saving user', null);
+                }
             } else {
-                console.error(`There was an error saving user: ${error}`);
-                callback('There was an error saving user', null);
+                resolve(null, results.affectedRows);
             }
-        } else {
-            callback(null, results.affectedRows);
-        }
+        });
+    });
+};
+
+exports.saveDependent = (dependent) => {
+    const dependentRecord = {
+        age: dependent.age,
+        relationship: dependent.relationship,
+        party_id: dependent.partyId,
+    };
+
+    const sql = 'INSERT INTO dependent set ?';
+    return new Promise((resolve, reject) => {
+        connection.query(sql, dependentRecord, (error, results) => {
+            if (error) {
+                console.error(`There was an error saving dependent: ${error}`);
+                reject('There was an error saving dependent', null);
+            } else {
+                resolve(null, results.affectedRows);
+            }
+        });
+    });
+};
+
+exports.saveDestination = (destination) => {
+    const destinationRecord = {
+        email: destination.emailAddress,
+        arrival_date: destination.arrivalDate,
+        party_id: destination.partyId,
+    };
+
+    const sql = 'INSERT INTO destination set ?';
+    return new Promise((resolve, reject) => {
+        connection.query(sql, destinationRecord, (error, results) => {
+            if (error) {
+                console.error(`There was an error saving destination: ${error}`);
+                reject('There was an error saving destination', null);
+            } else {
+                resolve(null, results.affectedRows);
+            }
+        });
     });
 };
 
@@ -96,5 +151,17 @@ exports.getCountUserPledges = (callback) => {
         } else {
             callback(null, results[0]);
         }
+    });
+};
+
+exports.createParty = () => {
+    const sql = 'insert into party () values ()';
+    return new Promise((resolve, reject) => {
+        connection.query(sql, null, (err, result) => {
+            if (err) {
+                return reject(err);
+            }
+            return resolve(result.insertId);
+        });
     });
 };
