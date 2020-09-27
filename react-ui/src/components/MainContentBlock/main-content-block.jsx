@@ -10,18 +10,6 @@ const MainContentBlock = () => (
             <p className="call-to-action-blurb">
                 Take the Pledge to Keep Yourself and Your Visit to Maine Healthy!
             </p>
-            <div className="call-to-action-actions">
-                <Link
-                    to="/#pledge"
-                    className="btn"
-                >
-                    Take the Pledge
-                </Link>
-                <div className="social-share">
-                    <p>Share this pledge on:</p>
-                    <SocialIcons mode="share" variant="white" />
-                </div>
-            </div>
         </div>
     </div>
 );

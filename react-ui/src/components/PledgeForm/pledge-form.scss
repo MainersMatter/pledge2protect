@@ -39,9 +39,22 @@ $form-grid-breakpoint: 560px;
     }
 }
 
-.bullet-points {
-    color: #000;
+.symptoms,
+.bullet-points,
+.try-my-best {
     line-height: 1.5;
+}
+
+.select-one {
+    margin: 1.3em 0 .5em;
+}
+
+.pledge-requirements {
+    margin-top: 0;
+}
+
+.bullet-points {
+    padding-left: 12px;
     ul {
         list-style: none;
         padding: 0;
@@ -56,7 +69,6 @@ $form-grid-breakpoint: 560px;
         font-weight: normal;
         font-size: 1rem;
         cursor: pointer;
-        color: #000;
         strong {
             font-weight: normal;
             color: $color-green-text;
@@ -149,8 +161,10 @@ label {
     vertical-align: middle;
     *overflow: hidden;
 }
-.inline-field.get-well-loop {
-    padding-left: 42px;
+
+.get-well-loop p {
+    font-weight: bold;
+    margin: 1.5em 0 .25em;
 }
 
 .form-group {

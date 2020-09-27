@@ -74,14 +74,30 @@ const PledgeForm = (props, ref) => {
     return (
         <div className="pledge-form-container">
             <form className="pledge-form" id="pledge" onSubmit={handleSubmit(onSubmit)}>
-                <div className="bullet-points">
+                <div>
                     { isPledgePromptShown && (
                         <p className="error" id="error-pledge" aria-live="polite">
                             You must check at least one pledge item
                         </p>
                     ) }
                     <h3>Before arriving I pledge that,</h3>
-                    <ul>
+                    <ul className="symptoms">
+                        <li className="inline-field">
+                            I have not experienced any of the COVID-19 symptoms in the last 24 hours:
+                            <ul>
+                                <li>Fever or chills</li>
+                                <li>Sore throat, cough, shortness of breath, or other respiratory symptoms</li>
+                                <li>Muscle aches, severe fatigue, or chills</li>
+                                <li>Changes in taste or smell</li>
+                            </ul>
+                        </li>
+                        <li className="inline-field">
+                            I have not had close contact with anyone over the last 14 days who is confirmed to have
+                            COVID-19
+                        </li>
+                    </ul>
+                    <p className="select-one">Please select ONE:</p>
+                    <ul className="pledge-requirements bullet-points">
                         <li className="inline-field">
                             <input
                                 type="checkbox"
@@ -125,24 +141,21 @@ const PledgeForm = (props, ref) => {
                                 ref={register()}
                             />
                             <label htmlFor="requirement-origin">
-                                3. I am from an approved state with a low incidence of COVID-19; Vermont, New Hampshire, Connecticut, New York, New Jersey, and
-                            </label>
-                        </li>
-                        <li className="inline-field get-well-loop">
-                            <label>
-                                I will enroll in
-                                {' '}
-                                <a
-                                    href={GET_WELL_LOOP_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    GetWellLoop
-                                </a> now, a simple symptom self-monitoring system to monitor my symptoms during my visit
-                                in Maine.
+                                3. I am from an approved state with a low incidence of COVID-19; Massachusetts, Vermont, New Hampshire, Connecticut, New York, New Jersey, and
                             </label>
                         </li>
                     </ul>
+                    <p>(visitors may be tested for COVID-19 in Maine, but remain in quarantine while awaiting the results)</p>
+                    <div className="get-well-loop">
+                        <p>Get Well Loop</p>
+                        <a
+                            href={GET_WELL_LOOP_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {GET_WELL_LOOP_URL}
+                        </a>
+                    </div>
 
                     <h3>
                         { visitIntention === 'return' ? 'Upon returning ' : 'While in Maine '}
@@ -150,8 +163,9 @@ const PledgeForm = (props, ref) => {
                     </h3>
                     <ul className="try-my-best">
                         <li>
-                            To keep a distance of <strong>six feet</strong> from people who are not in my traveling
-                            party.
+                            To keep a distance of
+                            <strong>&nbsp;six feet&nbsp;</strong>
+                            from people who are not in my traveling party.
                         </li>
                         <li>To wash my hands for 20 seconds with soap and water frequently.</li>
                         <li>
