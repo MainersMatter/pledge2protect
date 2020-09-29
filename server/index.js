@@ -38,7 +38,7 @@ const isPayloadValid = (payload) => {
         return false;
     }
 
-    if (!['maineQuarantine', 'quarantined', 'origin', 'tested'].includes(payload.preRequirement) {
+    if (!['maineQuarantine', 'quarantined', 'origin', 'tested'].includes(payload.preRequirement)) {
         return false;
     }
 
