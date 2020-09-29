@@ -28,7 +28,6 @@ const PledgeForm = (props, ref) => {
 
     const { visitIntention } = props;
 
-    const [isPledgePromptShown, setPledgePromptShown] = useState(false);
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
     const [isCovidTestDialogOpen, setCovidTestDialogOpen] = useState(false);
     const [isStateDialogOpen, setStateDialogOpen] = useState(false);
@@ -42,18 +41,6 @@ const PledgeForm = (props, ref) => {
     const destinationsArray = new Array(destinationsCount).fill(0);
 
     const onSubmit = async (data) => {
-        if (
-            data['requirement-quarantined'] === false
-            && data['requirement-tested'] === false
-            && data['requirement-origin'] === false
-            && data['requirement-getwellloop'] === false
-        ) {
-            setPledgePromptShown(true);
-            window.location = '#pledge';
-            await false;
-            return;
-        }
-
         if (visitIntention !== 'return') {
             try {
                 await axios.post('/pledge', data);
@@ -75,11 +62,6 @@ const PledgeForm = (props, ref) => {
         <div className="pledge-form-container">
             <form className="pledge-form" id="pledge" onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                    { isPledgePromptShown && (
-                        <p className="error" id="error-pledge" aria-live="polite">
-                            You must check at least one pledge item
-                        </p>
-                    ) }
                     <h3>Before arriving I pledge that,</h3>
                     <ul className="symptoms">
                         <li className="inline-field">
@@ -97,32 +79,35 @@ const PledgeForm = (props, ref) => {
                         </li>
                     </ul>
                     <p className="select-one">Please select ONE:</p>
+                    { errors['preRequirement'] && (
+                        <p className="error" id="error-pre-requirement" aria-live="polite">You must select an option</p>
+                    ) }
                     <ul className="pledge-requirements bullet-points">
                         <li className="inline-field">
                             <input
-                                type="checkbox"
+                                type="radio"
                                 id="requirement-quarantined"
-                                name="requirement-quarantined"
-                                onChange={() => setPledgePromptShown(false)}
-                                ref={register()}
+                                name="preRequirement"
+                                value="quarantined"
+                                ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-quarantined">
                                 1. I commit to staying "in quarantine" except for essential trips during which I will
                                 use a mask and hand washing precautions
-                                for <strong>14 days upon my arrival in Maine</strong>, or
+                                for <strong>14 days upon my arrival in Maine</strong>
                             </label>
                         </li>
                         <li className="inline-field">
                             <input
-                                type="checkbox"
+                                type="radio"
                                 id="requirement-tested"
-                                name="requirement-tested"
-                                onChange={() => setPledgePromptShown(false)}
-                                ref={register()}
+                                name="preRequirement"
+                                value="tested"
+                                ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-tested">
                                 2. I have had a <strong>negative</strong> COVID-19 RT-PCR test
-                                within <strong>72 hours</strong> of arriving in Maine, or
+                                within <strong>72 hours</strong> of arriving in Maine
                             </label>
                             <button
                                 type="button"
@@ -134,18 +119,52 @@ const PledgeForm = (props, ref) => {
                         </li>
                         <li className="inline-field">
                             <input
-                                type="checkbox"
+                                type="radio"
                                 id="requirement-origin"
-                                name="requirement-origin"
-                                onChange={() => setPledgePromptShown(false)}
-                                ref={register()}
+                                name="preRequirement"
+                                value="origin"
+                                ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-origin">
-                                3. I am from an approved state with a low incidence of COVID-19; Massachusetts, Vermont, New Hampshire, Connecticut, New York, New Jersey, and
+                                3. I am from an approved state with a low incidence of COVID-19; Massachusetts, Vermont,
+                                New Hampshire, Connecticut, New York, New Jersey
+                            </label>
+                        </li>
+                        <li className="inline-field">
+                            <input
+                                type="radio"
+                                id="requirement-maineQuarantined"
+                                name="preRequirement"
+                                value="maineQuarantined"
+                                ref={register({ required: true })}
+                            />
+                            <label htmlFor="requirement-maineQuarantined">
+                                4. I have completed a 14-day quarantine <em>in Maine</em> prior to my stay
                             </label>
                         </li>
                     </ul>
-                    <p>(visitors may be tested for COVID-19 in Maine, but remain in quarantine while awaiting the results)</p>
+                    <p>(visitors may be tested for COVID-19 in Maine, but remain in quarantine while awaiting the
+                        results)</p>
+
+                    <h3>
+                        While in Maine, I will try to Keep Maine Healthy and:
+                    </h3>
+                    <ul className="try-my-best">
+                        <li>
+                            Keep a distance of
+                            <strong>&nbsp;six feet&nbsp;</strong>
+                            from people who are not in my traveling party.
+                        </li>
+                        <li>Wash my hands for 20 seconds with soap and water frequently.</li>
+                        <li>
+                            Wear a mask at public gatherings and avoid public gatherings with greater than 50
+                            people when possible.
+                        </li>
+                        <li>
+                            Contact a health care professional or dial 211 if I have a fever or symptoms. In an
+                            emergency I will call 911.
+                        </li>
+                    </ul>
                     <div className="get-well-loop">
                         <p>Get Well Loop</p>
                         <a
@@ -156,27 +175,6 @@ const PledgeForm = (props, ref) => {
                             {GET_WELL_LOOP_URL}
                         </a>
                     </div>
-
-                    <h3>
-                        { visitIntention === 'return' ? 'Upon returning ' : 'While in Maine '}
-                        I will try my best to,
-                    </h3>
-                    <ul className="try-my-best">
-                        <li>
-                            To keep a distance of
-                            <strong>&nbsp;six feet&nbsp;</strong>
-                            from people who are not in my traveling party.
-                        </li>
-                        <li>To wash my hands for 20 seconds with soap and water frequently.</li>
-                        <li>
-                            To wear a mask at public gatherings and avoid public gatherings with greater than 50
-                            people when possible.
-                        </li>
-                        <li>
-                            To contact a health care professional or dial 211 if I have a fever or symptoms. In an
-                            emergency I will call 911.
-                        </li>
-                    </ul>
                 </div>
 
                 { visitIntention !== 'return' && (
@@ -643,10 +641,6 @@ const PledgeForm = (props, ref) => {
             ) }
         </div>
     );
-};
-
-PledgeForm.propTypes = {
-    visitIntention: PropTypes.string.isRequired,
 };
 
 export default React.forwardRef(PledgeForm);

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import './business-owner.scss';
-import badge from '../../assets/badge.svg';
+import badge from '../../assets/badge-update.png';
 
 
 const BusinessOwner = () => {
@@ -32,7 +32,7 @@ const BusinessOwner = () => {
 
                             const url = window.URL.createObjectURL(this.response);
                             a.href = url;
-                            a.download = 'PledgeToProtectME-badge.svg';
+                            a.download = 'PledgeToProtectME-badge.png';
                             a.click();
                             window.URL.revokeObjectURL(url);
                             document.body.removeChild(a);
