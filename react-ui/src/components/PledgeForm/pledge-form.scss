@@ -51,6 +51,11 @@ $form-grid-breakpoint: 560px;
 
 .pledge-requirements {
     margin-top: 0;
+    input {
+        width: 25px;
+        height: 25px;
+        margin-right: 12px;
+    }
 }
 
 .bullet-points {
@@ -61,6 +66,8 @@ $form-grid-breakpoint: 560px;
     }
     li {
         display: flex;
+        align-items: flex-start;
+        justify-content: left;
         padding: 10px 0 0;
     }
     label {
@@ -153,7 +160,7 @@ label {
     padding-left: 15px;
     text-indent: -15px;
 }
-.inline-field input[type="checkbox"] {
+.inline-field input[type="checkbox"], .inline-field input[type="radio"] {
     min-width: 20px;
     width: 20px;
     height: 20px;

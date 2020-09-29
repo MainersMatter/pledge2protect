@@ -1,111 +1,27 @@
 @import '../../variables';
 
-$home-splash-bg-img: '../../assets/pledgetoprotect-banner-image-nature-mobile.jfif';
+$home-splash-bg-img: '../../assets/background-rangeley.jpg';
 $main-content-block-breakpoint-small: 650px;
 
 .main-content-block {
     background-image: url($home-splash-bg-img);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 34% center;
     box-shadow: inset 0px 6px 6px -3px rgba(0,0,0,0.3);
-    height: 520px;
-
-    @media(min-width: $main-content-block-breakpoint-small) {
-        background-position: 46% center;
-        display: flex;
-        justify-content: flex-end;
-    }
 
     .call-to-action {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-end;
-        height: 520px;
-        padding: 0 $global-padding-horizontal-small;
-        @media(min-width: $global-padding-breakpoint) {
-            padding: 0 $global-padding-horizontal-large;
-        }
-        @media(min-width: $main-content-block-breakpoint-small) {
-            padding-top: 157px;
-            width: calc(220px + 33vw);
-            justify-content: flex-start;
-        }
-        @media(min-width: $global-max-width) {
-            width: 640px;
-        }
-
-        .btn {
-            font-weight: bold;
-            width: 100%;
-            display: block;
-            @media(min-width: $main-content-block-breakpoint-small) {
-                background: #fff;
-                color: $color-purple;
-                &:hover {
-                    background: darken(#fff, 15%);
-                    color: darken($color-purple, 25%);
-                }
-            }
-        }
-    }
-
-    .call-to-action-blurb {
-        margin: 0;
-        max-width: 420px;
-        padding: 16px 0 1em;
-        line-height: 1.2;
-        text-align: right;
-        font-style: normal;
-        font-weight: bold;
-        color: #333;
-        font-size: calc(2.25rem - ((#{$global-max-width} - 100vw) / 50));
-        @media(min-width: $main-content-block-breakpoint-small) {
-            color: $img-overlay-text;
-            max-width: none;
-        }
-        @media(min-width: $global-max-width) {
+        margin: 0 auto;
+        max-width: 700px;
+        color: #fff;
+        text-shadow: 0 0 4px #000, 0 0 8px #000;
+        font-size: 1.6rem;
+        @media(min-width: 500px) {
             font-size: 2.25rem;
         }
-    }
-
-    .call-to-action-actions {
-        margin: 0 auto 12px;
-
-        @media(min-width: $main-content-block-breakpoint-small) {
-            margin-right: 0;
-            max-width: 80%;
-        }
-
-        .social-share {
-            a {
-                width: 45px;
-                height: 45px;
-            }
-            .social-icons img {
-                max-width: 100%;
-                height: auto;
-                filter: brightness(0) saturate(100%) invert(32%) sepia(65%) saturate(1861%) hue-rotate(246deg) brightness(92%) contrast(95%);
-                &:hover {
-                    filter: brightness(0) saturate(100%) invert(32%) sepia(65%) saturate(1861%) hue-rotate(246deg) brightness(92%) contrast(95%) brightness(85%);
-                }
-                @media(min-width: $main-content-block-breakpoint-small) {
-                    filter: none;
-                    &:hover {
-                        filter: brightness(85%);
-                    }
-                }
-            }
-            p {
-                margin: .5em 0 0;
-                text-align: center;
-                text-transform: uppercase;
-                color: $color-purple;
-                @media(min-width: $main-content-block-breakpoint-small) {
-                    color: #fff;
-                }
-            }
+        padding: 160px $global-padding-horizontal-small;
+        @media(min-width: $global-padding-breakpoint) {
+            padding-left: $global-padding-horizontal-large;
+            padding-right: $global-padding-horizontal-large;
         }
     }
 }

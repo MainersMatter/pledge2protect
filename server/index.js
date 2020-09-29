@@ -24,6 +24,7 @@ const isPayloadValid = (payload) => {
         'state',
         'acceptPrivacyPolicy',
         'destinationEmail',
+        'preRequirement',
     ];
 
     if (!payload) {
@@ -37,11 +38,7 @@ const isPayloadValid = (payload) => {
         return false;
     }
 
-    if (
-        payload['requirement-quarantined'] === false
-        && payload['requirement-tested'] === false
-        && payload['requirement-origin'] === false
-    ) {
+    if (!['maineQuarantine', 'quarantined', 'origin', 'tested'].includes(payload.preRequirement) {
         return false;
     }
 

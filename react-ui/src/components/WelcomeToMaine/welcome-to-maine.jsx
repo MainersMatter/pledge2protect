@@ -16,18 +16,12 @@ const WelcomeToMaine = ({ visitIntention, setVisitIntention }) => {
                 <p className="agree">Agreeing to and signing this pledge will make your visit to Maine more safe, smooth, and free of worries.</p>
                 { visitIntention === undefined && (
                     <div className="buttons">
-                        <button type="button" className="btn squarish" onClick={() => { setReasonDialogOpen(true); }}>
-                            Visitor
-                        </button>
                         <button
                             type="button"
                             className="btn squarish"
-                            onClick={() => {
-                                setVisitIntention('business');
-                                window.location.href = '#business-owner';
-                            }}
+                            onClick={() => { window.location.href = '#pledge'; }}
                         >
-                            Host Business
+                            Coming to Vacation
                         </button>
                     </div>
                 ) }
