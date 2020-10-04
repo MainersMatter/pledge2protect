@@ -560,7 +560,7 @@ const PledgeForm = (props, ref) => {
                                                             `error-arrival-date-${destinationIndex}` : ''}
                                                     `}
                                                     aria-invalid={errors[`arrivalDate-${destinationIndex}`] !== undefined}
-                                                    ref={register({})}
+                                                    ref={register()}
                                                 />
                                             </label>
                                             { errors[`arrivalDate-${destinationIndex}`] && (

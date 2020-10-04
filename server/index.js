@@ -24,7 +24,6 @@ const isPayloadValid = (payload) => {
         'state',
         'zipCode',
         'acceptPrivacyPolicy',
-        'destinationEmail',
         'preRequirement',
     ];
 
@@ -149,6 +148,7 @@ function runServer() {
                     subscribeResults.party.push(partyResult.id);
                 });
             } catch (error) {
+                console.error(error);
                 res.status(500)
                     .send({ error: true, message: error.message });
                 return;
