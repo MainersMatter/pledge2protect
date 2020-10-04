@@ -86,15 +86,14 @@ const PledgeForm = (props, ref) => {
                         <li className="inline-field">
                             <input
                                 type="radio"
-                                id="requirement-quarantined"
+                                id="requirement-origin"
                                 name="preRequirement"
-                                value="quarantined"
+                                value="origin"
                                 ref={register({ required: true })}
                             />
-                            <label htmlFor="requirement-quarantined">
-                                1. I commit to staying "in quarantine" except for essential trips during which I will
-                                use a mask and hand washing precautions
-                                for <strong>14 days upon my arrival in Maine</strong>
+                            <label htmlFor="requirement-origin">
+                                1. I am from an exempt state with a low incidence of COVID-19; Massachusetts, Vermont,
+                                New Hampshire, Connecticut, New York, New Jersey
                             </label>
                         </li>
                         <li className="inline-field">
@@ -106,8 +105,8 @@ const PledgeForm = (props, ref) => {
                                 ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-tested">
-                                2. I have had a <strong>negative</strong> COVID-19 RT-PCR test
-                                within <strong>72 hours</strong> of arriving in Maine
+                                2. I have received a negative test result for COVID-19 on a specimen taken no longer
+                                than 72 hours prior to my arrival, consistent with Maine CDC guidance
                             </label>
                             <button
                                 type="button"
@@ -120,14 +119,13 @@ const PledgeForm = (props, ref) => {
                         <li className="inline-field">
                             <input
                                 type="radio"
-                                id="requirement-origin"
+                                id="requirement-quarantined"
                                 name="preRequirement"
-                                value="origin"
+                                value="quarantined"
                                 ref={register({ required: true })}
                             />
-                            <label htmlFor="requirement-origin">
-                                3. I am from an approved state with a low incidence of COVID-19; Massachusetts, Vermont,
-                                New Hampshire, Connecticut, New York, New Jersey
+                            <label htmlFor="requirement-quarantined">
+                                3. I will quarantine for 14 days upon arrival in Maine or for the duration of the stay
                             </label>
                         </li>
                         <li className="inline-field">
@@ -143,8 +141,10 @@ const PledgeForm = (props, ref) => {
                             </label>
                         </li>
                     </ul>
-                    <p>(visitors may be tested for COVID-19 in Maine, but remain in quarantine while awaiting the
-                        results)</p>
+                    <p>
+                        (visitors may be tested for COVID-19 in Maine, but remain in quarantine while awaiting the
+                        results)
+                    </p>
 
                     <h3>
                         While in Maine, I will try to Keep Maine Healthy and:
@@ -226,7 +226,7 @@ const PledgeForm = (props, ref) => {
                                     ) }
                                 </div>
                                 <div className="wrap-phone">
-                                    <label htmlFor="field-phone">Phone number<span aria-hidden="true">*</span>:
+                                    <label htmlFor="field-phone">Home phone<span aria-hidden="true">*</span>:
                                         <input
                                             id="field-phone"
                                             name="phoneNumber"
@@ -245,6 +245,29 @@ const PledgeForm = (props, ref) => {
                                     </label>
                                     { errors.phoneNumber && (
                                         <p className="error" id="error-phone" aria-live="polite">
+                                            Please enter a valid phone number
+                                        </p>
+                                    ) }
+                                </div>
+                                <div className="wrap-maine-phone">
+                                    <label htmlFor="field-mainePhone">Phone while in Maine:
+                                        <input
+                                            id="field-mainePhone"
+                                            name="mainePhoneNumber"
+                                            type="tel"
+                                            autoCorrect="off"
+                                            spellCheck="false"
+                                            aria-describedby={`${errors.mainePhoneNumber ? 'error-mainePhone' : ''}`}
+                                            aria-invalid={errors.mainePhoneNumber !== undefined}
+                                            ref={(e) => {
+                                                register(e, { pattern: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/ });
+                                                // eslint-disable-next-line no-param-reassign
+                                                ref.current = e;
+                                            }}
+                                        />
+                                    </label>
+                                    { errors.mainePhoneNumber && (
+                                        <p className="error" id="error-mainePhone" aria-live="polite">
                                             Please enter a valid phone number
                                         </p>
                                     ) }
@@ -278,14 +301,15 @@ const PledgeForm = (props, ref) => {
                                     ) }
                                 </div>
                                 <div className="wrap-zip">
-                                    <label htmlFor="field-zip">Zip Code:
+                                    <label htmlFor="field-zip">Zip Code<span aria-hidden="true">*</span>:
                                         <input
                                             id="field-zip"
                                             name="zipCode"
                                             type="tel"
                                             aria-describedby={`${errors.zipCode ? 'error-zip' : ''}`}
+                                            aria-required="true"
                                             aria-invalid={errors.zipCode !== undefined}
-                                            ref={register({ pattern: /^\d{5}(-\d{4})?$/ })}
+                                            ref={register({ required: true, pattern: /^\d{5}(-\d{4})?$/ })}
                                         />
                                     </label>
                                     { errors.zipCode && (
@@ -480,10 +504,11 @@ const PledgeForm = (props, ref) => {
                                 Add participant
                             </button>
 
-                            <h4>Where are you heading to?</h4>
+                            <h4>(OPTIONAL) Where will you be staying?</h4>
 
                             <p className="instructions">
-                                Send a copy of this pledge including your name and date for each member of your travel party to your destinations.
+                                Send a copy of this pledge including your name and date of arrival to a lodging
+                                establishment, campground, and/or rental property.
                             </p>
 
                             <div className="pledge-form-grid">
@@ -491,7 +516,7 @@ const PledgeForm = (props, ref) => {
                                     <>
                                         <div className="wrap-destination-email">
                                             <label htmlFor={`field-destination-email-${destinationIndex}`}>
-                                                Destination E-mail<span aria-hidden="true">*</span>:
+                                                Destination E-mail:
                                                 <input
                                                     id={`field-destination-email-${destinationIndex}`}
                                                     name={`destinationEmail-${destinationIndex}`}
@@ -503,10 +528,8 @@ const PledgeForm = (props, ref) => {
                                                         errors[`destinationEmail-${destinationIndex}`] ?
                                                             `error-destination-email-${destinationIndex}` : ''}
                                                     `}
-                                                    aria-required="true"
                                                     aria-invalid={errors[`destinationEmail-${destinationIndex}`] !== undefined}
                                                     ref={register({
-                                                        required: true,
                                                         pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/,
                                                     })}
                                                 />
@@ -526,7 +549,7 @@ const PledgeForm = (props, ref) => {
                                         }
                                         >
                                             <label htmlFor={`field-arrival-date-${destinationIndex}`}>
-                                                Date<span aria-hidden="true">*</span>:
+                                                Date:
                                                 <input
                                                     id={`field-arrival-date-${destinationIndex}`}
                                                     name={`arrivalDate-${destinationIndex}`}
@@ -536,11 +559,8 @@ const PledgeForm = (props, ref) => {
                                                         errors[`arrivalDate-${destinationIndex}`] ?
                                                             `error-arrival-date-${destinationIndex}` : ''}
                                                     `}
-                                                    aria-required="true"
                                                     aria-invalid={errors[`arrivalDate-${destinationIndex}`] !== undefined}
-                                                    ref={register({
-                                                        required: true,
-                                                    })}
+                                                    ref={register({})}
                                                 />
                                             </label>
                                             { errors[`arrivalDate-${destinationIndex}`] && (

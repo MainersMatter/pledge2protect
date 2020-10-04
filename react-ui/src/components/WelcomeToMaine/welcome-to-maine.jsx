@@ -11,8 +11,8 @@ const WelcomeToMaine = ({ visitIntention, setVisitIntention }) => {
     return (
         <>
             <div className="welcome-to-maine">
-                <h2>Welcome to Maine!</h2>
-                <p>Your actions to protect your wellbeing and the wellbeing of others are commendable. And we can't wait to welcome you to Maine!</p>
+                <h2>Are you ready to visit Maine?</h2>
+                <p>Your actions to protect your wellbeing and the wellbeing of others are commendable. And we can't wait to welcome you!</p>
                 <p className="agree">Agreeing to and signing this pledge will make your visit to Maine more safe, smooth, and free of worries.</p>
                 { visitIntention === undefined && (
                     <div className="buttons">
@@ -21,7 +21,7 @@ const WelcomeToMaine = ({ visitIntention, setVisitIntention }) => {
                             className="btn squarish"
                             onClick={() => { window.location.href = '#pledge'; }}
                         >
-                            Coming to Vacation
+                            Take the Pledge
                         </button>
                     </div>
                 ) }

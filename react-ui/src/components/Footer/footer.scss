@@ -48,11 +48,14 @@
     }
 }
 
-.support {
-    color: $color-dark-gray-text;
-    min-width: 15em;
+.support-contacts {
     padding: 16px $global-padding-horizontal-small;
     @media(min-width: $global-padding-breakpoint) {
         padding: 16px $global-padding-horizontal-large;
     }
+}
+
+.support {
+    color: $color-dark-gray-text;
+    min-width: 15em;
 }
