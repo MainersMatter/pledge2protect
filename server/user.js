@@ -77,6 +77,7 @@ exports.savePledge = (user) => {
         zip_code: user.zipCode,
         state: user.state,
         phone_number: user.phoneNumber,
+        maine_phone_number: user.mainePhoneNumber,
         is_host: user.isHost,
         has_pledged: user.hasPledged,
         subscribed_email_id: user.subscribedEmailId,

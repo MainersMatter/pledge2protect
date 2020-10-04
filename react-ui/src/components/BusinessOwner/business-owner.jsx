@@ -10,7 +10,7 @@ const BusinessOwner = () => {
     return (
         <div className="business-owner-section" id="business-owner">
             <div className="actions">
-                <h3>Host Business</h3>
+                <h3>For Lodging Properties</h3>
 
                 <p>
                     Place this badge on your website and around your installations to notify people that you are doing
