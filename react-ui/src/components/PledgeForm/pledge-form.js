@@ -157,8 +157,7 @@ const PledgeForm = (props, ref) => {
                         </li>
                         <li>Wash my hands for 20 seconds with soap and water frequently.</li>
                         <li>
-                            Wear a mask at public gatherings and avoid public gatherings with greater than 50
-                            people when possible.
+                            Wear a mask to help protect myself, others, and the employees of Maine businesses.
                         </li>
                         <li>
                             Contact a health care professional or dial 211 if I have a fever or symptoms. In an
@@ -166,14 +165,17 @@ const PledgeForm = (props, ref) => {
                         </li>
                     </ul>
                     <div className="get-well-loop">
-                        <p>Get Well Loop</p>
-                        <a
-                            href={GET_WELL_LOOP_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {GET_WELL_LOOP_URL}
-                        </a>
+                        <p>
+                            (Optional) Enroll in GetWell Loop, a simple symptom self-monitoring system to monitor my
+                            symptoms during my visit in Maine.
+                            <a
+                                href={GET_WELL_LOOP_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {GET_WELL_LOOP_URL}
+                            </a>
+                        </p>
                     </div>
                 </div>
 
@@ -349,7 +351,7 @@ const PledgeForm = (props, ref) => {
                                         <>
                                             <div className="wrap-dependent-relationship">
                                                 <label htmlFor={`field-dependent-relationship-${dependentIndex}`}>
-                                                    Relationship<span aria-hidden="true">*</span>:
+                                                    Relationship:
                                                     <select
                                                         id={`field-dependent-relationship-${dependentIndex}`}
                                                         name={`dependentRelationship-${dependentIndex}`}
@@ -359,7 +361,7 @@ const PledgeForm = (props, ref) => {
                                                         `}
                                                         aria-required="true"
                                                         aria-invalid={errors[`dependentRelationship-${dependentIndex}`] !== undefined}
-                                                        ref={register({ required: true })}
+                                                        ref={register({})}
                                                     >
                                                         <option value="" key="none"> </option>
                                                         { DEPENDENT_RELATIONSHIP_CHOICES.map((choiceObj) => (
@@ -367,18 +369,13 @@ const PledgeForm = (props, ref) => {
                                                         )) }
                                                     </select>
                                                 </label>
-                                                { errors[`dependentRelationship-${dependentIndex}`] && (
-                                                    <p className="error" id={`error-dependent-relationship-${dependentIndex}`} aria-live="polite">
-                                                        This field is required
-                                                    </p>
-                                                ) }
                                             </div>
                                             <div className={
                                                 `wrap-dependent-age ${(dependentIndex === dependentsCount - 1 ? 'is-last' : '')}`
                                             }
                                             >
                                                 <label htmlFor={`field-dependent-age-${dependentIndex}`}>
-                                                    Age<span aria-hidden="true">*</span>:
+                                                    Age:
                                                     <input
                                                         id={`field-dependent-age-${dependentIndex}`}
                                                         name={`dependentAge-${dependentIndex}`}
@@ -389,7 +386,7 @@ const PledgeForm = (props, ref) => {
                                                         `}
                                                         aria-required="true"
                                                         aria-invalid={errors[`dependentAge-${dependentIndex}`] !== undefined}
-                                                        ref={register({ required: true, pattern: /^\d{1,3}$/ })}
+                                                        ref={register({ pattern: /^\d{1,3}$/ })}
                                                     />
                                                 </label>
                                                 { (dependentIndex === dependentsCount - 1 && (
@@ -434,7 +431,7 @@ const PledgeForm = (props, ref) => {
                                     <>
                                         <div className="wrap-member-fullname">
                                             <label htmlFor={`field-member-fullname-${memberIndex}`}>
-                                                Full Name<span aria-hidden="true">*</span>:
+                                                Full Name:
                                                 <input
                                                     id={`field-member-fullname-${memberIndex}`}
                                                     name={`memberFullName-${memberIndex}`}
@@ -445,7 +442,7 @@ const PledgeForm = (props, ref) => {
                                                     `}
                                                     aria-required="true"
                                                     aria-invalid={errors[`memberFullName-${memberIndex}`] !== undefined}
-                                                    ref={register({ required: true })}
+                                                    ref={register({})}
                                                 />
                                             </label>
                                             { errors[`memberFullName-${memberIndex}`] && (
@@ -459,7 +456,7 @@ const PledgeForm = (props, ref) => {
                                         }
                                         >
                                             <label htmlFor={`field-member-email-${memberIndex}`}>
-                                                E-mail<span aria-hidden="true">*</span>:
+                                                E-mail:
                                                 <input
                                                     id={`field-member-email-${memberIndex}`}
                                                     name={`memberEmail-${memberIndex}`}
@@ -471,7 +468,7 @@ const PledgeForm = (props, ref) => {
                                                     `}
                                                     aria-required="true"
                                                     aria-invalid={errors[`memberEmail-${memberIndex}`] !== undefined}
-                                                    ref={register({ required: true, pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/ })}
+                                                    ref={register({ pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/ })}
                                                 />
                                             </label>
                                             { (memberIndex === partyMembersCount - 1 && (
