@@ -29,7 +29,8 @@
     "node",
     "heroku",
     "create-react-app",
-    "react"
+    "react",
+    "maine"
   ],
   "license": "MIT",
   "devDependencies": {
