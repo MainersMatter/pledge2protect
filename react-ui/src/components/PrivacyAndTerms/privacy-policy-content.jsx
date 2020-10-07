@@ -19,7 +19,7 @@ const PrivacyPolicyContent = () => (
         </ul>
         <p>Please read this policy carefully to understand our policies and practices regarding your information and how we will treat it. If you do not agree with our policies and practices, do not use this Site. By using this Site, you agree to this privacy policy. This policy may change from time to time (see Changes to Our Privacy Policy). Your continued use of this Site after we revise this policy means you accept those changes, so please check the policy periodically for updates.</p>
         <p className="important">
-            MOST IMPORTANTLY, THE PURPOSE OF THIS SITE IS TO PUBLICIZE THAT YOU AND MANY OF YOUR FELLOW CITIZENS ARE PLEDGING TO STAY HOME TO HELP FLATTEN THE COVID-19 CURVE.  IF YOU USE THE SITE TO MAKE THE PLEDGE, YOUR INFORMATION WILL BE SHARED PUBLICLY ON THE SITE AND THE PLEDGETOPROTECTME MOBILE APP.  IF YOU DON’T WANT THIS INFORMATION SHARED PUBLICLY, PLEASE DON’T USE THE SITE OR THE MOBILE APP.
+            MOST IMPORTANTLY, THE PURPOSE OF THIS SITE IS TO PUBLICIZE THAT YOU AND MANY OF YOUR FELLOW CITIZENS ARE PLEDGING TO STAY HOME TO HELP FLATTEN THE COVID-19 CURVE. IF YOU DON’T WANT THIS INFORMATION SHARED PUBLICLY, PLEASE DON’T USE THE SITE OR THE MOBILE APP.
         </p>
 
         <h3>2. Information We Collect and How We Collect It</h3>
