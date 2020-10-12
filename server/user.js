@@ -24,13 +24,19 @@ exports.addEmailSubscriber = async (user, list = 'party') => {
             status: 'pending',
             email_address: user.emailAddress.toLowerCase(),
         };
-        if (user.fullName || user.zipCode || user.isHost !== undefined) {
+        if (user.fullName || user.zipCode || user.phoneNumber || user.mainePhoneNumber || user.isHost !== undefined) {
             payload.merge_fields = {};
             if (user.fullName) {
                 payload.merge_fields.FULLNAME = user.fullName;
             }
             if (user.zipCode) {
                 payload.merge_fields['ADDRESS[zip]'] = user.zipCode;
+            }
+            if (user.phoneNumber) {
+                payload.merge_fields.PHONE = user.phoneNumber;
+            }
+            if (user.mainePhoneNumber) {
+                payload.merge_fields.MAINEPHONE = user.mainePhoneNumber;
             }
             if (user.isHost !== undefined) {
                 payload.merge_fields.ISHOST = user.isHost + '';

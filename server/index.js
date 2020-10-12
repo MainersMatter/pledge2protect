@@ -115,6 +115,7 @@ function runServer() {
                 state: payload.state,
                 zipCode: payload.zipCode,
                 phoneNumber: payload.phoneNumber,
+                mainePhoneNumber: payload.mainePhoneNumber,
                 isHost: true,
                 hasPledged: true,
             };
