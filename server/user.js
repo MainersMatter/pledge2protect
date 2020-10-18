@@ -7,12 +7,18 @@ const connection = require('./db.js');
 const mailchimp = process.env.MAILCHIMP_API_KEY ? new Mailchimp(process.env.MAILCHIMP_API_KEY) : {};
 
 const lists = {
-    party: process.env.MAILCHIMP_LIST_ID,
+    host: process.env.MAILCHIMP_LIST_ID,
+    party: process.env.MAILCHIMP_PARTY_LIST_ID,
     destination: process.env.MAILCHIMP_DESTINATION_LIST_ID,
 };
 
-exports.addEmailSubscriber = async (user, list = 'party') => {
-    if (!mailchimp || !process.env.MAILCHIMP_LIST_ID || !process.env.MAILCHIMP_DESTINATION_LIST_ID) {
+exports.addEmailSubscriber = async (user, list = 'host') => {
+    if (
+        !mailchimp
+        || !process.env.MAILCHIMP_LIST_ID
+        || !process.env.MAILCHIMP_DESTINATION_LIST_ID
+        || !process.env.MAILCHIMP_PARTY_LIST_ID
+    ) {
         const errorMessage = 'Unable to add email subscriber - missing Email Service configuration';
         throw new Error(errorMessage);
     }

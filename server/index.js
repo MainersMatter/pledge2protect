@@ -145,7 +145,7 @@ function runServer() {
 
                 // eslint-disable-next-line
                 const partyPromises = partyUsers.map(async (member) => {
-                    const partyResult = await addEmailSubscriber(member);
+                    const partyResult = await addEmailSubscriber(member, 'party');
                     subscribeResults.party.push(partyResult.id);
                 });
             } catch (error) {
