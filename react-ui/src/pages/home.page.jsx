@@ -5,7 +5,6 @@ import WelcomeToMaine from '../components/WelcomeToMaine/welcome-to-maine';
 import PledgeCodeOfConduct from '../components/PledgeCodeOfConduct/pledge-code-of-conduct';
 import PledgeForm from '../components/PledgeForm/pledge-form';
 import BusinessOwner from '../components/BusinessOwner/business-owner';
-import ResourcesSection from '../components/ResourcesSection/resources-section';
 import TwitterWidget from '../components/TwitterWidget/twitter-widget';
 
 import './home-page.scss';
@@ -22,7 +21,6 @@ function HomePage() {
             <WelcomeToMaine visitIntention={visitIntention} setVisitIntention={setVisitIntention} />
             <PledgeForm ref={formRef} visitIntention={visitIntention} />
             <BusinessOwner />
-            <ResourcesSection />
         </div>
     );
 }
