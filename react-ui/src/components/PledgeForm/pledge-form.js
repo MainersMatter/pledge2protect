@@ -186,20 +186,36 @@ const PledgeForm = (props, ref) => {
                         <div className="pledge-info">
                             <h4>Your Info</h4>
                             <div className="pledge-form-grid">
-                                <div className="wrap-fullname">
-                                    <label htmlFor="field-fullname">Full Name<span aria-hidden="true">*</span>:
+                                <div className="wrap-firstname">
+                                    <label htmlFor="field-firstname">First Name<span aria-hidden="true">*</span>:
                                         <input
-                                            id="field-fullname"
-                                            name="fullName"
+                                            id="field-firstname"
+                                            name="firstName"
                                             type="text"
-                                            aria-describedby={`${errors.fullName ? 'error-fullname' : ''}`}
+                                            aria-describedby={`${errors.firstName ? 'error-firstname' : ''}`}
                                             aria-required="true"
-                                            aria-invalid={errors.fullName !== undefined}
+                                            aria-invalid={errors.firstName !== undefined}
                                             ref={register({ required: true })}
                                         />
                                     </label>
-                                    { errors.fullName && (
-                                        <p className="error" id="error-fullname" aria-live="polite">This field is required</p>
+                                    { errors.firstName && (
+                                        <p className="error" id="error-firstname" aria-live="polite">This field is required</p>
+                                    ) }
+                                </div>
+                                <div className="wrap-lastname">
+                                    <label htmlFor="field-lastname">Last Name<span aria-hidden="true">*</span>:
+                                        <input
+                                            id="field-lastname"
+                                            name="lastName"
+                                            type="text"
+                                            aria-describedby={`${errors.lastName ? 'error-lastname' : ''}`}
+                                            aria-required="true"
+                                            aria-invalid={errors.lastName !== undefined}
+                                            ref={register({ required: true })}
+                                        />
+                                    </label>
+                                    { errors.lastName && (
+                                        <p className="error" id="error-lastname" aria-live="polite">This field is required</p>
                                     ) }
                                 </div>
                                 <div className="wrap-email">
@@ -426,70 +442,90 @@ const PledgeForm = (props, ref) => {
                                 Send a copy of this pledge to each member of your travel party.
                             </p>
 
-                            <div className="pledge-form-grid">
-                                { partyMembersArray.map((_, memberIndex) => (
-                                    <>
-                                        <div className="wrap-member-fullname">
-                                            <label htmlFor={`field-member-fullname-${memberIndex}`}>
-                                                Full Name:
-                                                <input
-                                                    id={`field-member-fullname-${memberIndex}`}
-                                                    name={`memberFullName-${memberIndex}`}
-                                                    type="text"
-                                                    aria-describedby={`${
-                                                        errors[`memberFullName-${memberIndex}`] ?
-                                                            `error-member-fullname-${memberIndex}` : ''}
-                                                    `}
-                                                    aria-required="true"
-                                                    aria-invalid={errors[`memberFullName-${memberIndex}`] !== undefined}
-                                                    ref={register({})}
-                                                />
-                                            </label>
-                                            { errors[`memberFullName-${memberIndex}`] && (
-                                                <p className="error" id={`error-member-fullname-${memberIndex}`} aria-live="polite">
-                                                    This field is required
-                                                </p>
-                                            ) }
-                                        </div>
-                                        <div className={
-                                            `wrap-member-email ${(memberIndex === partyMembersCount - 1 ? 'is-last' : '')}`
-                                        }
-                                        >
-                                            <label htmlFor={`field-member-email-${memberIndex}`}>
-                                                E-mail:
-                                                <input
-                                                    id={`field-member-email-${memberIndex}`}
-                                                    name={`memberEmail-${memberIndex}`}
-                                                    type="email"
-                                                    inputMode="email"
-                                                    aria-describedby={`${
-                                                        errors[`memberEmail-${memberIndex}`] ?
-                                                            `error-member-email-${memberIndex}` : ''}
-                                                    `}
-                                                    aria-required="true"
-                                                    aria-invalid={errors[`memberEmail-${memberIndex}`] !== undefined}
-                                                    ref={register({ pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/ })}
-                                                />
-                                            </label>
-                                            { (memberIndex === partyMembersCount - 1 && (
-                                                <button
-                                                    type="button"
-                                                    className="remove-member"
-                                                    onClick={() => { setPartyMembersCount(partyMembersCount - 1); }}
-                                                    title="Remove participant"
-                                                >
-                                                    <span className="sr-only">Remove participant</span>
-                                                </button>
-                                            )) }
-                                        </div>
-                                        { errors[`memberEmail-${memberIndex}`] && (
-                                            <p className="error" id={`error-member-email-${memberIndex}`} aria-live="polite">
-                                                Please enter a valid email address
+                            { partyMembersArray.map((_, memberIndex) => (
+                                <div className="pledge-form-grid">
+                                    <div className="wrap-member-firstname">
+                                        <label htmlFor={`field-member-firstname-${memberIndex}`}>
+                                            First Name:
+                                            <input
+                                                id={`field-member-firstname-${memberIndex}`}
+                                                name={`memberFirstName-${memberIndex}`}
+                                                type="text"
+                                                aria-describedby={`${
+                                                    errors[`memberFirstName-${memberIndex}`] ?
+                                                        `error-member-firstname-${memberIndex}` : ''}
+                                                `}
+                                                aria-required="true"
+                                                aria-invalid={errors[`memberFirstName-${memberIndex}`] !== undefined}
+                                                ref={register({})}
+                                            />
+                                        </label>
+                                        { errors[`memberFirstName-${memberIndex}`] && (
+                                            <p className="error" id={`error-member-firstname-${memberIndex}`} aria-live="polite">
+                                                This field is required
                                             </p>
                                         ) }
-                                    </>
-                                )) }
-                            </div>
+                                    </div>
+                                    <div className="wrap-member-lastname">
+                                        <label htmlFor={`field-member-lastname-${memberIndex}`}>
+                                            Last Name:
+                                            <input
+                                                id={`field-member-lastname-${memberIndex}`}
+                                                name={`memberLastName-${memberIndex}`}
+                                                type="text"
+                                                aria-describedby={`${
+                                                    errors[`memberLastName-${memberIndex}`] ?
+                                                        `error-member-lastname-${memberIndex}` : ''}
+                                                `}
+                                                aria-required="true"
+                                                aria-invalid={errors[`memberLastName-${memberIndex}`] !== undefined}
+                                                ref={register({})}
+                                            />
+                                        </label>
+                                        { errors[`memberLastName-${memberIndex}`] && (
+                                            <p className="error" id={`error-member-lastname-${memberIndex}`} aria-live="polite">
+                                                This field is required
+                                            </p>
+                                        ) }
+                                    </div>
+                                    <div className={
+                                        `wrap-member-email ${(memberIndex === partyMembersCount - 1 ? 'is-last' : '')}`
+                                    }
+                                    >
+                                        <label htmlFor={`field-member-email-${memberIndex}`}>
+                                            E-mail:
+                                            <input
+                                                id={`field-member-email-${memberIndex}`}
+                                                name={`memberEmail-${memberIndex}`}
+                                                type="email"
+                                                inputMode="email"
+                                                aria-describedby={`${
+                                                    errors[`memberEmail-${memberIndex}`] ?
+                                                        `error-member-email-${memberIndex}` : ''}
+                                                `}
+                                                aria-required="true"
+                                                aria-invalid={errors[`memberEmail-${memberIndex}`] !== undefined}
+                                                ref={register({ pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/ })}
+                                            />
+                                        </label>
+                                        { (memberIndex === partyMembersCount - 1 && (
+                                            <button
+                                                type="button"
+                                                className="remove-member"
+                                                onClick={() => { setPartyMembersCount(partyMembersCount - 1); }}
+                                                title="Remove participant"
+                                            >
+                                                <span className="sr-only">Remove participant</span>
+                                            </button>
+                                        )) }
+                                    </div>
+                                    { errors[`memberEmail-${memberIndex}`] && (
+                                        <p className="error" id={`error-member-email-${memberIndex}`} aria-live="polite">
+                                            Please enter a valid email address
+                                        </p>
+                                    ) }
+                                </div>
+                            )) }
 
                             <button
                                 type="button"

@@ -30,7 +30,7 @@ $form-grid-breakpoint: 560px;
             -moz-appearance: none;
             -webkit-appearance: none;
             appearance: none;
-            background: url(/static/media/chevron-down.293a0582.svg) no-repeat right 12px bottom 50%/30px 30px,
+            background: url('../../assets/chevron-down.svg') no-repeat right 12px bottom 50%/30px 30px,
                 linear-gradient(to left, $color-purple 0%, $color-purple 56px, #eeeeee 56px);
         }
     }
@@ -105,16 +105,8 @@ $form-grid-column-gap: 30px;
         display: grid;
         grid-column-gap: $form-grid-column-gap;
         grid-row-gap: .5em;
-        grid-template-columns: 1fr .65fr .35fr;
+        grid-template-columns: 1fr 1fr;
     }
-}
-
-.wrap-email,
-.wrap-dependent-age,
-.wrap-member-email,
-.wrap-maine-phone,
-.wrap-arrival-date {
-    grid-column: 2 / span 2;
 }
 
 .dependents {

@@ -30,10 +30,13 @@ exports.addEmailSubscriber = async (user, list = 'host') => {
             status: 'pending',
             email_address: user.emailAddress.toLowerCase(),
         };
-        if (user.fullName || user.zipCode || user.phoneNumber || user.mainePhoneNumber || user.isHost !== undefined) {
+        if (user.firstName || user.lastName || user.zipCode || user.phoneNumber || user.mainePhoneNumber || user.isHost !== undefined) {
             payload.merge_fields = {};
-            if (user.fullName) {
-                payload.merge_fields.FULLNAME = user.fullName;
+            if (user.firstName) {
+                payload.merge_fields.FNAME = user.firstName;
+            }
+            if (user.lastName) {
+                payload.merge_fields.LNAME = user.lastName;
             }
             if (user.zipCode) {
                 payload.merge_fields['ADDRESS[zip]'] = user.zipCode;
@@ -85,7 +88,8 @@ exports.addEmailSubscriber = async (user, list = 'host') => {
 exports.savePledge = (user) => {
     const userRecord = {
         email_address: user.emailAddress.toLowerCase(),
-        full_name: user.fullName,
+        first_name: user.firstName,
+        last_name: user.lastName,
         zip_code: user.zipCode,
         state: user.state,
         phone_number: user.phoneNumber,

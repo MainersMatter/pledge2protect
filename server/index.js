@@ -19,7 +19,8 @@ const PORT = process.env.PORT || 5000;
 const isPayloadValid = (payload) => {
     const requiredFields = [
         'emailAddress',
-        'fullName',
+        'firstName',
+        'lastName',
         'phoneNumber',
         'state',
         'zipCode',
@@ -98,7 +99,7 @@ function runServer() {
             return;
         }
 
-        const members = getParameterGroups(payload, ['memberFullName', 'memberEmail']);
+        const members = getParameterGroups(payload, ['memberFirstName', 'memberLastName', 'memberEmail']);
         const dependents = getParameterGroups(payload, ['dependentRelationship', 'dependentAge']);
         const destinations = getParameterGroups(payload, ['destinationEmail', 'arrivalDate']);
 
@@ -111,7 +112,8 @@ function runServer() {
         if (process.env.ENABLE_EMAIL_SUBSCRIPTION === 'true') {
             const mainUser = {
                 emailAddress: payload.emailAddress,
-                fullName: payload.fullName,
+                firstName: payload.firstName,
+                lastName: payload.lastName,
                 state: payload.state,
                 zipCode: payload.zipCode,
                 phoneNumber: payload.phoneNumber,
@@ -126,8 +128,9 @@ function runServer() {
             ));
             const partyUsers = members.map((member) => (
                 {
-                    emailAddress: member[1],
-                    fullName: member[0],
+                    emailAddress: member[2],
+                    firstName: member[0],
+                    lastName: member[1],
                     isHost: false,
                     hasPledged: false,
                 }
@@ -162,7 +165,8 @@ function runServer() {
 
                 const mainPayload = {
                     emailAddress: payload.emailAddress,
-                    fullName: payload.fullName,
+                    firstName: payload.firstName,
+                    lastName: payload.lastName,
                     zipCode: payload.zipCode,
                     state: payload.state,
                     phoneNumber: payload.phoneNumber,
@@ -174,10 +178,11 @@ function runServer() {
                 };
                 promises.push(savePledge(mainPayload));
 
-                members.forEach(([fullName, email]) => {
+                members.forEach(([firstName, lastName, email]) => {
                     const memberPayload = {
                         emailAddress: email,
-                        fullName,
+                        firstName,
+                        lastName,
                         isHost: false,
                         hasPledged: false,
                         partyId,
