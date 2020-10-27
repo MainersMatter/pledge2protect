@@ -110,6 +110,7 @@ exports.savePledge = (user) => {
                     resolve(null, 1);
                 } else {
                     console.error(`There was an error saving user: ${error}`);
+                    console.log(userRecord);
                     reject('There was an error saving user', null);
                 }
             } else {
