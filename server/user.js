@@ -27,7 +27,7 @@ exports.addEmailSubscriber = async (user, list = 'host') => {
 
     try {
         const payload = {
-            status: 'pending',
+            status: 'subscribed',
             email_address: user.emailAddress.toLowerCase(),
         };
         if (user.firstName || user.lastName || user.zipCode || user.phoneNumber || user.mainePhoneNumber || user.isHost !== undefined) {
