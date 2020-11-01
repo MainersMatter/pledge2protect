@@ -545,8 +545,10 @@ const PledgeForm = (props, ref) => {
                             <h4>(OPTIONAL) Where will you be staying?</h4>
 
                             <p className="instructions">
-                                Send a copy of this pledge including your name and date of arrival to a lodging
-                                establishment, campground, and/or rental property.
+                                To help facilitate the check-in process at your destination(s), send a copy of this
+                                pledge including your name and date of arrival to a lodging establishment, campground,
+                                and/or rental property by providing us with the email address and arrival date for each
+                                destination you plan to visit while in Maine.
                             </p>
 
                             <div className="pledge-form-grid">
