@@ -7,6 +7,7 @@ import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
 import Dialog from '../Dialog/dialog';
 import stateMappings from './states';
+import { errors as sharedErrors } from '../../shared/errors';
 
 import './pledge-form.scss';
 
@@ -48,9 +49,13 @@ const PledgeForm = (props, ref) => {
                 return;
             } catch (error) {
                 console.error(`Error occurred posting pledge: ${error}`);
+                let errorMessage = 'Sorry there was an issue saving your pledge.  Please try again.';
+                if (error?.response?.data?.code === sharedErrors.EMAIL_RATE_LIMIT_EXCEEDED.code) {
+                    errorMessage = sharedErrors.EMAIL_RATE_LIMIT_EXCEEDED.message;
+                }
                 // TODO: replace with something nicer
                 // eslint-disable-next-line no-alert
-                alert('Sorry there was an issue saving your pledge.  Please try again.');
+                alert(errorMessage);
             }
         } else {
             window.location = GET_WELL_LOOP_URL;

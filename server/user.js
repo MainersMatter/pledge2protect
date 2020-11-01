@@ -2,6 +2,7 @@ const Mailchimp = require('mailchimp-api-v3');
 const crypto = require('crypto');
 
 const connection = require('./db.js');
+const { errors } = require("../react-ui/src/shared/errors");
 
 
 const mailchimp = process.env.MAILCHIMP_API_KEY ? new Mailchimp(process.env.MAILCHIMP_API_KEY) : {};
@@ -74,6 +75,11 @@ exports.addEmailSubscriber = async (user, list = 'host') => {
 
         let errorMessage = err.detail;
 
+        if (errorMessage.includes("has signed up to a lot of lists very recently")) {
+            const error = new Error("Sorry, too many attempts made. Please clear cache and make new attempt.");
+            error.code = errors.EMAIL_RATE_LIMIT_EXCEEDED.code;
+            throw error;
+        }
         if (err.errors && err.errors.length > 0) {
             err.errors.forEach((fieldError) => {
                 errorMessage += `\n    ${fieldError.field}: ${fieldError.message}`;

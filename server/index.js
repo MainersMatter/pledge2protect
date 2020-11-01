@@ -153,8 +153,12 @@ function runServer() {
                 });
             } catch (error) {
                 console.error(error);
+                const errorResponse = { error: true, message: error.message };
+                if (error.code) {
+                    errorResponse.code = error.code;
+                }
                 res.status(500)
-                    .send({ error: true, message: error.message });
+                    .send(errorResponse);
                 return;
             }
         }
