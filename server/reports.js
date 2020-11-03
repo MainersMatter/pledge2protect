@@ -29,7 +29,7 @@ exports.audienceExport = (callback) => {
     LEFT JOIN destination as dest
       ON dest.party_id = host.party_id
     WHERE 1
-      AND host.created >= SUBDATE(CURRENT_DATE, 10)
+      AND host.created >= SUBDATE(CURRENT_DATE, 1)
       AND host.is_host = 1
     GROUP BY host.email_address
     ORDER BY host.email_address ASC
