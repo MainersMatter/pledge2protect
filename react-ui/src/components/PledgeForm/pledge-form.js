@@ -7,6 +7,7 @@ import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
 import Dialog from '../Dialog/dialog';
 import stateMappings from './states';
+import { errors as sharedErrors } from '../../shared/errors';
 
 import './pledge-form.scss';
 
@@ -48,9 +49,13 @@ const PledgeForm = (props, ref) => {
                 return;
             } catch (error) {
                 console.error(`Error occurred posting pledge: ${error}`);
+                let errorMessage = 'Sorry there was an issue saving your pledge.  Please try again.';
+                if (error?.response?.data?.code === sharedErrors.EMAIL_RATE_LIMIT_EXCEEDED.code) {
+                    errorMessage = sharedErrors.EMAIL_RATE_LIMIT_EXCEEDED.message;
+                }
                 // TODO: replace with something nicer
                 // eslint-disable-next-line no-alert
-                alert('Sorry there was an issue saving your pledge.  Please try again.');
+                alert(errorMessage);
             }
         } else {
             window.location = GET_WELL_LOOP_URL;
@@ -92,8 +97,8 @@ const PledgeForm = (props, ref) => {
                                 ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-origin">
-                                1. I am from an exempt state with a low incidence of COVID-19; Massachusetts, Vermont,
-                                New Hampshire, Connecticut, New York, New Jersey
+                                1. I am from an exempt state with a low incidence of COVID-19; Vermont, Massachusetts,
+                                New Hampshire
                             </label>
                         </li>
                         <li className="inline-field">
@@ -540,8 +545,10 @@ const PledgeForm = (props, ref) => {
                             <h4>(OPTIONAL) Where will you be staying?</h4>
 
                             <p className="instructions">
-                                Send a copy of this pledge including your name and date of arrival to a lodging
-                                establishment, campground, and/or rental property.
+                                To help facilitate the check-in process at your destination(s), send a copy of this
+                                pledge including your name and date of arrival to a lodging establishment, campground,
+                                and/or rental property by providing us with the email address and arrival date for each
+                                destination you plan to visit while in Maine.
                             </p>
 
                             <div className="pledge-form-grid">

@@ -13,6 +13,10 @@ const {
     createParty,
 } = require('./user');
 
+const {
+  audienceExport,
+} = require('./reports');
+
 const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
 
@@ -69,6 +73,7 @@ const getParameterGroups = (payload, parameters) => {
 
 function runServer() {
     const app = express();
+    const basicAuth = require('express-basic-auth')
 
     // Priority serve any static files.
     app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
@@ -88,6 +93,23 @@ function runServer() {
             res.send(pledgeCount);
         });
     });
+
+    const basicAuthPassword = process.env.BASIC_AUTH_PASS || Math.random().toString(36).substring(2);
+    app.get('/reports/audience', basicAuth(
+      {
+        users: { 'admin': basicAuthPassword },
+        challenge: true,
+        realm: 'thepeoplematter'
+      }), (req, res) => {
+        res.set('Content-Type', 'application/json');
+        audienceExport((error, results) => {
+          if (error) {
+            res.status(500).send({ error: true, message: error });
+            return;
+          }
+          res.send(results);
+        });
+      });
 
     app.post('/pledge', async (req, res) => {
         const payload = req.body;
@@ -153,8 +175,12 @@ function runServer() {
                 });
             } catch (error) {
                 console.error(error);
+                const errorResponse = { error: true, message: error.message };
+                if (error.code) {
+                    errorResponse.code = error.code;
+                }
                 res.status(500)
-                    .send({ error: true, message: error.message });
+                    .send(errorResponse);
                 return;
             }
         }
