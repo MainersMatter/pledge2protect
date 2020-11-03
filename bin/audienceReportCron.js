@@ -5,8 +5,15 @@
 
 const { Parser } = require('json2csv');
 
-// TODO: Get full list of user fields to include.
-const fields = ['email_address', 'first_name', 'last_name'];
+const fields = [
+  'first_name',
+  'last_name',
+  'arrival_date',
+  'phone_number',
+  'dependents',
+  'party_members',
+  'email_address',
+];
 const opts = { fields };
 
 const connection = require('../server/db.js');
