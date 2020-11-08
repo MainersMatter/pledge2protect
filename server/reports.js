@@ -31,7 +31,7 @@ exports.audienceExport = (callback) => {
     WHERE 1
       AND host.created >= SUBDATE(CURRENT_DATE, 1)
       AND host.is_host = 1
-    GROUP BY host.email_address
+    GROUP BY host.party_id
     ORDER BY host.email_address ASC
     ;
   `;
