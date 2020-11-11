@@ -14,6 +14,10 @@ const lists = {
 };
 
 exports.addEmailSubscriber = async (user, list = 'host') => {
+    if (user.emailAddress === '') {
+        return { id: undefined };
+    }
+    
     if (
         !mailchimp
         || !process.env.MAILCHIMP_LIST_ID
@@ -92,6 +96,12 @@ exports.addEmailSubscriber = async (user, list = 'host') => {
 };
 
 exports.savePledge = (user) => {
+    if (user.emailAddress === '') {
+        return new Promise((resolve, reject) => {
+            resolve(null, 0);
+        });
+    }
+
     const userRecord = {
         email_address: user.emailAddress.toLowerCase(),
         first_name: user.firstName,
@@ -147,6 +157,12 @@ exports.saveDependent = (dependent) => {
 };
 
 exports.saveDestination = (destination) => {
+    if (destination.emailAddress === '') {
+        return new Promise((resolve, reject) => {
+            resolve(null, 0);
+        });
+    }
+
     const destinationRecord = {
         email: destination.emailAddress,
         arrival_date: destination.arrivalDate,
