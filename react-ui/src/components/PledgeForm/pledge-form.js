@@ -53,6 +53,9 @@ const PledgeForm = (props, ref) => {
                 if (error?.response?.data?.code === sharedErrors.EMAIL_RATE_LIMIT_EXCEEDED.code) {
                     errorMessage = sharedErrors.EMAIL_RATE_LIMIT_EXCEEDED.message;
                 }
+                if (error?.response?.data?.code === sharedErrors.FAKE_EMAIL.code) {
+                    errorMessage = sharedErrors.FAKE_EMAIL.message;
+                }
                 // TODO: replace with something nicer
                 // eslint-disable-next-line no-alert
                 alert(errorMessage);
