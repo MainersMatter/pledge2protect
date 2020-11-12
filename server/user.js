@@ -84,6 +84,11 @@ exports.addEmailSubscriber = async (user, list = 'host') => {
             error.code = errors.EMAIL_RATE_LIMIT_EXCEEDED.code;
             throw error;
         }
+        if (errorMessage.includes("looks fake or invalid")) {
+            const error = new Error("An email address in your form appears invalid. Please check your spelling.");
+            error.code = errors.FAKE_EMAIL.code;
+            throw error;
+        }
         if (err.errors && err.errors.length > 0) {
             err.errors.forEach((fieldError) => {
                 errorMessage += `\n    ${fieldError.field}: ${fieldError.message}`;
