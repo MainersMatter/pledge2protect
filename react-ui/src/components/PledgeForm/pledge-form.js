@@ -100,8 +100,7 @@ const PledgeForm = (props, ref) => {
                                 ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-origin">
-                                1. I am from an exempt state with a low incidence of COVID-19; Vermont, Massachusetts,
-                                New Hampshire
+                                1. I am from an exempt state with a low incidence of COVID-19; Vermont, New Hampshire
                             </label>
                         </li>
                         <li className="inline-field">
