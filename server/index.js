@@ -3,6 +3,7 @@ const path = require('path');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const bodyParser = require('body-parser');
+const { Parser } = require('json2csv');
 
 const {
     getCountUserPledges,
@@ -95,19 +96,35 @@ function runServer() {
     });
 
     const basicAuthPassword = process.env.BASIC_AUTH_PASS || Math.random().toString(36).substring(2);
+    const fields = [
+      'first_name',
+      'last_name',
+      'arrival_date',
+      'phone_number',
+      'dependents',
+      'party_members',
+      'email_address',
+    ];
+    const opts = { fields };
     app.get('/reports/audience', basicAuth(
       {
         users: { 'admin': basicAuthPassword },
         challenge: true,
         realm: 'thepeoplematter'
       }), (req, res) => {
-        res.set('Content-Type', 'application/json');
+        res.set('Content-Type', 'text/csv');
         audienceExport((error, results) => {
           if (error) {
             res.status(500).send({ error: true, message: error });
             return;
           }
-          res.send(results);
+          const dateStr = new Date().toISOString().split('T')[0];
+          const fileName = 'audience_report_' + dateStr + '.csv';
+          res.attachment(fileName);
+
+          const parser = new Parser(opts);
+          const csv = parser.parse(results);
+          res.send(csv);
         });
       });
 
