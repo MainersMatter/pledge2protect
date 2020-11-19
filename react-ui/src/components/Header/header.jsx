@@ -4,7 +4,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-import logo from '../../assets/PPME_Opt2_Horiz_green-01.svg';
+import logo from '../../assets/maine-together-logo.png';
 
 import './header.scss';
 
@@ -34,9 +34,9 @@ const Header = () => {
     return (
         <header className="global-header">
             <div className="logo-hamburger">
-                <h1 className="sr-only">Pledge To Protect ME</h1>
-                <Link to="/" aria-label="Pledge To Protect ME home page">
-                    <img src={logo} alt="" width="261" height="55" />
+                <h1 className="sr-only">Maine Together</h1>
+                <Link to="/" aria-label="Maine Together home page">
+                    <img src={logo} alt="" width="140" height="137" />
                 </Link>
             </div>
         </header>

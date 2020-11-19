@@ -1,17 +1,21 @@
 @import '../../variables';
 
-$home-splash-bg-img: '../../assets/background-rangeley.jpg';
+$home-splash-bg-img: '../../assets/fullcolor_bg_site.jpg';
 $main-content-block-breakpoint-small: 650px;
 
 .main-content-block {
+    box-shadow: inset 0px 6px 6px -3px rgba(0,0,0,0.3);
     background-image: url($home-splash-bg-img);
     background-repeat: no-repeat;
     background-size: cover;
-    box-shadow: inset 0px 6px 6px -3px rgba(0,0,0,0.3);
+    background-position: center center;
+    @media(min-width: $main-content-block-breakpoint-small) {
+        background-image: linear-gradient(270deg, #12161A 0.25%, rgba(196, 196, 196, 0) 63%), url($home-splash-bg-img);
+    }
 
     .call-to-action {
-        margin: 0 auto;
-        max-width: 700px;
+        margin: 0 0 0 auto;
+        max-width: 585px;
         color: #fff;
         text-shadow: 0 0 4px #000, 0 0 8px #000;
         text-align: center;
@@ -19,10 +23,13 @@ $main-content-block-breakpoint-small: 650px;
         @media(min-width: 500px) {
             font-size: 2.25rem;
         }
+        @media(min-width: $main-content-block-breakpoint-small) {
+            text-align: right;
+        }
         padding: 160px $global-padding-horizontal-small;
         @media(min-width: $global-padding-breakpoint) {
             padding-left: $global-padding-horizontal-large;
-            padding-right: $global-padding-horizontal-large;
+            padding-right: 110px;
         }
     }
 }
