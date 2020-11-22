@@ -17,10 +17,14 @@ exports.audienceExport = (callback) => {
       group_concat(
         party_member.first_name,
         " ",
-        party_member.last_name
+        party_member.last_name,
+        "<",
+        party_member.email_address,
+        ">"
         SEPARATOR "|"
       ) as party_members,
-      host.email_address as email_address
+      host.email_address as email_address,
+      dest.email as destination_email
     FROM user AS host
     LEFT JOIN user as party_member
       ON host.party_id = party_member.party_id
