@@ -5,7 +5,6 @@ exports.audienceExport = (callback) => {
     SELECT
       host.first_name as first_name,
       host.last_name as last_name,
-      dest.email as destination_email,
       dest.arrival_date as arrival_date,
       host.phone_number as phone_number,
       group_concat(

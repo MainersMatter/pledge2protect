@@ -8,6 +8,7 @@ const { Parser } = require('json2csv');
 const fields = [
   'first_name',
   'last_name',
+  'destination_email',
   'arrival_date',
   'phone_number',
   'dependents',
