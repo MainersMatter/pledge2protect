@@ -113,7 +113,7 @@ const PledgeForm = (props, ref) => {
                             />
                             <label htmlFor="requirement-tested">
                                 2. I have received a negative test result for COVID-19 on a specimen taken no longer
-                                than 72 hours prior to my arrival, consistent with Maine CDC guidance
+                                than 72 hours prior to my arrival, consistent with Maine CDC guidance Testing information
                             </label>
                             <button
                                 type="button"
@@ -132,7 +132,7 @@ const PledgeForm = (props, ref) => {
                                 ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-quarantined">
-                                3. I will quarantine for 14 days upon arrival in Maine or for the duration of the stay
+                                3. I will quarantine for 10 days upon arrival in Maine or for the duration of the stay
                             </label>
                         </li>
                         <li className="inline-field">
@@ -144,7 +144,7 @@ const PledgeForm = (props, ref) => {
                                 ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-maineQuarantined">
-                                4. I have completed a 14-day quarantine <em>in Maine</em> prior to my stay
+                                4. I have completed a 10-day quarantine <em>in Maine</em> prior to my stay
                             </label>
                         </li>
                     </ul>
