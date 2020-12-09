@@ -82,8 +82,7 @@ const PledgeForm = (props, ref) => {
                             </ul>
                         </li>
                         <li className="inline-field">
-                            I have not had close contact with anyone over the last 14 days who is confirmed to have
-                            COVID-19
+                            I have not had close contact with anyone over the last 10 days who is confirmed to have COVID-19
                         </li>
                     </ul>
                     <p className="select-one">Please select ONE:</p>
