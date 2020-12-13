@@ -106,7 +106,14 @@ $form-grid-column-gap: 30px;
         grid-column-gap: $form-grid-column-gap;
         grid-row-gap: .5em;
         grid-template-columns: 1fr 1fr;
+        &.destinations {
+            grid-template-columns: 1.2fr .8fr;
+        }
     }
+}
+
+.wrap-destination-email {
+    position: relative;
 }
 
 .dependents {

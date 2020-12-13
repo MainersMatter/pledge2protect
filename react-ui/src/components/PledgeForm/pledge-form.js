@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 import ConfirmationDialog from '../ConfirmationDialog/confirmation-dialog';
 import PrivacyTermsDialog from '../PrivacyAndTerms/privacy-terms-dialog';
+import DestinationOptions from '../DestinationOptions/destination-options';
 import Dialog from '../Dialog/dialog';
 import stateMappings from './states';
 import { errors as sharedErrors } from '../../shared/errors';
@@ -22,7 +23,7 @@ const DEPENDENT_RELATIONSHIP_CHOICES = [
 
 const PledgeForm = (props, ref) => {
     const {
-        register, handleSubmit, errors, formState,
+        register, handleSubmit, errors, formState, setValue
     } = useForm({
         mode: 'onChange',
     });
@@ -32,7 +33,7 @@ const PledgeForm = (props, ref) => {
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState(false);
     const [isCovidTestDialogOpen, setCovidTestDialogOpen] = useState(false);
     const [isStateDialogOpen, setStateDialogOpen] = useState(false);
-    const [isDestinationEmailsDialogOpen, setDestinationEmailsDialogOpen] = useState(false);
+    const [destinationOptionsOpen, setDestinationOptionsOpen] = useState(false);
     const [isPrivacyAndTermsDialogOpen, setPrivacyAndTermsDialogOpen] = useState(false);
     const [partyMembersCount, setPartyMembersCount] = useState(1);
     const partyMembersArray = new Array(partyMembersCount).fill(0);
@@ -40,6 +41,8 @@ const PledgeForm = (props, ref) => {
     const dependentsArray = new Array(dependentsCount).fill(0);
     const [destinationsCount, setDestinationsCount] = useState(1);
     const destinationsArray = new Array(destinationsCount).fill(0);
+
+    const destinationsRef = useRef(null);
 
     const onSubmit = async (data) => {
         if (visitIntention !== 'return') {
@@ -65,6 +68,18 @@ const PledgeForm = (props, ref) => {
             return;
         }
     };
+
+    useEffect(() => {
+        const handleMouseDown = (evt) => {
+            if (!destinationsRef.current.contains(evt.target)) {
+                setDestinationOptionsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleMouseDown);
+        return () => {
+            document.removeEventListener('mousedown', handleMouseDown);
+        };
+    }, [ref]);
 
     return (
         <div className="pledge-form-container">
@@ -552,7 +567,7 @@ const PledgeForm = (props, ref) => {
                                 destination you plan to visit while in Maine.
                             </p>
 
-                            <div className="pledge-form-grid">
+                            <div className="pledge-form-grid destinations" ref={destinationsRef}>
                                 { destinationsArray.map((_, destinationIndex) => (
                                     <>
                                         <div className="wrap-destination-email">
@@ -573,8 +588,18 @@ const PledgeForm = (props, ref) => {
                                                     ref={register({
                                                         pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/,
                                                     })}
+                                                    onFocus={() => { setDestinationOptionsOpen(destinationIndex) }}
                                                 />
                                             </label>
+                                            { destinationOptionsOpen === destinationIndex && (
+                                                <DestinationOptions handleSelect={(email) => {
+                                                    setValue(`destinationEmail-${destinationIndex}`, email, {
+                                                        shouldValidate: true,
+                                                        shouldDirty: true
+                                                    });
+                                                    setDestinationOptionsOpen(false);
+                                                }}/>
+                                            ) }
                                             { errors[`destinationEmail-${destinationIndex}`] && (
                                                 <p
                                                     className="error"
@@ -602,6 +627,7 @@ const PledgeForm = (props, ref) => {
                                                     `}
                                                     aria-invalid={errors[`arrivalDate-${destinationIndex}`] !== undefined}
                                                     ref={register()}
+                                                    onFocus={() => { setDestinationOptionsOpen(false) }}
                                                 />
                                             </label>
                                             { errors[`arrivalDate-${destinationIndex}`] && (
@@ -686,15 +712,6 @@ const PledgeForm = (props, ref) => {
                     closeHandler={() => setStateDialogOpen(false)}
                 >
                     If members of the travel party come from different states, you will have to sign a pledge per state.
-                </Dialog>
-            ) }
-            { isDestinationEmailsDialogOpen && (
-                <Dialog
-                    classNames="destination-emails-dialog minor-dialog"
-                    title="Information on destination emails"
-                    closeHandler={() => setDestinationEmailsDialogOpen(false)}
-                >
-                    If visiting multiple destinations, enter email addresses separated by a comma.
                 </Dialog>
             ) }
             { isPrivacyAndTermsDialogOpen && (

@@ -1,0 +1,48 @@
+.destination-options {
+    background: #fff;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70px;
+    border: solid 1px #e5e5e5;
+    border-top: 0;
+    box-shadow: 0 5px 5px rgba(0,0,0,.5);
+
+    .search {
+        padding: 10px 10px 0;
+    }
+
+    .search-results {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 16em;
+        overflow: auto;
+    }
+
+    .no-results {
+        padding: 10px;
+    }
+
+    button {
+        border: 0;
+        background: none;
+        cursor: pointer;
+        text-align: left;
+        padding: .4em .8em;
+        width: 100%;
+        .name {
+            display: block;
+        }
+        .email {
+            display: block;
+            font-size: .8rem;
+            color: #666;
+        }
+        &:hover {
+            background: #e5e5e5;
+        }
+    }
+}
+
