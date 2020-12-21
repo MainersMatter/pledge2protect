@@ -557,7 +557,7 @@ const PledgeForm = (props, ref) => {
                                     <>
                                         <div className="wrap-destination-email">
                                             <label htmlFor={`field-destination-email-${destinationIndex}`}>
-                                                Destination E-mail:
+                                                Destination:
                                                 <input
                                                     id={`field-destination-email-${destinationIndex}`}
                                                     name={`destinationEmail-${destinationIndex}`}
