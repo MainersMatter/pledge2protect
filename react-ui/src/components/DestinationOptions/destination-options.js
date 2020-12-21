@@ -49,7 +49,6 @@ const DestinationOptions = ({ handleSelect }) => {
                         <li>
                             <button type="button" onClick={() => { handleSelect(email) }}>
                                 <span className="name">{ name }</span>
-                                <span className="email">{ email }</span>
                             </button>
                         </li>
                     );
