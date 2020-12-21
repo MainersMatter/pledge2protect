@@ -567,12 +567,17 @@ const PledgeForm = (props, ref) => {
                                 destination you plan to visit while in Maine.
                             </p>
 
+                            <p className="instructions">
+                            Use the search bar to see if your desired destination has already partnered with us, if you
+                            do not find them, then please input the destination’s email in the text field.
+                            </p>
+
                             <div className="pledge-form-grid destinations" ref={destinationsRef}>
                                 { destinationsArray.map((_, destinationIndex) => (
                                     <>
                                         <div className="wrap-destination-email">
                                             <label htmlFor={`field-destination-email-${destinationIndex}`}>
-                                                Destination E-mail:
+                                                Destination:
                                                 <input
                                                     id={`field-destination-email-${destinationIndex}`}
                                                     name={`destinationEmail-${destinationIndex}`}
