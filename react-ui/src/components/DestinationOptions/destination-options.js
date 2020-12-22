@@ -13,14 +13,16 @@ const OPTIONS = [
     ['Down East Getaway', 'downeastgetaway@gmail.com'],
     ['Sadler House Maine', 'sadlerhousemaine@gmail.com'],
     ['Sunday River', 'mharrop@sundayriver.com'],
-    ['Other', ''],
 ];
+
+const sortedOptions = [...OPTIONS].sort((a, b) => a[0] > b[0]);
+sortedOptions.unshift(['Other', '']);
 
 const DestinationOptions = ({ handleSelect }) => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
-    const filteredOptions = OPTIONS.filter(([name, email]) => {
+    const filteredOptions = sortedOptions.filter(([name, email]) => {
         if (searchQuery === '' || email === '') {
             return true;
         }
@@ -49,7 +51,7 @@ const DestinationOptions = ({ handleSelect }) => {
                 { filteredOptions.map(([name, email]) => {
                     return (
                         <li>
-                            <button type="button" onClick={() => { handleSelect(email) }}>
+                            <button type="button" onClick={() => { handleSelect(name, email); }}>
                                 <span className="name">{ name }</span>
                             </button>
                         </li>

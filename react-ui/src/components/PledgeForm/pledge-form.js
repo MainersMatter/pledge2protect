@@ -35,6 +35,7 @@ const PledgeForm = (props, ref) => {
     const [isStateDialogOpen, setStateDialogOpen] = useState(false);
     const [destinationOptionsOpen, setDestinationOptionsOpen] = useState(false);
     const [freeFormDestinations, setFreeFormDestinations] = useState([]);
+    const [selectedDestinationNames, setSelectedDestinationNames] = useState([]);
     const [isPrivacyAndTermsDialogOpen, setPrivacyAndTermsDialogOpen] = useState(false);
     const [partyMembersCount, setPartyMembersCount] = useState(1);
     const partyMembersArray = new Array(partyMembersCount).fill(0);
@@ -575,6 +576,7 @@ const PledgeForm = (props, ref) => {
                                             <label htmlFor={`field-destination-email-${destinationIndex}`}>
                                                 Destination{ freeFormDestinations.includes(destinationIndex) ? ' Email' : '' }:
                                                 <input
+                                                    className="free-form-input"
                                                     id={`field-destination-email-${destinationIndex}`}
                                                     name={`destinationEmail-${destinationIndex}`}
                                                     type="text"
@@ -595,13 +597,27 @@ const PledgeForm = (props, ref) => {
                                                         }
                                                     }}
                                                 />
+                                                <input
+                                                    className="select-value"
+                                                    type="text"
+                                                    readOnly
+                                                    value={selectedDestinationNames[destinationIndex] || ''}
+                                                    onFocus={() => {
+                                                        if (!freeFormDestinations.includes(destinationIndex)) {
+                                                            setDestinationOptionsOpen(destinationIndex);
+                                                        }
+                                                    }}
+                                                />
                                             </label>
                                             { destinationOptionsOpen === destinationIndex && (
-                                                <DestinationOptions handleSelect={(email) => {
+                                                <DestinationOptions handleSelect={(name, email) => {
                                                     setValue(`destinationEmail-${destinationIndex}`, email, {
                                                         shouldValidate: true,
                                                         shouldDirty: true
                                                     });
+                                                    const destinationNames = [...selectedDestinationNames];
+                                                    destinationNames[destinationIndex] = name;
+                                                    setSelectedDestinationNames(destinationNames);
                                                     setDestinationOptionsOpen(false);
                                                     if (email === '') {
                                                         setFreeFormDestinations([...freeFormDestinations, destinationIndex]);
