@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './destination-options.scss';
@@ -13,6 +13,7 @@ const OPTIONS = [
     ['Down East Getaway', 'downeastgetaway@gmail.com'],
     ['Sadler House Maine', 'sadlerhousemaine@gmail.com'],
     ['Sunday River', 'mharrop@sundayriver.com'],
+    ['Other', ''],
 ];
 
 const DestinationOptions = ({ handleSelect }) => {
@@ -20,10 +21,10 @@ const DestinationOptions = ({ handleSelect }) => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const filteredOptions = OPTIONS.filter(([name, email]) => {
-        if (searchQuery === '') {
+        if (searchQuery === '' || email === '') {
             return true;
         }
-        if (name.includes(searchQuery) || email.includes(searchQuery)) {
+        if (name.toLowerCase().includes(searchQuery.toLowerCase())) {
             return true;
         }
         return false;
@@ -37,6 +38,7 @@ const DestinationOptions = ({ handleSelect }) => {
                 </label>
                 <input
                     type="search"
+                    autoFocus
                     id="destinations-search"
                     onChange={(evt) => { setSearchQuery(evt.target.value); }}
                     value={searchQuery}
@@ -53,7 +55,6 @@ const DestinationOptions = ({ handleSelect }) => {
                         </li>
                     );
                 } ) }
-                { filteredOptions.length === 0 && <div className="no-results">No results</div> }
             </ul>
         </div>
     );

@@ -34,6 +34,7 @@ const PledgeForm = (props, ref) => {
     const [isCovidTestDialogOpen, setCovidTestDialogOpen] = useState(false);
     const [isStateDialogOpen, setStateDialogOpen] = useState(false);
     const [destinationOptionsOpen, setDestinationOptionsOpen] = useState(false);
+    const [freeFormDestinations, setFreeFormDestinations] = useState([]);
     const [isPrivacyAndTermsDialogOpen, setPrivacyAndTermsDialogOpen] = useState(false);
     const [partyMembersCount, setPartyMembersCount] = useState(1);
     const partyMembersArray = new Array(partyMembersCount).fill(0);
@@ -567,17 +568,12 @@ const PledgeForm = (props, ref) => {
                                 destination you plan to visit while in Maine.
                             </p>
 
-                            <p className="instructions">
-                            Use the search bar to see if your desired destination has already partnered with us, if you
-                            do not find them, then please input the destination’s email in the text field.
-                            </p>
-
                             <div className="pledge-form-grid destinations" ref={destinationsRef}>
                                 { destinationsArray.map((_, destinationIndex) => (
                                     <>
-                                        <div className="wrap-destination-email">
+                                        <div className={`wrap-destination-email ${freeFormDestinations.includes(destinationIndex) ? '' : 'pseudo-select'}`}>
                                             <label htmlFor={`field-destination-email-${destinationIndex}`}>
-                                                Destination:
+                                                Destination{ freeFormDestinations.includes(destinationIndex) ? ' Email' : '' }:
                                                 <input
                                                     id={`field-destination-email-${destinationIndex}`}
                                                     name={`destinationEmail-${destinationIndex}`}
@@ -593,7 +589,11 @@ const PledgeForm = (props, ref) => {
                                                     ref={register({
                                                         pattern: /^[\w-.+]+@([\w-]+.)+[\w-]{2,4}$/,
                                                     })}
-                                                    onFocus={() => { setDestinationOptionsOpen(destinationIndex) }}
+                                                    onFocus={() => {
+                                                        if (!freeFormDestinations.includes(destinationIndex)) {
+                                                            setDestinationOptionsOpen(destinationIndex);
+                                                        }
+                                                    }}
                                                 />
                                             </label>
                                             { destinationOptionsOpen === destinationIndex && (
@@ -603,6 +603,9 @@ const PledgeForm = (props, ref) => {
                                                         shouldDirty: true
                                                     });
                                                     setDestinationOptionsOpen(false);
+                                                    if (email === '') {
+                                                        setFreeFormDestinations([...freeFormDestinations, destinationIndex]);
+                                                    }
                                                 }}/>
                                             ) }
                                             { errors[`destinationEmail-${destinationIndex}`] && (

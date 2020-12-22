@@ -39,6 +39,12 @@ $form-grid-breakpoint: 560px;
     }
 }
 
+.pseudo-select input[type="text"] {
+    background: url('../../assets/chevron-down.svg') no-repeat right 12px bottom 50%/30px 30px,
+        linear-gradient(to left, $color-purple 0%, $color-purple 56px, #eeeeee 56px);
+    cursor: default;
+}
+
 .symptoms,
 .bullet-points,
 .try-my-best {

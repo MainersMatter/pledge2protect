@@ -21,16 +21,12 @@
         overflow: auto;
     }
 
-    .no-results {
-        padding: 10px;
-    }
-
     button {
         border: 0;
         background: none;
         cursor: pointer;
         text-align: left;
-        padding: .4em .8em;
+        padding: .4em .8em .6em;
         width: 100%;
         .name {
             display: block;
