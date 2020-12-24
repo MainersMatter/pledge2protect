@@ -565,10 +565,9 @@ const PledgeForm = (props, ref) => {
                             <p className="instructions">
                                 To help facilitate the check-in process at your destination(s), send a copy of this
                                 pledge including your name and date of arrival to a lodging establishment, campground,
-                                and/or rental property. To electronically send a copy of your pledge, please search for
-                                your destination by name by using the below search feature. If you do not see the name
-                                of your destination, please select “Other” and enter the email address for your
-                                destination.
+                                and/or rental property. Search for your destination by name by using the below search
+                                feature. If you do not see the name of your destination, please select “Other” and enter
+                                the email address for your destination.
                             </p>
 
                             <div className="pledge-form-grid destinations" ref={destinationsRef}>
