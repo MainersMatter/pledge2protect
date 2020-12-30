@@ -110,26 +110,27 @@ const PledgeForm = (props, ref) => {
                         <li className="inline-field">
                             <input
                                 type="radio"
-                                id="requirement-origin"
+                                id="requirement-negativeTest"
                                 name="preRequirement"
-                                value="origin"
+                                value="negativeTest"
                                 ref={register({ required: true })}
                             />
-                            <label htmlFor="requirement-origin">
-                                1. I am from an exempt state with a low incidence of COVID-19; Vermont, New Hampshire and Maine
+                            <label htmlFor="requirement-negativeTest">
+                                1. I have received a negative antigen or molecular test result for COVID-19 on a specimen taken
+                                no longer than 72 hours prior to my arrival, consistent with Maine CDC guidance
                             </label>
                         </li>
                         <li className="inline-field">
                             <input
                                 type="radio"
-                                id="requirement-tested"
+                                id="requirement-willTestAndQuarantineInMaine"
                                 name="preRequirement"
-                                value="tested"
+                                value="willTestAndQuarantineInMaine"
                                 ref={register({ required: true })}
                             />
-                            <label htmlFor="requirement-tested">
-                                2. I have received a negative test result for COVID-19 on a specimen taken no longer
-                                than 72 hours prior to my arrival, consistent with Maine CDC guidance Testing information
+                            <label htmlFor="requirement-willTestAndQuarantineInMaine">
+                                2. I am getting a test taken in Maine and will remain in quarantine until I get a negative antigen
+                                or molecular test result
                             </label>
                             <button
                                 type="button"
@@ -142,32 +143,41 @@ const PledgeForm = (props, ref) => {
                         <li className="inline-field">
                             <input
                                 type="radio"
-                                id="requirement-quarantined"
+                                id="requirement-willQuarantineInMaine"
                                 name="preRequirement"
-                                value="quarantined"
+                                value="willQuarantineInMaine"
                                 ref={register({ required: true })}
                             />
-                            <label htmlFor="requirement-quarantined">
+                            <label htmlFor="requirement-willQuarantineInMaine">
                                 3. I will quarantine for 10 days upon arrival in Maine or for the duration of the stay
                             </label>
                         </li>
                         <li className="inline-field">
                             <input
                                 type="radio"
-                                id="requirement-maineQuarantined"
+                                id="requirement-haveQuarantineInMaine"
                                 name="preRequirement"
-                                value="maineQuarantined"
+                                value="haveQuarantineInMaine"
                                 ref={register({ required: true })}
                             />
-                            <label htmlFor="requirement-maineQuarantined">
+                            <label htmlFor="requirement-haveQuarantineInMaine">
                                 4. I have completed a 10-day quarantine <em>in Maine</em> prior to my stay
                             </label>
                         </li>
+                        <li className="inline-field">
+                            <input
+                                type="radio"
+                                id="requirement-positivePCRAndQuarantined"
+                                name="preRequirement"
+                                value="positivePCRAndQuarantined"
+                                ref={register({ required: true })}
+                            />
+                            <label htmlFor="requirement-positivePCRAndQuarantined">
+                                5. I had a positive PCR test taken within the last 3 months and already
+                                completed my isolation
+                            </label>
+                        </li>
                     </ul>
-                    <p>
-                        (visitors may be tested for COVID-19 in Maine, but remain in quarantine while awaiting the
-                        results)
-                    </p>
 
                     <h3>
                         While in Maine, I will try to Keep Maine Healthy and:
