@@ -178,10 +178,6 @@ const PledgeForm = (props, ref) => {
                             </label>
                         </li>
                     </ul>
-                    <p>
-                        (visitors may be tested for COVID-19 in Maine, but remain in quarantine while awaiting the
-                        results)
-                    </p>
 
                     <h3>
                         While in Maine, I will try to Keep Maine Healthy and:
