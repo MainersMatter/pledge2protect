@@ -13,6 +13,7 @@ const OPTIONS = [
     ['Down East Getaway', 'downeastgetaway@gmail.com'],
     ['Sadler House Maine', 'sadlerhousemaine@gmail.com'],
     ['Sunday River', 'mharrop@sundayriver.com'],
+    ['Moody Beach RV Resort', 'moodybeach@equitylifestyle.com'],
 ];
 
 const sortedOptions = [...OPTIONS].sort((a, b) => a[0] > b[0]);
