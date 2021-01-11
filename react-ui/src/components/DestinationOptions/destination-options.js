@@ -14,6 +14,7 @@ const OPTIONS = [
     ['Sadler House Maine', 'sadlerhousemaine@gmail.com'],
     ['Sunday River', 'mharrop@sundayriver.com'],
     ['Moody Beach RV Resort', 'moodybeach@equitylifestyle.com'],
+    ['Wiscasset Woods Lodge', 'Stay@wiscassetwoods.com'],
 ];
 
 const sortedOptions = [...OPTIONS].sort((a, b) => a[0] > b[0]);
