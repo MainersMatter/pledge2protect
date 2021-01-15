@@ -15,6 +15,11 @@ const OPTIONS = [
     ['Sunday River', 'mharrop@sundayriver.com'],
     ['Moody Beach RV Resort', 'moodybeach@equitylifestyle.com'],
     ['Wiscasset Woods Lodge', 'Stay@wiscassetwoods.com'],
+    ["Inn By The River", "stay@innbytheriver.com"],
+    ["Three Rivers Whitewater", "havefun@threeriversfun.com"],
+    ["Inn on the Harbor", "info@innontheharbor.com"],
+    ["McKeen’s Riverside Retreat", "mckeensriverside@gmail.com"],
+    ["The Eagles Lodge Motel", "eagleslodgemotel@gmail.com"],
 ];
 
 const sortedOptions = [...OPTIONS].sort((a, b) => a[0] > b[0]);
