@@ -12,7 +12,6 @@ const OPTIONS = [
     ['Harraseeket Inn', 'info@harraseeketinn.com'],
     ['Down East Getaway', 'downeastgetaway@gmail.com'],
     ['Sadler House Maine', 'sadlerhousemaine@gmail.com'],
-    ['Sunday River', 'mharrop@sundayriver.com'],
     ['Moody Beach RV Resort', 'moodybeach@equitylifestyle.com'],
     ['Wiscasset Woods Lodge', 'Stay@wiscassetwoods.com'],
     ["Inn By The River", "stay@innbytheriver.com"],
@@ -20,6 +19,13 @@ const OPTIONS = [
     ["Inn on the Harbor", "info@innontheharbor.com"],
     ["McKeen’s Riverside Retreat", "mckeensriverside@gmail.com"],
     ["The Eagles Lodge Motel", "eagleslodgemotel@gmail.com"],
+    ["Wilson’s On Moosehead Lake", "wilsonscamps@yahoo.com"],
+    ["Little Sea Star Castle", "Littleseastarcastle@gmail.com"],
+    ["Hilton Garden Inn Auburn", "Matthew.Shaw@hilton.com"],
+    ["Sky Lodge", "skylodge@unity.edu"],
+    ["Sunday River - Jordan Grand", "mharrop@sundayriver.com"],
+    ["Sunday River - Summit", "mharrop@sundayriver.com"],
+    ["Sunday River - Snow Cap Inn", "mharrop@sundayriver.com"],
 ];
 
 const sortedOptions = [...OPTIONS].sort((a, b) => a[0] > b[0]);
