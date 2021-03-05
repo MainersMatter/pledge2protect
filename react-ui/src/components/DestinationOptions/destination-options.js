@@ -28,7 +28,7 @@ const OPTIONS = [
     ["Sunday River - Snow Cap Inn", "mharrop@sundayriver.com"],
 ];
 
-const sortedOptions = [...OPTIONS].sort((a, b) => a[0] > b[0]);
+const sortedOptions = [...OPTIONS].sort((a, b) => a[0].localeCompare(b[0]));
 sortedOptions.unshift(['Other', '']);
 
 const DestinationOptions = ({ handleSelect }) => {

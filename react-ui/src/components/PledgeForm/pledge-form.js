@@ -177,6 +177,19 @@ const PledgeForm = (props, ref) => {
                                 completed my isolation
                             </label>
                         </li>
+                        <li className="inline-field">
+                            <input
+                                type="radio"
+                                id="requirement-fullyVaccinated"
+                                name="preRequirement"
+                                value="fullyVaccinated"
+                                ref={register({ required: true })}
+                            />
+                            <label htmlFor="requirement-fullyVaccinated">
+                                6. I have been fully vaccinated after at least 14 days following the
+                                completion of the COVID-19 vaccination series
+                            </label>
+                        </li>
                     </ul>
 
                     <h3>
