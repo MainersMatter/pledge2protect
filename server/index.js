@@ -45,7 +45,7 @@ const isPayloadValid = (payload) => {
     }
 
     const oldPreRequirementValues = ['maineQuarantined', 'quarantined', 'origin', 'tested'];
-    const newPreRequirementValues = ['negativeTest', 'willTestAndQuarantineInMaine', 'willQuarantineInMaine', 'haveQuarantineInMaine', 'positivePCRAndQuarantined'];
+    const newPreRequirementValues = ['negativeTest', 'willTestAndQuarantineInMaine', 'willQuarantineInMaine', 'haveQuarantineInMaine', 'positivePCRAndQuarantined', 'fullyVaccinated'];
 
     if (!newPreRequirementValues.includes(payload.preRequirement) && !oldPreRequirementValues.includes(payload.preRequirement)) {
         return false;
