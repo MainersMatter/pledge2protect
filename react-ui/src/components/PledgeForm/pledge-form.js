@@ -186,7 +186,8 @@ const PledgeForm = (props, ref) => {
                                 ref={register({ required: true })}
                             />
                             <label htmlFor="requirement-fullyVaccinated">
-                                6. I have been fully vaccinated against COVID-19
+                                6. I have been fully vaccinated after at least 14 days following the
+                                completion of the COVID-19 vaccination series
                             </label>
                         </li>
                     </ul>
